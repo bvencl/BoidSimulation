@@ -14,6 +14,8 @@ SRCDIR   = src
 OBJDIR   = obj
 # BINDIR: Ide teszi a futtathatót (.exe)
 BINDIR   = bin
+# SVGDIR: Ide teszi a keletkező SVG-fájlokat
+SVGDIR = picdir
 
 # Itt automatikusan kikeressük az összes .cpp fájlt a src könyvtárban. Mindből külön .o készül majd.
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
@@ -35,6 +37,7 @@ $(BINDIR)/$(TARGET): $(OBJECTS)
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	$(CXX) -c -o $@ $(CXXFLAGS) -MMD $< 
 
+
 # Itt beillesztjük a Makefile-ba a fordító által legyártott összes (.d) header-függőségi szabályt is
 include $(DEPS)
 
@@ -49,3 +52,11 @@ clean:
 .PHONY: doc
 doc: $(SOURCES) $(HEADERS)
 	doxygen
+
+# Átmozgat minden SVG fájlt az SVGDIR-be
+# move-svg:
+# 	mkdir -p $(SVGDIR)
+# 	move $(SRCDIR)/*.svg $(SVGDIR)
+
+run-and-move-svg: $(BINDIR)/$(TARGET)
+	cmd /c "$(BINDIR)/$(TARGET) && if exist $(BINDIR)/*.svg move /Y $(BINDIR)/*.svg $(SVGDIR)"

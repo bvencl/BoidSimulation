@@ -52,6 +52,7 @@
 		{
 			"type": "cppbuild",
 			"label": "C++ MAKEFILE",
+			// "command": "mingw32-make run-and-move-svg",
 			"command": "mingw32-make",
 			"args": [],
 			"options": {
@@ -64,7 +65,7 @@
 				"kind": "build",
 				"isDefault": false
 			},
-			"detail": "compiler: g++.exe, mingw32-make"
+			"detail": "compiler: g++.exe, "
 		}
 	]
 }
