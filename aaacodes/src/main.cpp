@@ -8,18 +8,16 @@
  */
 
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <cmath>
 #include "futes.h"
 #include "kazan.h"
 #include "rooms.h"
+#include "pid.h"
 
 int main(int argc, char *argv[])
 {
-
-
-
-
-
 
     return 0;
 }
