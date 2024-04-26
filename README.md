@@ -12,3 +12,14 @@ Minden egyed négy szabálynak engedelmeskedik:
 3) Cohesion: MInden egyed közvetlen szomszédai tömegközéppontja felé is gyorsul
 
 4) Chasing: Minden egyed egy meghatározott cél felé is gyorsul
+
+
+
+
+
+
+
+
+
+
+(igen, a copilot csinálta a commit üzeneteket :D)
