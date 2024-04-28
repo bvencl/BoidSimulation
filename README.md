@@ -1,4 +1,4 @@
-# Programozás alapjai 2 ház feladat Bódi Vencel VBW5N9
+# Programozás alapjai 2 féléves házi feladat Bódi Vencel VBW5N9
 
 ## Rajzásszimuláció
 
