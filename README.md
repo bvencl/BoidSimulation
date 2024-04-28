@@ -9,7 +9,7 @@ Minden egyed négy szabálynak engedelmeskedik:
 
 2) Alignment: Minden egyed észeleli közvetlen környezete átlagos sebességét, és ebbe az irányba ható gyorsulással reagál
 
-3) Cohesion: MInden egyed közvetlen szomszédai tömegközéppontja felé is gyorsul
+3) Cohesion: Minden egyed közvetlen szomszédai tömegközéppontja felé is gyorsul
 
 4) Chasing: Minden egyed egy meghatározott cél felé is gyorsul
 
