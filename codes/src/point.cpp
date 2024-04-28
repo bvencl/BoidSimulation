@@ -6,12 +6,19 @@
 
 #include <iostream>
 #include <ostream>
+#include <cmath>
 #include "point.h"
 
 Point::Point(double x = 0, double y = 0) : x(x), y(y)
 {
     if (DEBUG_IS_ON)
-        std::cout << "Point constructed" << *this;
+        std::cout << "Point constructed" << *this << std::endl;
+}
+
+Point::~Point()
+{
+    if(DEBUG_IS_ON)
+        std::cout << "deconstructed point " << *this << std::endl;
 }
 
 double Point::getX() const
@@ -65,7 +72,7 @@ Point Point::operator-(const Point &rhs) const
 
 std::ostream &operator<<(std::ostream &os, const Point &P)
 {
-    os << "Point, x: " << P.getX() << ", y: " << P.getY() << std::endl;
+    os << "< x: " << P.getX() << ", y: " << P.getY();
     return os;
 }
 

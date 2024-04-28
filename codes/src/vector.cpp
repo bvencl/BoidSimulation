@@ -10,7 +10,7 @@ Vector::Vector(double x = 0, double y = 0) : x(x), y(y)
 {
     Length = std::sqrt(x * x + y * y);
     if (DEBUG_IS_ON)
-        std::cout << " vector constructed" << *this;
+        std::cout << " vector constructed" << *this << std::endl;
 }
 
 Vector::Vector(const Vector &other)
@@ -20,6 +20,12 @@ Vector::Vector(const Vector &other)
     calculateLenght();
     if (DEBUG_IS_ON)
         std::cout << "copyconstructed a vector" << *this << std::endl;
+}
+
+Vector::~Vector()
+{
+    if (DEBUG_IS_ON)
+        std::cout << "deconstructed a vector " << *this << std::endl;
 }
 
 double Vector::getX() const
@@ -32,7 +38,7 @@ double Vector::getY() const
     return y;
 }
 
-double Vector::getLength() const
+long double Vector::getLength() const
 {
     return Length;
 }
@@ -53,7 +59,7 @@ void Vector::setVector(double x, double y)
     y = y;
 }
 
-double Vector::calculateLenght()
+long double Vector::calculateLenght()
 {
     Length = std::sqrt(x * x + y * y);
     return Length;
@@ -66,21 +72,21 @@ Vector Vector::rotate(double thetaInRadians) const
     return Vector(x * cosTheta - y * sinTheta, x * sinTheta + y * cosTheta);
 }
 
-bool Vector::isNull() 
+bool Vector::isNull()
 {
-    if(std::abs(calculateLenght()) < 1e-6)
+    if (std::abs(calculateLenght()) < 1e-6)
         return true;
     return false;
 }
 
-double Vector::angleWith(const Vector & other) const
+double Vector::angleWith(const Vector &other) const
 {
     double dotProduct = *this * other;
     double dotLength = getLength() * other.getLength();
     return std::acos(dotProduct / dotLength);
 }
 
-Vector Vector::projectionOnto(const Vector & onto) const
+Vector Vector::projectionOnto(const Vector &onto) const
 {
     double dotProduct = *this * onto;
     double lengthSquared = onto.getLength() * onto.getLength();
@@ -123,7 +129,7 @@ double Vector::operator*(const Vector &rhs) const
 
 std::ostream &operator<<(std::ostream &os, Vector &vec)
 {
-    os << "VECTOR , x: " << vec.getX() << " y: " << vec.getY() << " lenght: " << vec.calculateLenght() << std::endl;
+    os << "< x: " << std::setprecision(3)<< std::fixed << vec.getX() << " y: "<< std::setprecision(3) << std::fixed << vec.getY() << " lenght: " << std::setprecision(3)<< std::fixed << vec.calculateLenght();
     return os;
 }
 
@@ -132,5 +138,5 @@ Vector operator*(const Vector &vec, int lambda)
     return Vector(vec.getX() * lambda, vec.getY() * lambda);
 }
 
-const Vector Vector::xAxis(1.0, 0.0);
-const Vector Vector::xAxis(0.0, 1.0);
+const Vector Vector::xAxis(INFINITY, 0.0);
+const Vector Vector::yAxis(0.0, INFINITY);

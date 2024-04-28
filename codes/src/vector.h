@@ -1,27 +1,30 @@
 #pragma once
-#include <cmath>
 #include <iostream>
 #include <ostream>
+#include <cmath>
+#include <iomanip>
+
+
 class Vector
 {
 private:
     double x;
     double y;
-    double Length;
+    long double Length;
 
 public:
     Vector(double, double); // Vector konstruktora, x és y koordinátára van csak szüksége,, számolja a hosszt
     Vector(const Vector &); // Vector copykonstruktora, mert miért ne
-
+    ~Vector();
     double getX() const;      // getter függvény x-re
     double getY() const;      // getter függvény y-ra
-    double getLength() const; // getter függvény lenght-re
+    long double getLength() const; // getter függvény lenght-re
 
     void setX(double);              // setter függvény x-re
     void setY(double);              // setter függvény y-ra
     void setVector(double, double); // későbbi könnyebbségért egy teljes setter
 
-    double calculateLenght();                    // Frissíti a Length értékét, vissza is adja szükség esetén
+    long double calculateLenght();                    // Frissíti a Length értékét, vissza is adja szükség esetén
     Vector rotate(double) const;                 // Forgat egy vektort megadott radiánnal, mintegy operátorként működve!...                                              https://www.youtube.com/watch?v=YGXCnZMGa6M
     bool isNull();                               // Ellenőrzi, hogy nullvektor-e, azért nem const, mert frissíti a hosszt
     double angleWith(const Vector &) const;      // visszaadja a két vektor közötti szöget
