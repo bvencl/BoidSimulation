@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ostream>
 #include "vector.h"
+#include "point.h"
 
 #ifdef DEBUG
 #define DEBUG_IS_ON 1

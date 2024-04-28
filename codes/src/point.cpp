@@ -68,3 +68,5 @@ std::ostream &operator<<(std::ostream &os, const Point &P)
     os << "Point, x: " << P.getX() << ", y: " << P.getY() << std::endl;
     return os;
 }
+
+const Point Point::Origo(0.0, 0.0);
