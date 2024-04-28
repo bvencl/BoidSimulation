@@ -11,7 +11,6 @@ private:
 
 public:
     Vector(double, double); // Vector konstruktora, x és y koordinátára van csak szüksége,, számolja a hosszt
-
     Vector(const Vector &); // Vector copykonstruktora, mert miért ne
 
     double getX() const;      // getter függvény x-re

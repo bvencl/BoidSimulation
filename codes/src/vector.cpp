@@ -6,7 +6,7 @@
 
 #include "vector.h"
 
-Vector::Vector(double x, double y) : x(x), y(y)
+Vector::Vector(double x = 0, double y = 0) : x(x), y(y)
 {
     Length = std::sqrt(x * x + y * y);
     if (DEBUG_IS_ON)
