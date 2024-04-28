@@ -57,6 +57,3 @@ doc: $(SOURCES) $(HEADERS)
 # move-svg:
 # 	mkdir -p $(SVGDIR)
 # 	move $(SRCDIR)/*.svg $(SVGDIR)
-
-run-and-move-svg: $(BINDIR)/$(TARGET)
-	cmd /c "$(BINDIR)/$(TARGET) && if exist $(BINDIR)/*.svg move /Y $(BINDIR)/*.svg $(SVGDIR)"
