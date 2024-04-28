@@ -1,94 +1,105 @@
+#ifdef DEBUG
+#define DEBUG_IS_ON 1
+#else
+#define DEBUG_IS_ON 0
+#endif
+
 #include "vector.h"
 
-ZS::ZS(double x, double y) : x(x), y(y)
+Vector::Vector(double x, double y) : x(x), y(y)
 {
     Length = std::sqrt(x * x + y * y);
-    if (DEGUG_IS_ON)
+    if (DEBUG_IS_ON)
         std::cout << " vector constructed" << *this;
 }
 
-ZS::ZS(const ZS &other)
+Vector::Vector(const Vector &other)
 {
     x = other.x;
     y = other.y;
     calculateLenght();
-    if (DEGUG_IS_ON)
+    if (DEBUG_IS_ON)
         std::cout << "copyconstructed a vector" << *this << std::endl;
 }
 
-double ZS::getX() const
+double Vector::getX() const
 {
     return x;
 }
 
-double ZS::getY() const
+double Vector::getY() const
 {
     return y;
 }
 
-double ZS::getLength() const
+double Vector::getLength() const
 {
     return Length;
 }
 
-void ZS::setX(double x)
+void Vector::setX(double x)
 {
     x = x;
 }
 
-void ZS::setY(double y)
+void Vector::setY(double y)
 {
     y = y;
 }
 
-void ZS::setVector(double x, double y)
+void Vector::setVector(double x, double y)
 {
     x = x;
     y = y;
 }
 
-double ZS::calculateLenght()
+double Vector::calculateLenght()
 {
     Length = std::sqrt(x * x + y * y);
     return Length;
 }
 
-ZS ZS::operator-() const
+Vector Vector::operator-() const
 {
-    return ZS(-x, -y);
+    return Vector(-x, -y);
 }
 
-ZS ZS::operator+(const ZS &rhs) const
+Vector Vector::operator+(const Vector &rhs) const
 {
-    return ZS(x + rhs.x, y + rhs.y);
+    return Vector(x + rhs.x, y + rhs.y);
 }
 
-ZS ZS::operator-(const ZS &rhs) const
+Vector Vector::operator-(const Vector &rhs) const
 {
-    return ZS(x - rhs.x, y - rhs.y);
+    return Vector(x - rhs.x, y - rhs.y);
 }
 
-void ZS::operator=(const ZS &rhs)
+void Vector::operator=(const Vector &rhs)
 {
     x = rhs.x;
     y = rhs.y;
     calculateLenght();
 }
 
-void ZS::operator+=(const ZS &rhs)
+void Vector::operator+=(const Vector &rhs)
 {
     x += rhs.x;
     y = rhs.y;
     calculateLenght();
 }
 
-double ZS::operator*(const ZS &rhs) const
+double Vector::operator*(const Vector &rhs) const
 {
     return x * rhs.x + y * rhs.y;
 }
 
-std::ostream &operator<<(std::ostream &os, ZS &vec)
+std::ostream &operator<<(std::ostream &os, Vector &vec)
 {
     os << "VECTOR , x: " << vec.getX() << " y: " << vec.getY() << " lenght: " << vec.calculateLenght() << std::endl;
     return os;
+}
+
+Vector operator*(const Vector &vec, int lambda)
+{
+    return Vector(vec.getX() * lambda, vec.getY() * lambda);
 }

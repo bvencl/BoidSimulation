@@ -15,7 +15,7 @@ $(BINDIR)/$(TARGET): $(OBJECTS)
 	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
-	$(CXX) -c -o $@ $(CXXFLAGS) -MMD $
+	$(CXX) -c -o $@ $(CXXFLAGS) -MMD $<
 
 include $(DEPS)
 

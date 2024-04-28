@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <ostream>
-class ZS
+class Vector
 {
 private:
     double x;
@@ -10,10 +10,10 @@ private:
     double Length;
 
 public:
-    ZS(double, double);// Vector konstruktora, x és y koordinátára van csak szüksége,, számolja a hosszt
+    Vector(double, double);// Vector konstruktora, x és y koordinátára van csak szüksége,, számolja a hosszt
 
 
-    ZS(const ZS &); // Vector copykonstruktora, mert miért ne
+    Vector(const Vector &); // Vector copykonstruktora, mert miért ne
 
 
     double getX() const;      // getter függvény az X-re
@@ -26,21 +26,18 @@ public:
 
     double calculateLenght(); // Frissíti a Length értékét, vissza is adja szükség esetén
 
-    bool isNull() const; // Ellenőrzi, hogy nullvektor-e
+    // bool isNull() const; // Ellenőrzi, hogy nullvektor-e
 
-    ZS operator-() const;               // Vektor ellentettét képezi
-    ZS operator+(const ZS &) const;     // Vektorok összeadása
-    ZS operator-(const ZS &) const;     // Vektorok kivonása
-    void operator=(const ZS &);         // Vektorok egyenlővé tétele
-    void operator+=(const ZS &);        // Értékadás vektorral
-    double operator*(const ZS &) const; // Skaláris szorzat (dot product)
+    Vector operator-() const;               // Vektor ellentettét képezi
+    Vector operator+(const Vector &) const;     // Vektorok összeadása
+    Vector operator-(const Vector &) const;     // Vektorok kivonása
+    double operator*(const Vector &) const; // Skaláris szorzat (dot product)
+    void operator=(const Vector &);         // Vektorok egyenlővé tétele
+    void operator+=(const Vector &);        // Értékadás vektorral
 
     // double operator[](int i) const;
 };
 
-ZS operator*(const ZS &vec, int lambda) // Skalárral szorzás
-{
-    return ZS(vec.getX() * lambda, vec.getY() * lambda);
-}
+Vector operator*(const Vector &, int); // Skalárral szorzás
 
-std::ostream &operator<<(std::ostream &, ZS &); // vektor kiírása, azért nem const ZS &, mert frissíti a hosszát kiírás előtt
+std::ostream &operator<<(std::ostream &, Vector &); // vektor kiírása, azért nem const Vector &, mert frissíti a hosszát kiírás előtt
