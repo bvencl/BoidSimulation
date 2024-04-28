@@ -59,6 +59,34 @@ double Vector::calculateLenght()
     return Length;
 }
 
+Vector Vector::rotate(double thetaInRadians) const
+{
+    double cosTheta = std::cos(thetaInRadians);
+    double sinTheta = std::sin(thetaInRadians);
+    return Vector(x * cosTheta - y * sinTheta, x * sinTheta + y * cosTheta);
+}
+
+bool Vector::isNull() 
+{
+    if(std::abs(calculateLenght()) < 1e-6)
+        return true;
+    return false;
+}
+
+double Vector::angleWith(const Vector & other) const
+{
+    double dotProduct = *this * other;
+    double dotLength = getLength() * other.getLength();
+    return std::acos(dotProduct / dotLength);
+}
+
+Vector Vector::projectionOnto(const Vector & onto) const
+{
+    double dotProduct = *this * onto;
+    double lengthSquared = onto.getLength() * onto.getLength();
+    return onto * (dotProduct / lengthSquared);
+}
+
 Vector Vector::operator-() const
 {
     return Vector(-x, -y);
@@ -103,3 +131,6 @@ Vector operator*(const Vector &vec, int lambda)
 {
     return Vector(vec.getX() * lambda, vec.getY() * lambda);
 }
+
+const Vector Vector::xAxis(1.0, 0.0);
+const Vector Vector::xAxis(0.0, 1.0);
