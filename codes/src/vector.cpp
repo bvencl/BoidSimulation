@@ -1,5 +1,21 @@
 #include "vector.h"
 
+ZS::ZS(double x, double y) : x(x), y(y)
+{
+    Length = std::sqrt(x * x + y * y);
+    if (DEGUG_IS_ON)
+        std::cout << " vector constructed" << *this;
+}
+
+ZS::ZS(const ZS &other)
+{
+    x = other.x;
+    y = other.y;
+    calculateLenght();
+    if (DEGUG_IS_ON)
+        std::cout << "copyconstructed a vector" << *this << std::endl;
+}
+
 double ZS::getX() const
 {
     return x;
@@ -59,7 +75,7 @@ void ZS::operator=(const ZS &rhs)
     calculateLenght();
 }
 
-void ZS::operator+=(const ZS & rhs)
+void ZS::operator+=(const ZS &rhs)
 {
     x += rhs.x;
     y = rhs.y;
@@ -69,4 +85,10 @@ void ZS::operator+=(const ZS & rhs)
 double ZS::operator*(const ZS &rhs) const
 {
     return x * rhs.x + y * rhs.y;
+}
+
+std::ostream &operator<<(std::ostream &os, ZS &vec)
+{
+    os << "VECTOR , x: " << vec.getX() << " y: " << vec.getY() << " lenght: " << vec.calculateLenght() << std::endl;
+    return os;
 }

@@ -12,17 +12,15 @@ OBJECTS = $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 DEPS = $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.d)
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
-	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS)
+	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS) 
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
-	$(CXX) -c -o $@ $(CXXFLAGS) -MMD $
+	$(CXX) -c -o $@ $(CXXFLAGS) -MMD $< 
+
 
 include $(DEPS)
 
 $(DEPS): ;
-
-debug: CXXFLAGS += -DDEBUG
-debug: $(BINDIR)/$(TARGET)
 
 .PHONY: clean
 clean:
