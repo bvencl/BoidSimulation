@@ -3,6 +3,7 @@
 #include <cmath>
 #include "vector.h"
 #include "point.h"
+#include "basicboid.h"
 
 #ifdef DEBUG
 #define DEBUG_IS_ON 1
@@ -12,6 +13,9 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
+#define ever \
+    ;        \
+    ;
 
 using std::cout;
 using std::endl;
@@ -66,6 +70,13 @@ int main(int argc, char *argv[])
     // Projekció ellenőrzése
     Vector vProjection = v1.projectionOnto(v2);
     std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
+    BasicBoid Boidocska(1);
+    
+    
+    for (ever)
+    {
+        cout << Boidocska <<endl;
+    }
 
     return 0;
 }

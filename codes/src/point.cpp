@@ -9,6 +9,11 @@
 #include <cmath>
 #include "point.h"
 
+Point::Point() : x(0), y(0)
+{
+    std::cout << "Point constructed defconst" << *this << std::endl;
+}
+
 Point::Point(double x = 0, double y = 0) : x(x), y(y)
 {
     if (DEBUG_IS_ON)
@@ -17,7 +22,7 @@ Point::Point(double x = 0, double y = 0) : x(x), y(y)
 
 Point::~Point()
 {
-    if(DEBUG_IS_ON)
+    if (DEBUG_IS_ON)
         std::cout << "deconstructed point " << *this << std::endl;
 }
 
@@ -29,6 +34,11 @@ double Point::getX() const
 double Point::getY() const
 {
     return y;
+}
+
+const Point& Point::getPoint() const
+{
+    return *this;
 }
 
 void Point::setX(double x)
@@ -47,10 +57,10 @@ void Point::setPoint(double x, double y)
     y = y;
 }
 
-double Point::calculateDistance(const Point& other) const
+double Point::calculateDistance(const Point &other) const
 {
     Point tmp = *this - other;
-    return std::sqrt(tmp.x*tmp.x + tmp.y*tmp.y);
+    return std::sqrt(tmp.x * tmp.x + tmp.y * tmp.y);
 }
 
 bool Point::operator==(const Point &rhs) const
