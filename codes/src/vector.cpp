@@ -3,21 +3,24 @@
 #else
 #define DEBUG_IS_ON 0
 #endif
+#define DIMENSION 2
 
 #include "vector.h"
+//---------------------------------------------------------Konstruktorok Destruktorok
+Vector::Vector()
+{
+    if (DEBUG_IS_ON)
+        std::cout << " vector constructed defconst" << *this << std::endl;
+}
 
 Vector::Vector(double x = 0, double y = 0) : x(x), y(y)
 {
-    Length = std::sqrt(x * x + y * y);
     if (DEBUG_IS_ON)
         std::cout << " vector constructed" << *this << std::endl;
 }
 
-Vector::Vector(const Vector &other)
+Vector::Vector(const Vector &other) : x(other.x), y(other.y)
 {
-    x = other.x;
-    y = other.y;
-    calculateLenght();
     if (DEBUG_IS_ON)
         std::cout << "copyconstructed a vector" << *this << std::endl;
 }
@@ -28,6 +31,7 @@ Vector::~Vector()
         std::cout << "deconstructed a vector " << *this << std::endl;
 }
 
+//--------------------------------------------------------Getter-Setter függvények---------------------------------------------------------------
 double Vector::getX() const
 {
     return x;
@@ -38,9 +42,9 @@ double Vector::getY() const
     return y;
 }
 
-long double Vector::getLength() const
+double Vector::getLength() const
 {
-    return Length;
+    return std::sqrt(x * x + y * y);
 }
 
 void Vector::setX(double x)
@@ -59,11 +63,7 @@ void Vector::setVector(double x, double y)
     y = y;
 }
 
-long double Vector::calculateLenght()
-{
-    Length = std::sqrt(x * x + y * y);
-    return Length;
-}
+//--------------------------------------------Számoló függvények-----------------------------------------------------------------------------------
 
 Vector Vector::rotate(double thetaInRadians) const
 {
@@ -74,7 +74,7 @@ Vector Vector::rotate(double thetaInRadians) const
 
 bool Vector::isNull()
 {
-    if (std::abs(calculateLenght()) < 1e-6)
+    if (std::abs(getLength()) < 1e-6)
         return true;
     return false;
 }
@@ -93,6 +93,7 @@ Vector Vector::projectionOnto(const Vector &onto) const
     return onto * (dotProduct / lengthSquared);
 }
 
+//----------------------------------------Túlterhelt operátorok-------------------------------
 Vector Vector::operator-() const
 {
     return Vector(-x, -y);
@@ -112,14 +113,12 @@ void Vector::operator=(const Vector &rhs)
 {
     x = rhs.x;
     y = rhs.y;
-    calculateLenght();
 }
 
 void Vector::operator+=(const Vector &rhs)
 {
     x += rhs.x;
     y = rhs.y;
-    calculateLenght();
 }
 
 double Vector::operator*(const Vector &rhs) const
@@ -129,7 +128,7 @@ double Vector::operator*(const Vector &rhs) const
 
 std::ostream &operator<<(std::ostream &os, Vector &vec)
 {
-    os << "< x: " << std::setprecision(3)<< std::fixed << vec.getX() << " y: "<< std::setprecision(3) << std::fixed << vec.getY() << " lenght: " << std::setprecision(3)<< std::fixed << vec.calculateLenght();
+    os << "< x: " << std::setprecision(3) << std::fixed << vec.getX() << " y: " << std::setprecision(3) << std::fixed << vec.getY() << " Length: " << std::setprecision(3) << std::fixed << vec.getLength();
     return os;
 }
 
