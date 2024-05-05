@@ -1,35 +1,27 @@
-TARGET = main
 CXX = g++
-CXXFLAGS = -g -Wall -pedantic
-LDFLAGS = -L"C:/Users/venib/vcpkg/installed/x64-windows/lib"
-CPPFLAGS = -I"C:/Users/venib/vcpkg/installed/x64-windows/include"
+CXXFLAGS = -Wall -g 
+CXXFLAGS += -IC:\msys64\mingw64\include
+LDFLAGS = -LC:\msys64\mingw64\lib
+LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
-SRCDIR   = src
-OBJDIR   = obj
-BINDIR   = bin
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
 
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
-HEADERS = $(wildcard $(SRCDIR)/*.h)
 OBJECTS = $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
-DEPS = $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.d)
+DEPS = $(OBJECTS:.o=.d)
 
-$(BINDIR)/$(TARGET): $(OBJECTS)
-	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS)
+$(BINDIR)/main: $(OBJECTS)
+	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS) $(LDLIBS)
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
-	$(CXX) $(CPPFLAGS) -c -o $@ $(CXXFLAGS) -MMD $<
+-include $(DEPS)
 
-include $(DEPS)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
-$(DEPS): ;
+clean:
+	del $(OBJDIR)\*.o $(OBJDIR)\*.d $(BINDIR)\main.exe /Q
 
 debug: CXXFLAGS += -DDEBUG
-debug: $(BINDIR)/$(TARGET)
-
-.PHONY: clean
-clean:
-	del obj\*.* bin\*.* /s
-
-.PHONY: doc
-doc: $(SOURCES) $(HEADERS)
-	doxygen
+debug: $(BINDIR)/main

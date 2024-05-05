@@ -14,9 +14,6 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
-#define ever \
-    ;        \
-    ;
 #ifndef dT
 #define dT 1e-6
 #endif
@@ -78,21 +75,17 @@ int main(int argc, char *argv[])
         BasicBoid Boidocska(1);
     }
 
-    for (ever)
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML window");
+    while (window.isOpen())
     {
-        sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-        while (window.isOpen())
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            sf::Event event;
-            while (window.pollEvent(event))
-            {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
-            window.clear();
-            window.display();
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
-        return 0;
+        window.clear();
+        window.display();
     }
 
     std::cout << "\n______________________________________\n\n"
