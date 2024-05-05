@@ -1,12 +1,5 @@
-#ifdef DEBUG
-#define DEBUG_IS_ON 1
-#else
-#define DEBUG_IS_ON 0
-#endif
-#define DIMENSION 2
-
 #include "vector.h"
-#include "point.h"
+
 //---------------------------------------------------------Konstruktorok Destruktorok
 Vector::Vector()
 {
@@ -55,18 +48,18 @@ double Vector::getLength() const
 
 void Vector::setX(double x)
 {
-    x = x;
+    this->x = x;
 }
 
 void Vector::setY(double y)
 {
-    y = y;
+    this->y = y;
 }
 
 void Vector::setVector(double x, double y)
 {
-    x = x;
-    y = y;
+    this->x = x;
+    this->y = y;
 }
 
 //--------------------------------------------Számoló függvények-----------------------------------------------------------------------------------
@@ -124,7 +117,7 @@ void Vector::operator=(const Vector &rhs)
 void Vector::operator+=(const Vector &rhs)
 {
     x += rhs.x;
-    y = rhs.y;
+    y += rhs.y;
 }
 
 double Vector::operator*(const Vector &rhs) const
@@ -140,10 +133,15 @@ std::ostream &operator<<(std::ostream &os, const Vector &vec)
     return os;
 }
 
-Vector operator*(const Vector &vec, int lambda)
+Vector operator*(const Vector &vec, double lambda)
 {
     return Vector(vec.getX() * lambda, vec.getY() * lambda);
 }
 
-const Vector Vector::xAxis(INFINITY, 0.0);
-const Vector Vector::yAxis(0.0, INFINITY);
+Vector::operator sf::Vector2f() const
+{
+    return sf::Vector2f(x, y);
+}
+
+// const Vector Vector::xAxis(INFINITY, 0.0);
+// const Vector Vector::yAxis(0.0, INFINITY);

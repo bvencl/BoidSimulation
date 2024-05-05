@@ -1,22 +1,4 @@
-#include <iostream>
-#include <ostream>
-#include <cmath>
-#include "vector.h"
-#include "point.h"
-#include "basicboid.h"
-#include "SFML/Graphics.hpp"
-
-#ifdef DEBUG
-#define DEBUG_IS_ON 1
-#else
-#define DEBUG_IS_ON 0
-#endif
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-#ifndef dT
-#define dT 1e-6
-#endif
+#include "includes.h"
 
 using std::cout;
 using std::endl;
@@ -72,24 +54,33 @@ int main(int argc, char *argv[])
         // Projekció ellenőrzése
         Vector vProjection = v1.projectionOnto(v2);
         std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
-        BasicBoid Boidocska(1);
     }
 
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML window");
-    while (window.isOpen())
+    // sf::RenderWindow window(sf::VideoMode(1920, 1080), "Boid For The Win");
+    // while (window.isOpen())
+    // {
+    //     sf::Event event;
+    //     while (window.pollEvent(event))
+    //     {
+    //         if (event.type == sf::Event::Closed)
+    //             window.close();
+    //     }
+    //     window.clear();
+    //     window.display();
+    // }
+
+    BasicBoid boid1;
+    boid1.setAcceleration(0.2, 0.1);
+
+    boid1.MyTurn();
+    for (ever)
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        window.clear();
-        window.display();
+        boid1.MyTurn();
+        cout << boid1 << endl;
     }
 
-    std::cout << "\n______________________________________\n\n"
-              << std::endl;
+    cout << "\n______________________________________\n\n"
+         << endl;
 
     return 0;
 }

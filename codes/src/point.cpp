@@ -1,12 +1,3 @@
-#ifdef DEBUG
-#define DEBUG_IS_ON 1
-#else
-#define DEBUG_IS_ON 0
-#endif
-
-#include <iostream>
-#include <ostream>
-#include <cmath>
 #include "point.h"
 
 Point::Point() : x(0), y(0)
@@ -58,6 +49,11 @@ void Point::setPoint(double x, double y)
     y = y;
 }
 
+void Point::setPoint(Point other)
+{
+    *this = other;
+}
+
 double Point::calculateDistance(const Point &other) const
 {
     Point tmp = *this - other;
@@ -81,10 +77,19 @@ Point Point::operator-(const Point &rhs) const
     return Point(x - rhs.x, y - rhs.y);
 }
 
-void Point::operator+(const Vector &vector)
+Point Point::operator+(const Vector &vector) const
 {
-    x += vector.getX();
-    y += vector.getY();
+    return Point(x + vector.getX(), y + vector.getY());
+}
+void Point::operator=(const Point &other)
+{
+    x = other.x;
+    y = other.y;
+}
+
+Point::operator sf::Vector2f() const
+{
+    return sf::Vector2f(x, y);
 }
 
 std::ostream &operator<<(std::ostream &os, const Point &P)

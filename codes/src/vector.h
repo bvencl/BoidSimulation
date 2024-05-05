@@ -1,8 +1,17 @@
 #pragma once
+
+#ifdef DEBUG
+#define DEBUG_IS_ON 1
+#else
+#define DEBUG_IS_ON 0
+#endif
+
 #include <iostream>
 #include <ostream>
-#include <cmath>
 #include <iomanip>
+#include <cmath>
+#include <SFML/System/Vector2.hpp>
+
 
 class Vector
 {
@@ -11,7 +20,7 @@ private:
 
 public:
     Vector();
-    Vector(double, double); // Vector konstruktora, x és y koordinátára van csak szüksége,, számolja a hosszt
+    Vector(double, double); // Vector konstruktora, x és y koordinátára van csak szüksége, számolja a hosszt
     Vector(const Vector &); // Vector copykonstruktora, mert miért ne
     ~Vector();
     double getX() const;      // getter függvény x-re
@@ -34,10 +43,11 @@ public:
     void operator=(const Vector &);         // Vektorok egyenlővé tétele
     void operator+=(const Vector &);        // Értékadás vektorral
 
-    static const Vector xAxis;
-    static const Vector yAxis;
+    // static const Vector xAxis;
+    // static const Vector yAxis;
+    operator sf::Vector2f() const; // Az SFML által használt sf::Vector2 típusra kasztolható ezáltal az én Vector osztályom
 };
 
-Vector operator*(const Vector &, int); // Skalárral szorzás
+Vector operator*(const Vector &, double); // Skalárral szorzás
 
 std::ostream &operator<<(std::ostream &, const Vector &); // vektor kiírása, azért nem const Vector &, mert frissíti a hosszát kiírás előtt

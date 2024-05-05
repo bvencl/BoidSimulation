@@ -1,0 +1,7 @@
+mindenv.h file:
+
+hpp2plantuml -i vector.h -i point.h -i basicboid.h -i rule.h -o output.puml
+
+hpp2plantuml -i knife.h -i pistol.h -i weapon.h -i railgun.h -o output.puml 
+
+java -jar plantuml.jar -tpng output.png
