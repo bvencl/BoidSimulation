@@ -24,8 +24,4 @@ A szép OOP megoldás az, ha a szabályokat közös ősből származó szabály-
 A grafikus megjelenítést könnyen végezheted az SFML könyvtárral.
 
 
-
-
-
-
-(igen, a copilot csinálta a commit üzeneteket :D)
+(nagyot mennek a commit üzenetek :D)
