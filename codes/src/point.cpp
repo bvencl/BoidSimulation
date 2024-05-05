@@ -11,7 +11,8 @@
 
 Point::Point() : x(0), y(0)
 {
-    std::cout << "Point constructed defconst" << *this << std::endl;
+    if (DEBUG_IS_ON)
+        std::cout << "Point constructed defconst" << *this << std::endl;
 }
 
 Point::Point(double x = 0, double y = 0) : x(x), y(y)
@@ -36,7 +37,7 @@ double Point::getY() const
     return y;
 }
 
-const Point& Point::getPoint() const
+const Point &Point::getPoint() const
 {
     return *this;
 }
@@ -78,6 +79,12 @@ Point Point::operator+(const Point &rhs) const
 Point Point::operator-(const Point &rhs) const
 {
     return Point(x - rhs.x, y - rhs.y);
+}
+
+void Point::operator+(const Vector &vector)
+{
+    x += vector.getX();
+    y += vector.getY();
 }
 
 std::ostream &operator<<(std::ostream &os, const Point &P)

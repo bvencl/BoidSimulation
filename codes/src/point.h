@@ -1,6 +1,7 @@
 #pragma once
 #include <ostream>
 #include <iostream>
+#include "vector.h"
 
 class Point
 {
@@ -14,7 +15,7 @@ public:
     ~Point();
     double getX() const;
     double getY() const;
-    const Point& getPoint() const;
+    const Point &getPoint() const;
     void setX(double);
     void setY(double);
 
@@ -24,6 +25,8 @@ public:
     bool operator==(const Point &) const;
     Point operator+(const Point &) const;
     Point operator-(const Point &) const;
+
+    void operator+(const Vector &);
 
     static const Point Origo;
 };

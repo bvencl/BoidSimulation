@@ -6,6 +6,7 @@
 #define DIMENSION 2
 
 #include "vector.h"
+#include "point.h"
 //---------------------------------------------------------Konstruktorok Destruktorok
 Vector::Vector()
 {
