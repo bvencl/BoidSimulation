@@ -4,6 +4,7 @@
 #include "vector.h"
 #include "point.h"
 #include "basicboid.h"
+#include "SFML/Graphics.hpp"
 
 #ifdef DEBUG
 #define DEBUG_IS_ON 1
@@ -13,7 +14,9 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
-#define ever ;;
+#define ever \
+    ;        \
+    ;
 #ifndef dT
 #define dT 1e-6
 #endif
@@ -75,10 +78,22 @@ int main(int argc, char *argv[])
         BasicBoid Boidocska(1);
     }
 
-    // for (ever)
-    // {
-    //     cout << Boidocska <<endl;
-    // }
+    for (ever)
+    {
+        sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+        while (window.isOpen())
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
+            window.clear();
+            window.display();
+        }
+        return 0;
+    }
 
     std::cout << "\n______________________________________\n\n"
               << std::endl;
