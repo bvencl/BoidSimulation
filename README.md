@@ -2,19 +2,6 @@
 
 ## Rajzásszimuláció
 
-
-Minden egyed négy szabálynak engedelmeskedik:
-
-1) Separation: Amennyiben közel kerül szomszédaihoz, azok erős taszító erőhatást gyakorolnak rá (pl távolság négyzetének inverzével arányos taszító erő)
-
-2) Alignment: Minden egyed észeleli közvetlen környezete átlagos sebességét, és ebbe az irányba ható gyorsulással reagál
-
-3) Cohesion: Minden egyed közvetlen szomszédai tömegközéppontja felé is gyorsul
-
-4) Chasing: Minden egyed egy meghatározott cél felé is gyorsul
-
-
-
 A rajban mozgás a természetben gyakran megfigyelhető denevérrajok, birkanyájak stb esetében. A mozgás jellemzője, hogy nincs vezéregyed, minden egyed azonos szabályokat követve, a közvetlen környezetét érzékelve mozog.
 
 Készíts szimulációt, melyben kezdetben véletlenszerű pozícióban elhelyezkedő egyedek mozgását követed.
