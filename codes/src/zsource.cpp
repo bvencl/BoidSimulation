@@ -56,18 +56,18 @@ int main(int argc, char *argv[])
         std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    // sf::RenderWindow window(sf::VideoMode(1920, 1080), "Boid For The Win");
-    // while (window.isOpen())
-    // {
-    //     sf::Event event;
-    //     while (window.pollEvent(event))
-    //     {
-    //         if (event.type == sf::Event::Closed)
-    //             window.close();
-    //     }
-    //     window.clear();
-    //     window.display();
-    // }
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Boid For The Win");
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        window.clear();
+        window.display();
+    }
 
     BasicBoid boid1;
     boid1.setAcceleration(0.2, 0.1);

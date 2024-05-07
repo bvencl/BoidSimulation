@@ -27,7 +27,7 @@ uml: $(HEADERS)
 	hpp2plantuml -i $(HEADERS) -o $(UML_OUTPUT)
 
 clean:
-	del $(OBJDIR)\*.o $(OBJDIR)\*.d $(BINDIR)\main.exe /Q
+	$(RM) $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
 
 debug: CXXFLAGS += -DDEBUG
 debug: $(BINDIR)/main
