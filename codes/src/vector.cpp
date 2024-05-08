@@ -35,7 +35,10 @@ Vector const &Vector::getVector() const
 {
     return *this;
 }
-
+Vector &Vector::getVectorNonConst()
+{
+    return *this;
+}
 double Vector::getLength() const
 {
     return std::sqrt(x * x + y * y);
@@ -127,9 +130,9 @@ double Vector::operator*(const Vector &rhs) const
 
 std::ostream &operator<<(std::ostream &os, const Vector &vec)
 {
-    os << "< x: " << std::setprecision(3) << std::fixed << vec.getX()
-       << " y: " << std::setprecision(3) << std::fixed << vec.getY()
-       << " Length: " << std::setprecision(3) << std::fixed << vec.getLength();
+    os << "< x: " << std::setprecision(6) << std::fixed << vec.getX()
+       << " y: " << std::setprecision(6) << std::fixed << vec.getY()
+       << " Length: " << std::setprecision(6) << std::fixed << vec.getLength();
     return os;
 }
 
@@ -142,6 +145,8 @@ Vector::operator sf::Vector2f() const
 {
     return sf::Vector2f(x, y);
 }
+
+const Vector Vector::nullVector(0, 0);
 
 // const Vector Vector::xAxis(INFINITY, 0.0);
 // const Vector Vector::yAxis(0.0, INFINITY);

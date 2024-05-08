@@ -6,8 +6,8 @@ using std::endl;
 int main(int argc, char *argv[])
 {
 
-    int width = 480;
-    int height = 270;
+    int width = 1500;
+    int height = 750;
 
     if (argc == 3)
     {
@@ -66,25 +66,41 @@ int main(int argc, char *argv[])
         //     std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    Flock flock;
-    BasicBoid boid1;
-    boid1.setAcceleration(0.2, 0.1);
-    flock.insert(&boid1);
+    Flock flock1;
+    Point p(width / 2, height / 10);
+    Vector v1(10, 0);
+    Vector v2(0.5, 0);
+    Vector v3(10, 0);
 
-    sf::RenderWindow window(sf::VideoMode(480, 270), "Boid For The Win");
+    BasicBoid boid1(1, p, v1, Vector::nullVector);
+    // boid1.setAcceleration(0.0000001, 0.00000002);
+    flock1.insert(&boid1);
+
+    sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
+    sf::CircleShape boid(10);
+    // boid.move(100, 100);
+    boid.setFillColor(sf::Color::Red);
+    size_t i = 1;
     while (window.isOpen())
     {
 
-        sf::Event event;
-        while (window.pollEvent(event))
+        sf::Event evnt;
+        while (window.pollEvent(evnt))
         {
-            if (event.type == sf::Event::Closed)
+            if (evnt.type == sf::Event::Closed)
                 window.close();
         }
-        flock.moveFlock();
-        cout << flock[0] << endl;
+
         window.clear();
+        boid.setPosition((sf::Vector2f)(boid1.getPosition()));
+        window.draw(boid);
         window.display();
+        flock1.moveFlock();
+        cout << flock1[0] << endl;
+        boid1.setSpeed((boid1.getSpeed().rotate(M_PI / 10000.0))
+                              // + v1.rotate(i * M_PI / 30.0)
+        );
+        i++;
     }
 
     return 0;

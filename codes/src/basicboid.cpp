@@ -10,7 +10,7 @@ BasicBoid::BasicBoid(double mass, double starting_position_x, double starting_po
         std::cout << "Boid constructed: \n " << *this << std::endl;
 }
 
-BasicBoid::BasicBoid(double mass = 1, Point starting_position, Vector starting_speed, Vector starting_acceleration)
+BasicBoid::BasicBoid(double mass, Point starting_position, Vector starting_speed, Vector starting_acceleration)
     : speed(starting_speed),
       acceleration(starting_acceleration),
       currentPosition(starting_position),
@@ -38,14 +38,22 @@ void BasicBoid::setAcceleration(double x, double y)
     acceleration = Vector(x, y);
 }
 
-Vector const &BasicBoid::getSpeed() const
+void BasicBoid::setAcceleration(const Vector &other)
 {
-    return speed.getVector();
+    double x = other.getX();
+    double y = other.getY();
+    acceleration.setX(x);
+    acceleration.setY(y);
 }
 
-Vector const &BasicBoid::getAcceleration() const
+Vector &BasicBoid::getSpeed()
 {
-    return acceleration.getVector();
+    return speed.getVectorNonConst();
+}
+
+Vector &BasicBoid::getAcceleration()
+{
+    return acceleration.getVectorNonConst();
 }
 
 Point const &BasicBoid::getPosition() const
@@ -60,9 +68,9 @@ double BasicBoid::getMass() const
 
 std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
 {
-    os << "\tCurrent position: " << boid.getPosition()
-       << "\tspeed: " << boid.getSpeed()
-       << "\tacceleration: " << boid.getAcceleration()
+    os << "    CP: " << boid.getPosition()
+       << "    SP: " << const_cast<BasicBoid &>(boid).getSpeed()
+       << "    ACC: " << const_cast<BasicBoid &>(boid).getAcceleration()
         //    << "\thow fat I am: " << boid.getMass()
         ;
     if (DEBUG_IS_ON)
@@ -93,6 +101,10 @@ Sorrendiség:
 void BasicBoid::MyTurn()
 {
     Vector calculatedSumOfRules(0, 0);
+
+    /*
+    ...
+    */
 
     acceleration += calculatedSumOfRules;
 
