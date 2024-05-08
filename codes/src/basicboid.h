@@ -45,3 +45,25 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &, const BasicBoid &);
+
+/*
+
+        // boid1.setSpeed(cos(i * M_PI / 100000.0) + sin(i * M_PI / 10000.0) + sin(i * M_PI / 10000.0) -i/100000.0, sin(i * M_PI / 10000.0) + cos(i * M_PI / 100000.0));
+        boid1.setSpeed(cos(i * M_PI / 10000.0), sin(i * M_PI / 10000.0));
+        // boid2.setSpeed(cos(i * M_PI / 10000.0), sin(i * M_PI / 10000.0));
+
+        // boid2.setSpeed(boid2.getSpeed().rotate(M_PI / 10000.0));
+        // boid1.setSpeed(boid1.getSpeed().rotate(M_PI / 10000.0));
+
+
+        // boid2.setAcceleration(
+            // -1 * (M_PI / 100.0) *
+            // sin((i * M_PI / 10000.0)) * cos((i * M_PI / 10000.0)),
+            // (M_PI / 100.0) *
+            // cos((i * M_PI / 10000.0)) * sin((i * M_PI / 10000.0)));
+        boid2.setAcceleration(boid2.getAcceleration().rotate(M_PI / 10000.0));
+        i++;
+                // if(i == 10)
+        // i = 0;
+
+*/

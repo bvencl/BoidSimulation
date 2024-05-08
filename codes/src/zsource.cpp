@@ -6,8 +6,8 @@ using std::endl;
 int main(int argc, char *argv[])
 {
 
-    int width = 1500;
-    int height = 750;
+    int width = 1920;
+    int height = 1080;
 
     if (argc == 3)
     {
@@ -67,20 +67,32 @@ int main(int argc, char *argv[])
     }
 
     Flock flock1;
-    Point p(width / 2, height / 10);
-    Vector v1(10, 0);
-    Vector v2(0.5, 0);
-    Vector v3(10, 0);
+    Point p(100, height / 8);
+    Point p2(width / 1.5, height / 2);
 
-    BasicBoid boid1(1, p, v1, Vector::nullVector);
-    // boid1.setAcceleration(0.0000001, 0.00000002);
+    Vector v1(0.01, 0.0);
+    Vector v2(5, 0);
+    Vector v3(0, 0);
+
+    BasicBoid boid1(1, p, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid2(1, p2, Vector::nullVector, Vector::nullVector);
     flock1.insert(&boid1);
+    flock1.insert(&boid2);
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
-    sf::CircleShape boid(10);
-    // boid.move(100, 100);
-    boid.setFillColor(sf::Color::Red);
-    size_t i = 1;
+    sf::CircleShape boid_1(10);
+    sf::CircleShape boid_2(10);
+
+    boid_1.setFillColor(sf::Color::Red);
+    boid_2.setFillColor(sf::Color::Blue);
+
+    size_t i = 0;
+
+    double omega = M_PI / 100000.0;
+    double R = 10000;
+    double v = R * omega;
+    double a = v * v / R;
+
     while (window.isOpen())
     {
 
@@ -92,14 +104,21 @@ int main(int argc, char *argv[])
         }
 
         window.clear();
-        boid.setPosition((sf::Vector2f)(boid1.getPosition()));
-        window.draw(boid);
+
+        boid_1.setPosition((sf::Vector2f)(boid1.getPosition()));
+        boid_2.setPosition((sf::Vector2f)(boid2.getPosition()));
+        window.draw(boid_1);
+        window.draw(boid_2);
+
         window.display();
         flock1.moveFlock();
-        cout << flock1[0] << endl;
-        boid1.setSpeed((boid1.getSpeed().rotate(M_PI / 10000.0))
-                              // + v1.rotate(i * M_PI / 30.0)
-        );
+        cout << flock1[1] << endl;
+
+        boid1.setSpeed(i / 10000.0, cos(i * M_PI / 10000.0)) ;
+
+        // boid2.setSpeed(cos(i * M_PI / 100000.0), sin(i * M_PI / 100000.0));
+        // boid1.setSpeed(cos(i * M_PI / 100000.0), sin(i * M_PI / 100000.0));
+
         i++;
     }
 
