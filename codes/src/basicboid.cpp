@@ -7,19 +7,18 @@ BasicBoid::BasicBoid(double mass, double starting_position_x, double starting_po
       mass(mass)
 {
     if (DEBUG_IS_ON)
-        std::cout << "Boid constructed fullparam: \n " << *this << std::endl;
+        std::cout << "Boid constructed: \n " << *this << std::endl;
 }
 
-// double mass, double speedx, double speedy, double accx, double accy, double srtposx, double strposy
-// BasicBoid::BasicBoid(double mass = 0.1, Vector startingSpeed = Vector(0, 0), Vector startingAcceleration = Vector(0, 0), Point startingPoint = Point(0, 0))
-//     : speed(startingSpeed),
-//       acceleration(startingAcceleration),
-//       currentPosition(startingPoint),
-//       mass(mass)
-// {
-//     if (DEBUG_IS_ON)
-//         std::cout << "Boid constructed: \n " << *this << std::endl;
-// }
+BasicBoid::BasicBoid(double mass = 1, Point starting_position, Vector starting_speed, Vector starting_acceleration)
+    : speed(starting_speed),
+      acceleration(starting_acceleration),
+      currentPosition(starting_position),
+      mass(mass)
+{
+    if (DEBUG_IS_ON)
+        std::cout << "Boid constructed: \n " << *this << std::endl;
+}
 
 void BasicBoid::setSpeed(double x, double y)
 {
@@ -66,6 +65,8 @@ std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
        << "\tacceleration: " << boid.getAcceleration()
         //    << "\thow fat I am: " << boid.getMass()
         ;
+    if (DEBUG_IS_ON)
+        os << "\t" << &boid;
 
     return os;
 }
@@ -106,5 +107,5 @@ void BasicBoid::move()
 
 bool BasicBoid::operator==(const BasicBoid &other) const
 {
-    return currentPosition == other.currentPosition && mass == other.mass && speed == other.speed && acceleration == other.acceleration; 
+    return currentPosition == other.currentPosition && mass == other.mass && speed == other.speed && acceleration == other.acceleration;
 }

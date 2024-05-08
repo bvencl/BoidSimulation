@@ -56,30 +56,26 @@ int main(int argc, char *argv[])
         std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    // sf::RenderWindow window(sf::VideoMode(480, 270), "Boid For The Win");
-    // while (window.isOpen())
-    // {
-    //     sf::Event event;
-    //     while (window.pollEvent(event))
-    //     {
-    //         if (event.type == sf::Event::Closed)
-    //             window.close();
-    //     }
-    //     window.clear();
-    //     window.display();
-    // }
-
+    Flock flock;
     BasicBoid boid1;
     boid1.setAcceleration(0.2, 0.1);
-    Flock flock;
     flock.insert(&boid1);
-    size_t i = 1000;
-    for (; i; i--)
+
+    sf::RenderWindow window(sf::VideoMode(480, 270), "Boid For The Win");
+    while (window.isOpen())
     {
+
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
         flock.moveFlock();
         cout << flock[0] << endl;
+        window.clear();
+        window.display();
     }
-    flock.remove(&boid1);
 
     return 0;
 }
