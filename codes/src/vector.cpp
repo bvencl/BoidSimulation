@@ -1,13 +1,8 @@
 #include "vector.h"
 
 //---------------------------------------------------------Konstruktorok Destruktorok
-Vector::Vector()
-{
-    if (DEBUG_IS_ON)
-        std::cout << " vector constructed defconst" << *this << std::endl;
-}
 
-Vector::Vector(double x = 0, double y = 0) : x(x), y(y)
+Vector::Vector(double x, double y) : x(x), y(y)
 {
     if (DEBUG_IS_ON)
         std::cout << " vector constructed" << *this << std::endl;
@@ -112,6 +107,11 @@ void Vector::operator=(const Vector &rhs)
 {
     x = rhs.x;
     y = rhs.y;
+}
+
+bool Vector::operator==(const Vector &rhs) const
+{
+    return x == rhs.x && x == rhs.x;
 }
 
 void Vector::operator+=(const Vector &rhs)

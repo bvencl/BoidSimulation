@@ -1,12 +1,6 @@
 #include "point.h"
 
-Point::Point() : x(0), y(0)
-{
-    if (DEBUG_IS_ON)
-        std::cout << "Point constructed defconst" << *this << std::endl;
-}
-
-Point::Point(double x = 0, double y = 0) : x(x), y(y)
+Point::Point(double x, double y) : x(x), y(y)
 {
     if (DEBUG_IS_ON)
         std::cout << "Point constructed" << *this << std::endl;

@@ -3,16 +3,17 @@
 
 class Flock
 {
-    BasicBoid *flockMembers;
+    BasicBoid **flockMembers;
     size_t flockSize;
     double flockCohesion;
     double flockRepulsion;
 
 public:
-    Flock(double, double);
+    Flock(double flock_cohesion = 1, double flock_repulsion = 1);
     ~Flock();
-    void insert(const BasicBoid &);
-    void remove(const BasicBoid &);
+    void insert(BasicBoid *);
+    void remove(BasicBoid *);
     void moveFlock();
-    bool isMemberOfFlack(const BasicBoid&);
+    bool isMemberOfFlock(const BasicBoid *);
+    BasicBoid &operator[](int);
 };

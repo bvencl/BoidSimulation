@@ -19,8 +19,7 @@ private:
     double y;
 
 public:
-    Point();
-    Point(double, double);
+    Point(double x = 0.0, double y = 0.0);
     ~Point();
     double getX() const;
     double getY() const;

@@ -1,17 +1,25 @@
 #include "basicboid.h"
 
-BasicBoid::BasicBoid() : speed(Vector(0, 0)), acceleration(Vector(0, 0)), currentPosition(Point(0, 0)), mass(0)
+BasicBoid::BasicBoid(double mass, double starting_position_x, double starting_position_y, double speed_x, double speed_y, double acceleration_x, double acceleration_y)
+    : speed(speed_x, speed_y),
+      acceleration(acceleration_x, acceleration_y),
+      currentPosition(starting_position_x, starting_position_y),
+      mass(mass)
 {
     if (DEBUG_IS_ON)
-        std::cout << "Boid defconstructed: \n " << *this << std::endl;
+        std::cout << "Boid constructed fullparam: \n " << *this << std::endl;
 }
 
 // double mass, double speedx, double speedy, double accx, double accy, double srtposx, double strposy
-BasicBoid::BasicBoid(double mass = 0.1, Vector startingSpeed = Vector(0, 0), Vector startingAcceleration = Vector(0, 0), Point startingPoint = Point(0, 0)) : speed(startingSpeed), acceleration(startingAcceleration), currentPosition(startingPoint), mass(mass)
-{
-    if (DEBUG_IS_ON)
-        std::cout << "Boid constructed: \n " << *this << std::endl;
-}
+// BasicBoid::BasicBoid(double mass = 0.1, Vector startingSpeed = Vector(0, 0), Vector startingAcceleration = Vector(0, 0), Point startingPoint = Point(0, 0))
+//     : speed(startingSpeed),
+//       acceleration(startingAcceleration),
+//       currentPosition(startingPoint),
+//       mass(mass)
+// {
+//     if (DEBUG_IS_ON)
+//         std::cout << "Boid constructed: \n " << *this << std::endl;
+// }
 
 void BasicBoid::setSpeed(double x, double y)
 {
@@ -94,4 +102,9 @@ void BasicBoid::MyTurn()
 void BasicBoid::move()
 {
     currentPosition.setPoint(currentPosition + (speed * dT));
+}
+
+bool BasicBoid::operator==(const BasicBoid &other) const
+{
+    return currentPosition == other.currentPosition && mass == other.mass && speed == other.speed && acceleration == other.acceleration; 
 }

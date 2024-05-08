@@ -12,16 +12,14 @@
 #include <cmath>
 #include <SFML/System/Vector2.hpp>
 
-
 class Vector
 {
 private:
     double x, y;
 
 public:
-    Vector();
-    Vector(double, double); // Vector konstruktora, x és y koordinátára van csak szüksége, számolja a hosszt
-    Vector(const Vector &); // Vector copykonstruktora, mert miért ne
+    Vector(double x = 0.0, double y = 0.0); // Vector konstruktora, x és y koordinátára van csak szüksége, számolja a hosszt
+    Vector(const Vector &);                 // Vector copykonstruktora, mert miért ne
     ~Vector();
     double getX() const;      // getter függvény x-re
     double getY() const;      // getter függvény y-ra
@@ -41,6 +39,7 @@ public:
     Vector operator-(const Vector &) const; // Vektorok kivonása
     double operator*(const Vector &) const; // Skaláris szorzat (dot product)
     void operator=(const Vector &);         // Vektorok egyenlővé tétele
+    bool operator==(const Vector &) const;
     void operator+=(const Vector &);        // Értékadás vektorral
 
     // static const Vector xAxis;
