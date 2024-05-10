@@ -4,7 +4,8 @@
 #include "basicboid.h"
 #include "flock.h"
 #include "rule.h"
-#include "logger.h"
+#include "chasingrule.h"
+// #include "logger.h"
 #include <iostream>
 #include <ostream>
 #include <cmath>
@@ -20,9 +21,9 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
-#ifndef dT
-#define dT 1e-2
-#endif
+// #ifndef dT
+// #define dT 1e-2
+// #endif
 #define ever ;;
 
 /*

@@ -22,7 +22,8 @@ BasicBoid::BasicBoid(double mass, Point starting_position, Vector starting_speed
 
 void BasicBoid::setSpeed(double x, double y)
 {
-    speed = Vector(x, y);
+    speed.setX(x);
+    speed.setY(y);
 }
 
 void BasicBoid::setSpeed(const Vector &other)
@@ -35,7 +36,8 @@ void BasicBoid::setSpeed(const Vector &other)
 
 void BasicBoid::setAcceleration(double x, double y)
 {
-    acceleration = Vector(x, y);
+    acceleration.setX(x);
+    acceleration.setY(y);
 }
 
 void BasicBoid::setAcceleration(const Vector &other)
@@ -46,14 +48,14 @@ void BasicBoid::setAcceleration(const Vector &other)
     acceleration.setY(y);
 }
 
-Vector &BasicBoid::getSpeed()
+Vector &BasicBoid::getSpeed() const
 {
-    return speed.getVectorNonConst();
+    return const_cast<BasicBoid*>(this)->speed.getVectorNonConst();
 }
 
-Vector &BasicBoid::getAcceleration()
+Vector &BasicBoid::getAcceleration() const
 {
-    return acceleration.getVectorNonConst();
+    return const_cast<BasicBoid*>(this)->acceleration.getVectorNonConst();
 }
 
 Point const &BasicBoid::getPosition() const
@@ -69,8 +71,8 @@ double BasicBoid::getMass() const
 std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
 {
     os << "    CP: " << boid.getPosition()
-       << "    SP: " << const_cast<BasicBoid &>(boid).getSpeed()
-       << "    ACC: " << const_cast<BasicBoid &>(boid).getAcceleration()
+       << "    SP: " << (boid).getSpeed()
+       << "    ACC: " << (boid).getAcceleration()
         //    << "\thow fat I am: " << boid.getMass()
         ;
     if (DEBUG_IS_ON)
@@ -98,13 +100,10 @@ Sorrendiség:
     - Ebből sebesség számolás
     - Majd a Pozíció kiszámítása
 */
-void BasicBoid::MyTurn()
+void BasicBoid::MyTurn(Vector calculatedSumOfRules, double dT)
 {
-    Vector calculatedSumOfRules(0, 0);
 
-    /*
-    ...
-    */
+    // calculatedSumOfRules += chasingComponent + separationCompontent + cohesionComponent + alingmentComponent;
 
     acceleration += calculatedSumOfRules;
 
