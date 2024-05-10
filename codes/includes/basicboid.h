@@ -36,9 +36,9 @@ public:
     void setSpeed(const Vector &);
     void setAcceleration(const Vector &);
 
-    void accelerationToSpeed();
+    void accelerationToSpeed(double);
 
-    void move();
+    void move(double);
 
     void MyTurn(Vector, double);
 

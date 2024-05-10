@@ -14,7 +14,7 @@ SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 DEPS = $(OBJECTS:.o=.d)
 
-HEADERS = vector.h point.h basicboid.h rule.h logger.h flock.h
+HEADERS = $(wildcard $(INCDIR)/*.h)
 UML_OUTPUT = $(BINDIR)/output.puml
 
 $(BINDIR)/main: $(OBJECTS)
@@ -26,10 +26,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCFLAGS) -MMD -c $< -o $@
 
 uml: $(HEADERS)
-	hpp2plantuml -i $(HEADERS) -o $(UML_OUTPUT)
+	hpp2plantuml -i "$(INCDIR)/*.h" -o $(UML_OUTPUT)
 
 clean:
-	del $(OBJDIR)\*.o $(OBJDIR)\*.d $(BINDIR)\main /Q
+	$(RM) $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
 
 debug: CXXFLAGS += -DDEBUG
 debug: $(BINDIR)/main

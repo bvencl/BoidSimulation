@@ -81,7 +81,7 @@ std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
     return os;
 }
 
-void BasicBoid::accelerationToSpeed()
+void BasicBoid::accelerationToSpeed(double dT)
 {
     speed += (acceleration * dT);
 }
@@ -107,11 +107,11 @@ void BasicBoid::MyTurn(Vector calculatedSumOfRules, double dT)
 
     acceleration += calculatedSumOfRules;
 
-    accelerationToSpeed();
-    move();
+    accelerationToSpeed(dT);
+    move(dT);
 }
 
-void BasicBoid::move()
+void BasicBoid::move(double dT)
 {
     currentPosition.setPoint(currentPosition + (speed * dT));
 }

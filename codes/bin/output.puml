@@ -1,0 +1,197 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class AlingmentRule {
+	+AlingmentRule(double rule_strength)
+	+calculateRuleForIndividual(const BasicBoid &) : Vector
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : double {query}
+	+calculateRuleForFlockPerTurn(Flock &) : void
+}
+
+
+class BasicBoid {
+	+BasicBoid(double, Point, Vector, Vector)
+	+BasicBoid(double mass, double starting_position_x, double starting_position_y, double speed_x, double speed_y, double acceleration_x, double acceleration_y)
+	-currentPosition : Point
+	+getPosition() : Point& {query}
+	-acceleration : Vector
+	-speed : Vector
+	+getAcceleration() : Vector& {query}
+	+getSpeed() : Vector& {query}
+	+operator==(const BasicBoid &) : bool {query}
+	+getMass() : double {query}
+	-mass : double
+	+MyTurn(Vector, double) : void
+	+accelerationToSpeed(double) : void
+	+move(double) : void
+	+setAcceleration(double, double) : void
+	+setAcceleration(const Vector &) : void
+	+setSpeed(double, double) : void
+	+setSpeed(const Vector &) : void
+}
+
+
+class ChasingRule {
+	+ChasingRule(double rule_strength)
+	+calculateRuleForIndividual(const BasicBoid &) : Vector
+}
+
+
+class CohesionRule {
+	+CohesionRule(double rule_strength)
+	+calculateRuleForIndividual(const BasicBoid &) : Vector
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : double {query}
+	+calculateRuleForFlockPerTurn(Flock &) : void
+}
+
+
+class Flock {
+	+Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment)
+	+~Flock()
+	-alingment : AlingmentRule
+	+operator[](int) : BasicBoid&
+	-flockMembers : BasicBoid**
+	-chase : ChasingRule
+	-cohesion : CohesionRule
+	-separation : SeparationRule
+	+isMemberOfFlock(const BasicBoid*) : bool
+	-flockSize : size_t
+	+insert(BasicBoid*) : void
+	+moveFlock(double) : void
+	+remove(BasicBoid*) : void
+}
+
+
+class Point {
+	+Point(double x, double y)
+	+Vector2f() {query}
+	+~Point()
+	+operator+(const Point &) : Point {query}
+	+operator+(const Vector &) : Point {query}
+	+operator-(const Point &) : Point {query}
+	+getPoint() : Point& {query}
+	+operator==(const Point &) : bool {query}
+	+calculateDistance(const Point &) : double {query}
+	+getX() : double {query}
+	+getY() : double {query}
+	-x : double
+	-y : double
+	+{static} Origo : static const Point
+	+operator=(const Point &) : void
+	+setPoint(double, double) : void
+	+setPoint(Point) : void
+	+setX(double) : void
+	+setY(double) : void
+}
+
+
+class Rule {
+	+Rule(double rule_strength)
+	+calculateRuleForIndividual(const BasicBoid &) : Vector
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : double {query}
+	-ruleStrength : double
+	+calculateRuleForFlockPerTurn(Flock &) : void
+}
+
+
+class SeparationRule {
+	+SeparationRule(double rule_strength)
+	+calculateRuleForIndividual(const BasicBoid &) : Vector
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : double {query}
+	+calculateRuleForFlockPerTurn(Flock &) : void
+}
+
+
+class Vector {
+	+Vector(double x, double y)
+	+Vector(const Vector &)
+	+Vector2f() {query}
+	+~Vector()
+	+operator+(const Vector &) : Vector {query}
+	+operator-() : Vector {query}
+	+operator-(const Vector &) : Vector {query}
+	+projectionOnto(const Vector &) : Vector {query}
+	+rotate(double) : Vector {query}
+	+getVector() : Vector& {query}
+	+getVectorNonConst() : Vector&
+	+isNull() : bool
+	+operator==(const Vector &) : bool {query}
+	+angleWith(const Vector &) : double {query}
+	+getLength() : double {query}
+	+getX() : double {query}
+	+getY() : double {query}
+	+operator*(const Vector &) : double {query}
+	-x : double
+	-y : double
+	+{static} nullVector : static const Vector
+	+operator+=(const Vector &) : void
+	+operator=(const Vector &) : void
+	+setVector(double, double) : void
+	+setX(double) : void
+	+setY(double) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+.Rule <|-- .AlingmentRule
+
+
+.Rule <|-- .ChasingRule
+
+
+.Rule <|-- .CohesionRule
+
+
+.Rule <|-- .SeparationRule
+
+
+
+
+
+/' Aggregation relationships '/
+
+.BasicBoid *-- .Point
+
+
+.BasicBoid "2" *-- .Vector
+
+
+.Flock *-- .AlingmentRule
+
+
+.Flock o-- .BasicBoid
+
+
+.Flock *-- .ChasingRule
+
+
+.Flock *-- .CohesionRule
+
+
+.Flock *-- .SeparationRule
+
+
+.Point *-- .Point
+
+
+.Vector *-- .Vector
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
