@@ -6,5 +6,5 @@ class ForcesBetweenBoids
 private:
 public:
     ForcesBetweenBoids() {}
-    virtual double calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) const = 0;
+    virtual Vector calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) const = 0;
 };

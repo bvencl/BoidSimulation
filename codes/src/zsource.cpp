@@ -66,27 +66,38 @@ int main(int argc, char *argv[])
         //     std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    Flock flock1;
-    Point p(width / 2, height / 3);
-    Point q(width / 2, height / 3);
+    Flock flock1(1, 1000);
+    Point p(1 * width / 4, height / 3);
+    Point q(2 * width / 4, height / 3);
+    Point r(3 * width / 4, height / 3);
+    Point s(4 * width / 4, height / 3);
+    Point t(5 * width / 4, height / 3);
 
-    // Vector v1(1, 0.0);
-    // Vector v2(5, 0);
-    // Vector v3(0, 0);
+    BasicBoid boid1(10, p, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid2(10, q, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid3(10, r, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid4(10, s, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid5(10, t, Vector::nullVector, Vector::nullVector);
 
-    BasicBoid boid1(1, p, Vector::nullVector, Vector::nullVector);
-    BasicBoid boid2(1, q, Vector::nullVector, Vector::nullVector);
     flock1.insert(&boid1);
     flock1.insert(&boid2);
+    flock1.insert(&boid3);
+    flock1.insert(&boid4);
+    flock1.insert(&boid5);
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
     sf::CircleShape boid_1(10);
     sf::CircleShape boid_2(10);
+    sf::CircleShape boid_3(10);
+    sf::CircleShape boid_4(10);
+    sf::CircleShape boid_5(10);
 
     boid_1.setFillColor(sf::Color::Red);
     boid_2.setFillColor(sf::Color::Blue);
-    double frequency = 1.0;
-    double omega = 2 * M_PI * frequency;
+    boid_3.setFillColor(sf::Color::Green);
+    boid_4.setFillColor(sf::Color::Yellow);
+    boid_5.setFillColor(sf::Color::White);
+
     size_t i = 0;
     sf::Clock COCK;
     double dT = 0.0;
@@ -101,18 +112,25 @@ int main(int argc, char *argv[])
                 window.close();
         }
         sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+        window.clear();
 
-        // window.clear();
+        boid_1.setPosition((sf::Vector2f)(boid1.getPosition()));
+        boid_2.setPosition((sf::Vector2f)(boid2.getPosition()));
+        boid_3.setPosition((sf::Vector2f)(boid3.getPosition()));
+        boid_4.setPosition((sf::Vector2f)(boid4.getPosition()));
+        boid_5.setPosition((sf::Vector2f)(boid5.getPosition()));
+
         flock1.moveFlock(dT, mousePosition);
         cout << flock1[0] << endl;
 
-        
-        boid_1.setPosition((sf::Vector2f)(boid1.getPosition()));
-        boid_2.setPosition((sf::Vector2f)(boid2.getPosition()));
         window.draw(boid_1);
         window.draw(boid_2);
+        window.draw(boid_3);
+        window.draw(boid_4);
+        window.draw(boid_5);
 
         window.display();
+
         i++;
     }
 

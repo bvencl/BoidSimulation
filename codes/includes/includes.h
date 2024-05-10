@@ -5,6 +5,7 @@
 #include "flock.h"
 #include "rule.h"
 #include "chasingrule.h"
+#include "separationrule.h"
 // #include "logger.h"
 #include <iostream>
 #include <ostream>

@@ -2,7 +2,7 @@
 #include "basicboid.h"
 #include "rule.h"
 #include "chasingrule.h"
-// #include "separationrule.h"
+#include "separationrule.h"
 // #include "cohesionrule.h"
 // #include "alingmentrule.h"
 
@@ -11,7 +11,7 @@ class Flock
     BasicBoid **flockMembers;
     size_t flockSize;
     ChasingRule chase;
-    // SeparationRule separation;
+    SeparationRule separation;
     // CohesionRule cohesion;
     // AlingmentRule alingment;
 

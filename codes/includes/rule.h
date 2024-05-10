@@ -18,6 +18,6 @@ private:
 
 public:
     Rule(double rule_strength) : ruleStrength(rule_strength){};
-    virtual Vector calculateRuleForIndividual(const BasicBoid &, sf::Vector2i) = 0;
+    virtual Vector calculateRuleForIndividual(BasicBoid **, const BasicBoid &, size_t) const = 0;
     double getRuleStrength() const { return ruleStrength; }
 };
