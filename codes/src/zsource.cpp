@@ -6,8 +6,8 @@ using std::endl;
 int main(int argc, char *argv[])
 {
 
-    int width = 1920;
-    int height = 1080;
+    int width = 1260;
+    int height = 540;
 
     if (argc == 3)
     {
@@ -67,15 +67,15 @@ int main(int argc, char *argv[])
     }
 
     Flock flock1;
-    Point p(100, height / 8);
-    Point p2(width / 1.5, height / 2);
+    Point p(width / 2, height / 3);
+    Point q(width / 2, height / 3);
 
     // Vector v1(1, 0.0);
     // Vector v2(5, 0);
     // Vector v3(0, 0);
 
     BasicBoid boid1(1, p, Vector::nullVector, Vector::nullVector);
-    BasicBoid boid2(1, p2, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid2(1, q, Vector::nullVector, Vector::nullVector);
     flock1.insert(&boid1);
     flock1.insert(&boid2);
 
@@ -85,14 +85,14 @@ int main(int argc, char *argv[])
 
     boid_1.setFillColor(sf::Color::Red);
     boid_2.setFillColor(sf::Color::Blue);
-
-    // size_t i = 0;
+    double frequency = 1.0;
+    double omega = 2 * M_PI * frequency;
+    size_t i = 0;
     sf::Clock COCK;
     double dT = 0.0;
     while (window.isOpen())
-    {   
-        dT = COCK.restart().asSeconds(); 
-        
+    {
+        dT = COCK.restart().asSeconds();
 
         sf::Event evnt;
         while (window.pollEvent(evnt))
@@ -102,17 +102,18 @@ int main(int argc, char *argv[])
         }
         sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
 
-        window.clear();
-        flock1.moveFlock(dT);
+        // window.clear();
+        flock1.moveFlock(dT, mousePosition);
         cout << flock1[0] << endl;
-        window.display();
 
+        
         boid_1.setPosition((sf::Vector2f)(boid1.getPosition()));
         boid_2.setPosition((sf::Vector2f)(boid2.getPosition()));
-        boid1.setSpeed(boid1.getSpeed().rotate(M_PI/10000.0));
         window.draw(boid_1);
         window.draw(boid_2);
 
+        window.display();
+        i++;
     }
 
     return 0;

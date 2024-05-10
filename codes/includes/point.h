@@ -23,7 +23,7 @@ public:
     ~Point();
     double getX() const;
     double getY() const;
-    const Point &getPoint() const;
+    Point const &getPoint() const;
     void setX(double);
     void setY(double);
 
@@ -32,7 +32,7 @@ public:
     double calculateDistance(const Point &) const;
     bool operator==(const Point &) const;
     Point operator+(const Point &) const;
-    Point operator-(const Point &) const;
+    Vector operator-(const Point &) const;
     Point operator+(const Vector &) const;
     void operator=(const Point &);
 

@@ -28,34 +28,32 @@ void BasicBoid::setSpeed(double x, double y)
 
 void BasicBoid::setSpeed(const Vector &other)
 {
-    double x = other.getX();
-    double y = other.getY();
-    speed.setX(x);
-    speed.setY(y);
+    speed.setVector(other);
 }
 
 void BasicBoid::setAcceleration(double x, double y)
 {
-    acceleration.setX(x);
-    acceleration.setY(y);
+    if (Vector(x, y).getLength() < 20)
+    {
+        acceleration.setX(x);
+        acceleration.setY(y);
+    }
 }
 
 void BasicBoid::setAcceleration(const Vector &other)
 {
-    double x = other.getX();
-    double y = other.getY();
-    acceleration.setX(x);
-    acceleration.setY(y);
+    if (other.getLength() < 20)
+        acceleration.setVector(other);
 }
 
-Vector &BasicBoid::getSpeed() const
+Vector const &BasicBoid::getSpeed() const
 {
-    return const_cast<BasicBoid*>(this)->speed.getVectorNonConst();
+    return speed.getVector();
 }
 
-Vector &BasicBoid::getAcceleration() const
+Vector const &BasicBoid::getAcceleration() const
 {
-    return const_cast<BasicBoid*>(this)->acceleration.getVectorNonConst();
+    return acceleration.getVector();
 }
 
 Point const &BasicBoid::getPosition() const
@@ -68,22 +66,21 @@ double BasicBoid::getMass() const
     return mass;
 }
 
-std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
+void BasicBoid::boidPrint(std::ostream &os) const
 {
-    os << "    CP: " << boid.getPosition()
-       << "    SP: " << (boid).getSpeed()
-       << "    ACC: " << (boid).getAcceleration()
-        //    << "\thow fat I am: " << boid.getMass()
+    os << "    CP: " << getPosition()
+       << "    SP: " << getSpeed()
+       << "    ACC: " << getAcceleration()
+        //           << "\thow fat I am: " << getMass()
         ;
-    if (DEBUG_IS_ON)
-        os << "\t" << &boid;
-
-    return os;
 }
 
-void BasicBoid::accelerationToSpeed(double dT)
+std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
 {
-    speed += (acceleration * dT);
+    boid.boidPrint(os);
+    if (DEBUG_IS_ON)
+        os << "\t" << &boid;
+    return os;
 }
 
 /*
@@ -102,21 +99,12 @@ Sorrendiség:
 */
 void BasicBoid::MyTurn(Vector calculatedSumOfRules, double dT)
 {
-
-    // calculatedSumOfRules += chasingComponent + separationCompontent + cohesionComponent + alingmentComponent;
-
-    acceleration += calculatedSumOfRules;
-
-    accelerationToSpeed(dT);
-    move(dT);
-}
-
-void BasicBoid::move(double dT)
-{
+    acceleration = calculatedSumOfRules;
+    speed += (acceleration * dT);
     currentPosition.setPoint(currentPosition + (speed * dT));
 }
 
 bool BasicBoid::operator==(const BasicBoid &other) const
 {
-    return currentPosition == other.currentPosition && mass == other.mass && speed == other.speed && acceleration == other.acceleration;
+    return this == &other;
 }

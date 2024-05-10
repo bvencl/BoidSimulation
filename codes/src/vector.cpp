@@ -14,6 +14,12 @@ Vector::Vector(const Vector &other) : x(other.x), y(other.y)
         std::cout << "copyconstructed a vector" << *this << std::endl;
 }
 
+Vector::Vector(const sf::Vector2i &other)
+{
+    x = other.x;
+    y = other.y;
+}
+
 Vector::~Vector()
 {
     if (DEBUG_IS_ON)
@@ -35,10 +41,7 @@ Vector const &Vector::getVector() const
 {
     return *this;
 }
-Vector &Vector::getVectorNonConst()
-{
-    return *this;
-}
+
 double Vector::getLength() const
 {
     return std::sqrt(x * x + y * y);
@@ -58,6 +61,12 @@ void Vector::setVector(double x, double y)
 {
     this->x = x;
     this->y = y;
+}
+
+void Vector::setVector(const Vector &other)
+{
+    setX(other.getX());
+    setY(other.getY());
 }
 
 //--------------------------------------------Számoló függvények-----------------------------------------------------------------------------------
@@ -90,6 +99,12 @@ Vector Vector::projectionOnto(const Vector &onto) const
     return onto * (dotProduct / lengthSquared);
 }
 
+void Vector::normaliastion()
+{
+    x /= getLength();
+    y /= getLength();
+}
+
 //----------------------------------------Túlterhelt operátorok-------------------------------
 Vector Vector::operator-() const
 {
@@ -117,22 +132,27 @@ bool Vector::operator==(const Vector &rhs) const
     return x == rhs.x && x == rhs.x;
 }
 
+double Vector::operator*(const Vector &rhs) const
+{
+    return x * rhs.x + y * rhs.y;
+}
+
 void Vector::operator+=(const Vector &rhs)
 {
     x += rhs.x;
     y += rhs.y;
 }
 
-double Vector::operator*(const Vector &rhs) const
+void Vector::vectorPrint(std::ostream &os) const
 {
-    return x * rhs.x + y * rhs.y;
+    os << "< x: " << std::setprecision(6) << std::fixed << getX()
+       << " y: " << std::setprecision(6) << std::fixed << getY()
+       << " Length: " << std::setprecision(6) << std::fixed << getLength();
 }
 
 std::ostream &operator<<(std::ostream &os, const Vector &vec)
 {
-    os << "< x: " << std::setprecision(6) << std::fixed << vec.getX()
-       << " y: " << std::setprecision(6) << std::fixed << vec.getY()
-       << " Length: " << std::setprecision(6) << std::fixed << vec.getLength();
+    vec.vectorPrint(os);
     return os;
 }
 

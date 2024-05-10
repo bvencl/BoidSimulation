@@ -22,7 +22,7 @@ double Point::getY() const
     return y;
 }
 
-const Point &Point::getPoint() const
+Point const &Point::getPoint() const
 {
     return *this;
 }
@@ -50,8 +50,8 @@ void Point::setPoint(Point other)
 
 double Point::calculateDistance(const Point &other) const
 {
-    Point tmp = *this - other;
-    return std::sqrt(tmp.x * tmp.x + tmp.y * tmp.y);
+    Vector thisToOther = *this - other;
+    return thisToOther.getLength();
 }
 
 bool Point::operator==(const Point &rhs) const
@@ -66,9 +66,9 @@ Point Point::operator+(const Point &rhs) const
     return Point(x + rhs.x, y + rhs.y);
 }
 
-Point Point::operator-(const Point &rhs) const
+Vector Point::operator-(const Point &rhs) const
 {
-    return Point(x - rhs.x, y - rhs.y);
+    return Vector(x - rhs.x, y - rhs.y);
 }
 
 Point Point::operator+(const Vector &vector) const
