@@ -18,7 +18,7 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, sf::Vector
 
     if (boid.getSpeed() * direction < 0)
     {
-        double correctionFactor = 30;
+        double correctionFactor = log(distance);
         acceleration = acceleration * correctionFactor;
     }
 

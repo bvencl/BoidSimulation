@@ -21,8 +21,8 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
     Vector direction = individual.getPosition() - currentFlockMember.getPosition();
     double distance = direction.getLength();
     direction.normaliastion();
-    double scalingFactor = getRuleStrength() * currentFlockMember.getMass() * individual.getMass() / (distance * distance);
-    if (scalingFactor > 100)
-        scalingFactor = 100;
+    double scalingFactor = getRuleStrength() * currentFlockMember.getMass() * individual.getMass() / (distance);
+    if (scalingFactor > 200)
+        scalingFactor = 200;
     return direction * scalingFactor;
 }
