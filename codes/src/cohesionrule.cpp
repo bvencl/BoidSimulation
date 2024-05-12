@@ -26,5 +26,5 @@ Vector CohesionRule::calculateRuleStrengthBetweenBoids(const BasicBoid &currentF
 
 double CohesionRule::calculateScalingFactor(const BasicBoid &boid, double distance, double massOfTheFlack) const
 {
-    return getRuleStrength() / (1 + distance) ;
+    return getRuleStrength() * distance;
 }

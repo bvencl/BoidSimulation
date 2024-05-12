@@ -1,8 +1,12 @@
 #include "flock.h"
 
-Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment) : flockMembers(nullptr), flockSize(0), chase(flock_chasing_coefficient), separation(flock_repulsion), cohesion(flock_cohesion)
-
-//, alingment(flock_alingment)
+Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment)
+    : flockMembers(nullptr),
+      flockSize(0),
+      chase(flock_chasing_coefficient),
+      separation(flock_repulsion),
+      cohesion(flock_cohesion),
+      alingment(flock_alingment)
 {
 }
 
@@ -59,7 +63,7 @@ bool Flock::isMemberOfFlock(const BasicBoid *boid)
     return false;
 }
 
-void Flock::moveFlock(double dT,sf::Vector2i mousePosition)
+void Flock::moveFlock(double dT,const sf::Vector2i & mousePosition)
 {
     for (size_t i = 0; i < flockSize; i++)
     {
@@ -67,7 +71,8 @@ void Flock::moveFlock(double dT,sf::Vector2i mousePosition)
         calculatedSumOfRules += chase.calculateRuleForIndividual(*flockMembers[i], mousePosition);
         calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
         calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
-        // calculatedSumOfRules += alingment.calculateRuleForIndividual(*flockMembers[i]);
+        calculatedSumOfRules += alingment.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
+        
         (*flockMembers[i]).MyTurn(calculatedSumOfRules, dT);
     }
 }

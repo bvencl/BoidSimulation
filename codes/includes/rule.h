@@ -20,5 +20,5 @@ public:
     virtual Vector calculateRuleForIndividual(BasicBoid **, const BasicBoid &, size_t) const = 0;
     double getRuleStrength() const { return ruleStrength; }
     virtual Vector calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) const = 0;
-
+    virtual double calculateScalingFactor(const BasicBoid &, double, double) const = 0;
 };

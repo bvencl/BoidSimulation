@@ -77,7 +77,7 @@ Vector Vector::rotate(double thetaInRadians) const
     return Vector(x * cosTheta - y * sinTheta, x * sinTheta + y * cosTheta);
 }
 
-bool Vector::isNull()
+bool Vector::isNull() const
 {
     if (std::abs(getLength()) < 1e-6)
         return true;

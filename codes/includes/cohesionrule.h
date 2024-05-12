@@ -11,5 +11,5 @@ public:
 
     Vector calculateRuleForIndividual(BasicBoid **, const BasicBoid &, size_t) const override;
 
-    double calculateScalingFactor(const BasicBoid &, double, double) const;
+    double calculateScalingFactor(const BasicBoid &, double, double) const override;
 };

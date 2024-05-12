@@ -21,8 +21,26 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
     Vector direction = individual.getPosition() - currentFlockMember.getPosition();
     double distance = direction.getLength();
     direction.normaliastion();
-    double scalingFactor = currentFlockMember.getMass() * individual.getMass() / (distance);
-    if (scalingFactor > 200)
-        scalingFactor = 200;
+
+    double scalingFactor = 0.0;
+
+    if (distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 50) // Ha nagyon közel vannak egymáshoz- azért arányos a súlyukkal,
+    {                                                                                // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg
+        scalingFactor = 500;
+    }
+    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 15 && distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 150) // Ha kicsit távolabb vannak azért
+    {
+        scalingFactor = 1.0 / (distance - (individual.getMass() + currentFlockMember.getMass()));
+    }
+    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 150 && direction.angleWith(individual.getSpeed()) > M_PI / 3)
+    {
+        scalingFactor = currentFlockMember.getMass() * individual.getMass() / (distance * distance);
+    }
+
     return direction * getRuleStrength() * scalingFactor;
+}
+
+double SeparationRule::calculateScalingFactor(const BasicBoid &, double, double) const
+{
+    return 0;
 }

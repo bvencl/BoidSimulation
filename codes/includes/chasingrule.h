@@ -9,6 +9,6 @@ private:
 public:
     ChasingRule(double rule_strength = 1);
 
-    Vector calculateRuleForIndividual(const BasicBoid &, sf::Vector2i);
+    Vector calculateRuleForIndividual(const BasicBoid &,const sf::Vector2i &);
     double getRuleStrength() const;
 };

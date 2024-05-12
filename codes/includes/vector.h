@@ -105,7 +105,7 @@ public:
      * @brief Ellenőrzi, hogy a vektor nullvektor-e.
      * @return True, ha a vektor nullvektor, különben false.
      */
-    bool isNull();
+    bool isNull() const;
 
     /**
      * @brief Kiszámítja a két vektor közötti szöget.

@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
         //     std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    Flock flock1(1, 3, 10);
+    Flock flock1(1, 1, 1, 1);
     Point p(1260.0, 540.0);
     Point q(1202.7050983124843, 716.335575687742);
     Point r(1052.7050983124843, 825.316954888546);
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     Point x(1052.705098312484, 254.6830451114539);
     Point y(717.2949016875158, 716.335575687742);
 
-    BasicBoid boid1(10, p, Vector::nullVector, Vector::nullVector);
+    BasicBoid boid1(15, p, Vector::nullVector, Vector::nullVector);
     BasicBoid boid2(10, q, Vector::nullVector, Vector::nullVector);
     BasicBoid boid3(10, r, Vector::nullVector, Vector::nullVector);
     BasicBoid boid4(10, s, Vector::nullVector, Vector::nullVector);
@@ -101,16 +101,16 @@ int main(int argc, char *argv[])
     flock1.insert(&boid10);
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
-    sf::CircleShape boid_1(10);
-    sf::CircleShape boid_2(10);
-    sf::CircleShape boid_3(10);
-    sf::CircleShape boid_4(10);
-    sf::CircleShape boid_5(10);
-    sf::CircleShape boid_6(10);
-    sf::CircleShape boid_7(10);
-    sf::CircleShape boid_8(10);
-    sf::CircleShape boid_9(10);
-    sf::CircleShape boid_10(10);
+    sf::CircleShape boid_1(boid1.getMass());
+    sf::CircleShape boid_2(boid2.getMass());
+    sf::CircleShape boid_3(boid3.getMass());
+    sf::CircleShape boid_4(boid4.getMass());
+    sf::CircleShape boid_5(boid5.getMass());
+    sf::CircleShape boid_6(boid6.getMass());
+    sf::CircleShape boid_7(boid7.getMass());
+    sf::CircleShape boid_8(boid8.getMass());
+    sf::CircleShape boid_9(boid9.getMass());
+    sf::CircleShape boid_10(boid10.getMass());
 
     boid_1.setFillColor(sf::Color::Red);
     boid_2.setFillColor(sf::Color::Blue);
@@ -168,6 +168,6 @@ int main(int argc, char *argv[])
 
         i++;
     }
-    
-    return 0;
+
+        return 0;
 }
