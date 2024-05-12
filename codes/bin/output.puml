@@ -30,6 +30,8 @@ class BasicBoid {
 class ChasingRule {
 	+ChasingRule(double rule_strength)
 	+calculateRuleForIndividual(const BasicBoid &, sf::Vector2i) : Vector
+	+getRuleStrength() : double {query}
+	-ruleStrength : double
 }
 
 
@@ -39,6 +41,7 @@ class Flock {
 	+operator[](int) : BasicBoid&
 	-flockMembers : BasicBoid**
 	-chase : ChasingRule
+	-separation : SeparationRule
 	+isMemberOfFlock(const BasicBoid*) : bool
 	-flockSize : size_t
 	+insert(BasicBoid*) : void
@@ -49,7 +52,7 @@ class Flock {
 
 abstract class ForcesBetweenBoids {
 	+ForcesBetweenBoids()
-	+{abstract} calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : double {query}
+	+{abstract} calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 }
 
 
@@ -78,7 +81,7 @@ class Point {
 
 abstract class Rule {
 	+Rule(double rule_strength)
-	+{abstract} calculateRuleForIndividual(const BasicBoid &, sf::Vector2i) : Vector
+	+{abstract} calculateRuleForIndividual(BasicBoid**, const BasicBoid &, size_t) : Vector {query}
 	+getRuleStrength() : double {query}
 	-ruleStrength : double
 }
@@ -86,8 +89,8 @@ abstract class Rule {
 
 class SeparationRule {
 	+SeparationRule(double rule_strength)
-	+calculateRuleForIndividual(const BasicBoid &, sf::Vector2i) : Vector
-	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : double {query}
+	+calculateRuleForIndividual(BasicBoid**, const BasicBoid &, size_t) : Vector {query}
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 }
 
 
@@ -132,9 +135,6 @@ class Vector {
 .ForcesBetweenBoids <|-- .SeparationRule
 
 
-.Rule <|-- .ChasingRule
-
-
 .Rule <|-- .SeparationRule
 
 
@@ -153,6 +153,9 @@ class Vector {
 
 
 .Flock *-- .ChasingRule
+
+
+.Flock *-- .SeparationRule
 
 
 .Point *-- .Point

@@ -81,6 +81,11 @@ void Point::operator=(const Point &other)
     y = other.y;
 }
 
+Point::operator Vector() const
+{
+    return Vector(x, y);
+}
+
 Point::operator sf::Vector2f() const
 {
     return sf::Vector2f(x, y);

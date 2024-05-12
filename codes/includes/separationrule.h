@@ -1,7 +1,7 @@
 #pragma once
 #include "rule.h"
 
-class SeparationRule : public Rule, public ForcesBetweenBoids
+class SeparationRule : public Rule
 {
 
 private:

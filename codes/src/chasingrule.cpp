@@ -14,20 +14,11 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, sf::Vector
     Vector direction = target - boid.getPosition();
     direction.normaliastion();
 
-    Vector acceleration = direction * distance;
+    Vector acceleration;
 
-    if (boid.getSpeed() * direction < 0)
-    {
-        double correctionFactor = log(distance);
-        acceleration = acceleration * correctionFactor;
-    }
+    acceleration = direction * distance;
 
-    // VICCES FEATURE - Érdekes jelenség, érdemes kipróbálni
-    // if (boid.getSpeed() * direction > 0 && boid.getSpeed().getLength() > boid.getAcceleration().getLength())
-    // {
-    //     double correctionFactor = -distance;
-    //     acceleration = acceleration * correctionFactor;
-    // }
+    
 
     return acceleration * ruleStrength;
 }

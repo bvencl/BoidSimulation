@@ -66,18 +66,18 @@ int main(int argc, char *argv[])
         //     std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    Flock flock1(1, 1);
-    Point p(1 * width / 4, height / 3);
-    Point q(2 * width / 4, height / 3);
-    Point r(3 * width / 4, height / 3);
-    Point s(4 * width / 4, height / 3);
-    Point t(5 * width / 4, height / 3);
-    Point u(6 * width / 4, height / 3);
-    Point v(7 * width / 4, height / 3);
-    Point w(8 * width / 4, height / 3);
-    Point x(9 * width / 4, height / 3);
-    Point y(10 * width / 4, height / 3);
-    
+    Flock flock1(1, 3, 10);
+    Point p(1260.0, 540.0);
+    Point q(1202.7050983124843, 716.335575687742);
+    Point r(1052.7050983124843, 825.316954888546);
+    Point s(867.2949016875158, 825.3169548885461);
+    Point t(867.2949016875157, 254.68304511145396);
+    Point u(717.2949016875157, 363.6644243122581);
+    Point v(660.0, 540.0);
+    Point w(1202.705098312484, 363.664424312258);
+    Point x(1052.705098312484, 254.6830451114539);
+    Point y(717.2949016875158, 716.335575687742);
+
     BasicBoid boid1(10, p, Vector::nullVector, Vector::nullVector);
     BasicBoid boid2(10, q, Vector::nullVector, Vector::nullVector);
     BasicBoid boid3(10, r, Vector::nullVector, Vector::nullVector);
@@ -117,10 +117,10 @@ int main(int argc, char *argv[])
     boid_3.setFillColor(sf::Color::Green);
     boid_4.setFillColor(sf::Color::Yellow);
     boid_5.setFillColor(sf::Color::White);
-    boid_6.setFillColor(sf::Color::White);
-    boid_7.setFillColor(sf::Color::White);
-    boid_8.setFillColor(sf::Color::White);
-    boid_9.setFillColor(sf::Color::White);
+    boid_6.setFillColor(sf::Color::Magenta);
+    boid_7.setFillColor(sf::Color::Cyan);
+    boid_8.setFillColor(sf::Color::Red);
+    boid_9.setFillColor(sf::Color::Green);
     boid_10.setFillColor(sf::Color::White);
 
     size_t i = 0;
@@ -168,6 +168,6 @@ int main(int argc, char *argv[])
 
         i++;
     }
-
+    
     return 0;
 }

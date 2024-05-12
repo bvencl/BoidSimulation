@@ -1,7 +1,6 @@
 #include "vector.h"
 
 //---------------------------------------------------------Konstruktorok Destruktorok
-
 Vector::Vector(double x, double y) : x(x), y(y)
 {
     if (DEBUG_IS_ON)

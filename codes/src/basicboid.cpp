@@ -83,20 +83,6 @@ std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
     return os;
 }
 
-/*
-Egy adott egyed egy "időpillanatra" viszonyított
-gyorsulását, sebességét, mozgását és pozícióját számoló függvény.
-Több függvényre bontom, és nem a mainben csinálom.
-Sorrendiség:
-    - Gyorsulás kiszámítása a 4 szabály alapján:
-        - Először a Chasing összetevő: ez a legerősebb összetevő, az ott leírtakkal megeflelően számolom
-        - Másodszor a Separation kerül számításra, ugyanis eza második legerősebb, számolása ott leírva
-        - Harmadszor a Cohesion számolódik, szerintem ez lesz a harmadik legerősebb, számolása ott leírva
-        - Negyedszer számolódik az Alignment, szerintem ez a legkevésbé fontos összetevő
-    - Gyorsulás módosítása
-    - Ebből sebesség számolás
-    - Majd a Pozíció kiszámítása
-*/
 void BasicBoid::MyTurn(Vector calculatedSumOfRules, double dT)
 {
     acceleration = calculatedSumOfRules;

@@ -1,7 +1,8 @@
 #include "flock.h"
 
-Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment) : flockMembers(nullptr), flockSize(0), chase(flock_chasing_coefficient), separation(flock_repulsion)
-//, cohesion(flock_cohesion), alingment(flock_alingment)
+Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment) : flockMembers(nullptr), flockSize(0), chase(flock_chasing_coefficient), separation(flock_repulsion), cohesion(flock_cohesion)
+
+//, alingment(flock_alingment)
 {
 }
 
@@ -65,7 +66,7 @@ void Flock::moveFlock(double dT,sf::Vector2i mousePosition)
         Vector calculatedSumOfRules;
         calculatedSumOfRules += chase.calculateRuleForIndividual(*flockMembers[i], mousePosition);
         calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
-        // calculatedSumOfRules += cohesion.calculateRuleForIndividual(*flockMembers[i]);
+        calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
         // calculatedSumOfRules += alingment.calculateRuleForIndividual(*flockMembers[i]);
         (*flockMembers[i]).MyTurn(calculatedSumOfRules, dT);
     }

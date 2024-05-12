@@ -3,7 +3,7 @@
 #include "rule.h"
 #include "chasingrule.h"
 #include "separationrule.h"
-// #include "cohesionrule.h"
+#include "cohesionrule.h"
 // #include "alingmentrule.h"
 
 class Flock
@@ -12,7 +12,7 @@ class Flock
     size_t flockSize;
     ChasingRule chase;
     SeparationRule separation;
-    // CohesionRule cohesion;
+    CohesionRule cohesion;
     // AlingmentRule alingment;
 
 public:

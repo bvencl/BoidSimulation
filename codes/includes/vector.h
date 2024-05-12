@@ -12,45 +12,196 @@
 #include <cmath>
 #include <SFML/System/Vector2.hpp>
 
+/**
+ * @brief Az osztály, amely egy kétdimenziós vektort reprezentál.
+ */
 class Vector
 {
 private:
     double x, y;
 
 public:
-    Vector(double x = 0.0, double y = 0.0); // Vector konstruktora, x és y koordinátára van csak szüksége, számolja a hosszt
-    Vector(const Vector &);                 // Vector copykonstruktora, mert miért ne
-    Vector(const sf::Vector2i &);
-    ~Vector();
-    double getX() const;             // getter függvény x-re
-    double getY() const;             // getter függvény y-ra
-    double getLength() const;        // getter függvény length-re
-    Vector const &getVector() const; // getter függvény az egész vektorra
-    void setX(double);               // setter függvény x-re
-    void setY(double);               // setter függvény y-ra
-    void setVector(double, double);  // későbbi könnyebbségért egy teljes setter
-    void setVector(const Vector &);  // későbbi könnyebbségért egy teljes setter
+    /**
+     * @brief Vector osztály konstruktora.
+     * @param x Az x koordináta (alapértelmezetten 0.0).
+     * @param y Az y koordináta (alapértelmezetten 0.0).
+     */
+    Vector(double x = 0.0, double y = 0.0);
 
-    Vector rotate(double) const;                 // Forgat egy vektort megadott radiánnal, mintegy operátorként működve...                                                                                                       https://www.youtube.com/watch?v=YGXCnZMGa6M
-    bool isNull();                               // Ellenőrzi, hogy nullvektor-e, azért nem const, mert frissíti a hosszt
-    double angleWith(const Vector &) const;      // visszaadja a két vektor közötti szöget
-    Vector projectionOnto(const Vector &) const; // A paraméter vektorra eső vetület vektort adja vissza
-    void normaliastion();                        // vektor egységnyi mértűre normálása - sokat használom, és módosításra, tehát jobbnak láttam nem constnak hagyni
-    Vector operator-() const;                    // Vektor ellentettét képezi
-    Vector operator+(const Vector &) const;      // Vektorok összeadása
-    Vector operator-(const Vector &) const;      // Vektorok kivonása
-    double operator*(const Vector &) const;      // Skaláris szorzat (dot product)
-    void operator=(const Vector &);              // Vektorok egyenlővé tétele
-    bool operator==(const Vector &) const;
-    void operator+=(const Vector &); // Értékadás vektorral
-    void vectorPrint(std::ostream &) const;
-    // static const Vector xAxis;
-    // static const Vector yAxis;
+    /**
+     * @brief Vector osztály copy konstruktora.
+     * @param other A másolni kívánt Vector objektum.
+     */
+    Vector(const Vector &other);
+
+    /**
+     * @brief Vector osztály konstruktora egy sf::Vector2i objektumból.
+     * @param other Az sf::Vector2i objektum, amelyből inicializáljuk a Vector objektumot.
+     */
+    Vector(const sf::Vector2i &other);
+
+    /**
+     * @brief Vector osztály destruktora.
+     */
+    ~Vector();
+
+    /**
+     * @brief Getter függvény az x koordinátához.
+     * @return Az x koordináta.
+     */
+    double getX() const;
+
+    /**
+     * @brief Getter függvény az y koordinátához.
+     * @return Az y koordináta.
+     */
+    double getY() const;
+
+    /**
+     * @brief Getter függvény a vektor hosszához.
+     * @return A vektor hossza.
+     */
+    double getLength() const;
+
+    /**
+     * @brief Getter függvény az egész vektorhoz.
+     * @return Az egész vektor.
+     */
+    Vector const &getVector() const;
+
+    /**
+     * @brief Setter függvény az x koordinátához.
+     * @param x Az új x koordináta.
+     */
+    void setX(double x);
+
+    /**
+     * @brief Setter függvény az y koordinátához.
+     * @param y Az új y koordináta.
+     */
+    void setY(double y);
+
+    /**
+     * @brief Setter függvény az egész vektorhoz.
+     * @param x Az új x koordináta.
+     * @param y Az új y koordináta.
+     */
+    void setVector(double x, double y);
+
+    /**
+     * @brief Setter függvény az egész vektorhoz.
+     * @param other Az új vektor, amelyre beállítjuk az aktuális vektort.
+     */
+    void setVector(const Vector &other);
+
+    /**
+     * @brief Egy vektort elforgat a megadott radiánnal.
+     * @param angle A forgatás szöge radiánban.
+     * @return Az elforgatott vektor.
+     */
+    Vector rotate(double angle) const;
+
+    /**
+     * @brief Ellenőrzi, hogy a vektor nullvektor-e.
+     * @return True, ha a vektor nullvektor, különben false.
+     */
+    bool isNull();
+
+    /**
+     * @brief Kiszámítja a két vektor közötti szöget.
+     * @param other A másik vektor, amellyel a szöget számítjuk.
+     * @return A két vektor közötti szög radiánban.
+     */
+    double angleWith(const Vector &other) const;
+
+    /**
+     * @brief Kiszámítja a vektor vetületét a paraméter vektorra.
+     * @param other A vektor, amelyre vetítjük az aktuális vektort.
+     * @return A vetület vektora.
+     */
+    Vector projectionOnto(const Vector &other) const;
+
+    /**
+     * @brief Normálja az aktuális vektort egységnyi hosszúságra.
+     */
+    void normaliastion();
+
+    /**
+     * @brief Képezi az aktuális vektor ellentettjét.
+     * @return Az ellentett vektor.
+     */
+    Vector operator-() const;
+
+    /**
+     * @brief Összeadja az aktuális vektort a paraméter vektorral.
+     * @param other A vektor, amellyel az aktuális vektort összeadjuk.
+     * @return Az összeadás eredményeként kapott vektor.
+     */
+    Vector operator+(const Vector &other) const;
+
+    /**
+     * @brief Kivonja a paraméter vektort az aktuális vektorból.
+     * @param other A vektor, amelyet kivonunk az aktuális vektorból.
+     * @return Az kivonás eredményeként kapott vektor.
+     */
+    Vector operator-(const Vector &other) const;
+
+    /**
+     * @brief Kiszámítja a skaláris szorzatot a paraméter vektorral.
+     * @param other A vektor, amellyel a skaláris szorzatot számítjuk.
+     * @return A skaláris szorzat eredménye.
+     */
+    double operator*(const Vector &other) const;
+
+    /**
+     * @brief Az aktuális vektort egyenlővé teszi a paraméter vektorral.
+     * @param other A vektor, amellyel az aktuális vektort egyenlővé tesszük.
+     */
+    void operator=(const Vector &other);
+
+    /**
+     * @brief Ellenőrzi, hogy az aktuális vektor egyenlő-e a paraméter vektorral.
+     * @param other A vektor, amellyel az aktuális vektort összehasonlítjuk.
+     * @return True, ha a vektorok egyenlőek, különben false.
+     */
+    bool operator==(const Vector &other) const;
+
+    /**
+     * @brief Az aktuális vektort összeadja a paraméter vektorral.
+     * @param other A vektor, amellyel az aktuális vektort összeadjuk.
+     */
+    void operator+=(const Vector &other);
+
+    /**
+     * @brief Kiírja az aktuális vektort az ostream objektumba.
+     * @param os Az ostream objektum, amelybe kiírjuk az aktuális vektort.
+     */
+    void vectorPrint(std::ostream &os) const;
+
+    /**
+     * @brief A nullvektor konstans.
+     */
     static const Vector nullVector;
 
-    operator sf::Vector2f() const; // Az SFML által használt sf::Vector2 típusra kasztolható ezáltal az én Vector osztályom
+    /**
+     * @brief Az SFML által használt sf::Vector2f típusra kasztolható az aktuális Vector objektum.
+     * @return Az aktuális Vector objektum sf::Vector2f típusú reprezentációja.
+     */
+    operator sf::Vector2f() const;
 };
 
-Vector operator*(const Vector &, double); // Skalárral szorzás
+/**
+ * @brief Skalárral szorzás egy vektorral.
+ * @param vector A vektor, amelyet szorozunk a skalárral.
+ * @param scalar A skalár, amellyel szorozzuk a vektort.
+ * @return Az eredményként kapott vektor.
+ */
+Vector operator*(const Vector &vector, double scalar);
 
-std::ostream &operator<<(std::ostream &, const Vector &); // vektor kiírása, azért nem const Vector &, mert frissíti a hosszát kiírás előtt
+/**
+ * @brief Kiírja a vektort az ostream objektumba.
+ * @param os Az ostream objektum, amelybe kiírjuk a vektort.
+ * @param vector A vektor, amelyet kiírunk.
+ * @return Az ostream objektum.
+ */
+std::ostream &operator<<(std::ostream &os, const Vector &vector);

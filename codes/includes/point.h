@@ -35,9 +35,8 @@ public:
     Vector operator-(const Point &) const;
     Point operator+(const Vector &) const;
     void operator=(const Point &);
-
+    operator Vector() const;
     operator sf::Vector2f() const;
-
     static const Point Origo;
 };
 
