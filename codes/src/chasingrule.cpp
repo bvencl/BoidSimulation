@@ -14,24 +14,21 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, const sf::
     Vector direction = target - boid.getPosition();
     direction.normaliastion();
 
-    // Dinamikus gyorsulási skálázás a távolság függvényében
-    double scalingFactor = distance;
-
     Vector acceleration = direction * distance;
 
     if (boid.getSpeed() * direction < 0)
     {
-        double correctionFactor = 30;
+        double correctionFactor = 20;
         acceleration = acceleration * correctionFactor;
     }
-    if (boid.getSpeed().getLength() > distance)
-        ;
-    // VICCES FEATURE - Érdekes jelenség, érdemes kipróbálni
-    // if (boid.getSpeed() * direction > 0 && boid.getSpeed().getLength() > boid.getAcceleration().getLength())
-    // {
-    //     double correctionFactor = -distance;
-    //     acceleration = acceleration * correctionFactor;
-    // }
+
+    if (boid.getSpeed().getLength() / 5 > distance && direction * boid.getSpeed() > 0)
+    {
+        double timeEstamation = distance / boid.getSpeed().getLength();
+        double correctionFactor = -30 * boid.getSpeed().getLength();
+        if (!direction.projectionOnto(boid.getSpeed()).isNull() && abs(correctionFactor) > 1e-6)
+            acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor;
+    }
 
     return acceleration * ruleStrength;
 }

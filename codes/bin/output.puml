@@ -6,6 +6,14 @@
 
 /' Objects '/
 
+class AlingmentRule {
+	+AlingmentRule(double rule_strength)
+	+calculateRuleForIndividual(BasicBoid**, const BasicBoid &, size_t) : Vector {query}
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
+	+calculateScalingFactor(const BasicBoid &, double, double) : double {query}
+}
+
+
 class BasicBoid {
 	+BasicBoid(double, Point, Vector, Vector)
 	+BasicBoid(double mass, double starting_position_x, double starting_position_y, double speed_x, double speed_y, double acceleration_x, double acceleration_y)
@@ -29,36 +37,41 @@ class BasicBoid {
 
 class ChasingRule {
 	+ChasingRule(double rule_strength)
-	+calculateRuleForIndividual(const BasicBoid &, sf::Vector2i) : Vector
+	+calculateRuleForIndividual(const BasicBoid &, const sf::Vector2i &) : Vector
 	+getRuleStrength() : double {query}
 	-ruleStrength : double
+}
+
+
+class CohesionRule {
+	+CohesionRule(double rule_strength)
+	+calculateRuleForIndividual(BasicBoid**, const BasicBoid &, size_t) : Vector {query}
+	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
+	+calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 }
 
 
 class Flock {
 	+Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment)
 	+~Flock()
+	-alingment : AlingmentRule
 	+operator[](int) : BasicBoid&
 	-flockMembers : BasicBoid**
 	-chase : ChasingRule
+	-cohesion : CohesionRule
 	-separation : SeparationRule
 	+isMemberOfFlock(const BasicBoid*) : bool
 	-flockSize : size_t
 	+insert(BasicBoid*) : void
-	+moveFlock(double, sf::Vector2i) : void
+	+moveFlock(double, const sf::Vector2i &) : void
 	+remove(BasicBoid*) : void
-}
-
-
-abstract class ForcesBetweenBoids {
-	+ForcesBetweenBoids()
-	+{abstract} calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 }
 
 
 class Point {
 	+Point(double x, double y)
 	+Vector2f() {query}
+	+operatorVector() {query}
 	+~Point()
 	+operator+(const Point &) : Point {query}
 	+operator+(const Vector &) : Point {query}
@@ -82,6 +95,8 @@ class Point {
 abstract class Rule {
 	+Rule(double rule_strength)
 	+{abstract} calculateRuleForIndividual(BasicBoid**, const BasicBoid &, size_t) : Vector {query}
+	+{abstract} calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
+	+{abstract} calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 	+getRuleStrength() : double {query}
 	-ruleStrength : double
 }
@@ -91,39 +106,40 @@ class SeparationRule {
 	+SeparationRule(double rule_strength)
 	+calculateRuleForIndividual(BasicBoid**, const BasicBoid &, size_t) : Vector {query}
 	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
+	+calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 }
 
 
 class Vector {
 	+Vector(double x, double y)
-	+Vector(const Vector &)
-	+Vector(const sf::Vector2i &)
+	+Vector(const Vector& other)
+	+Vector(const sf::Vector2i& other)
 	+Vector2f() {query}
 	+~Vector()
-	+operator+(const Vector &) : Vector {query}
+	+operator+(const Vector& other) : Vector {query}
 	+operator-() : Vector {query}
-	+operator-(const Vector &) : Vector {query}
-	+projectionOnto(const Vector &) : Vector {query}
-	+rotate(double) : Vector {query}
+	+operator-(const Vector& other) : Vector {query}
+	+projectionOnto(const Vector& other) : Vector {query}
+	+rotate(double angle) : Vector {query}
 	+getVector() : Vector& {query}
-	+isNull() : bool
-	+operator==(const Vector &) : bool {query}
-	+angleWith(const Vector &) : double {query}
+	+isNull() : bool {query}
+	+operator==(const Vector& other) : bool {query}
+	+angleWith(const Vector& other) : double {query}
 	+getLength() : double {query}
 	+getX() : double {query}
 	+getY() : double {query}
-	+operator*(const Vector &) : double {query}
+	+operator*(const Vector& other) : double {query}
 	-x : double
 	-y : double
 	+{static} nullVector : static const Vector
 	+normaliastion() : void
-	+operator+=(const Vector &) : void
-	+operator=(const Vector &) : void
-	+setVector(double, double) : void
-	+setVector(const Vector &) : void
-	+setX(double) : void
-	+setY(double) : void
-	+vectorPrint(std::ostream &) : void {query}
+	+operator+=(const Vector& other) : void
+	+operator=(const Vector& other) : void
+	+setVector(double x, double y) : void
+	+setVector(const Vector& other) : void
+	+setX(double x) : void
+	+setY(double y) : void
+	+vectorPrint(std::ostream& os) : void {query}
 }
 
 
@@ -132,7 +148,10 @@ class Vector {
 
 /' Inheritance relationships '/
 
-.ForcesBetweenBoids <|-- .SeparationRule
+.Rule <|-- .AlingmentRule
+
+
+.Rule <|-- .CohesionRule
 
 
 .Rule <|-- .SeparationRule
@@ -149,10 +168,16 @@ class Vector {
 .BasicBoid "2" *-- .Vector
 
 
+.Flock *-- .AlingmentRule
+
+
 .Flock o-- .BasicBoid
 
 
 .Flock *-- .ChasingRule
+
+
+.Flock *-- .CohesionRule
 
 
 .Flock *-- .SeparationRule

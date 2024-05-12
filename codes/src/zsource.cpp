@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
         //     std::cout << "V1 vetülete V2-re: " << vProjection << std::endl;
     }
 
-    Flock flock1(1, 1, 1, 1);
+    Flock flock1(1, 1, 3, 1);
     Point p(1260.0, 540.0);
     Point q(1202.7050983124843, 716.335575687742);
     Point r(1052.7050983124843, 825.316954888546);
