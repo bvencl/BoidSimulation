@@ -8,6 +8,7 @@
 #include "separationrule.h"
 #include "cohesionrule.h"
 #include "alingmentrule.h"
+#include "memtrace.h"
 #include <iostream>
 #include <ostream>
 #include <cmath>

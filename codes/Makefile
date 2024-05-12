@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -g -DMEMTRACE
 CXXFLAGS += -IC:\msys64\mingw64\include
 LDFLAGS = -LC:\msys64\mingw64\lib
 LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system
