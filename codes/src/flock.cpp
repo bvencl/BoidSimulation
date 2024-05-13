@@ -16,6 +16,10 @@ Flock::~Flock()
         flockMembers = nullptr;
     delete[] flockMembers;
     flockSize = 0;
+    if(DEBUG_IS_ON)
+    {
+        std::cout << "Flock deconstructed" << std::endl;
+    }
 }
 
 void Flock::insert(BasicBoid *boid)

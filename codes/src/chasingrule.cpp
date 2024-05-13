@@ -24,7 +24,7 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, const sf::
 
     if (boid.getSpeed().getLength() / 5 > distance && direction * boid.getSpeed() > 0)
     {
-        double timeEstamation = distance / boid.getSpeed().getLength();
+        // double timeEstamation = distance / boid.getSpeed().getLength();
         double correctionFactor = -30 * boid.getSpeed().getLength();
         if (!direction.projectionOnto(boid.getSpeed()).isNull() && abs(correctionFactor) > 1e-6)
             acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor;

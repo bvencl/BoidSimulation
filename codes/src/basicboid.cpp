@@ -20,6 +20,14 @@ BasicBoid::BasicBoid(double mass, Point starting_position, Vector starting_speed
         std::cout << "Boid constructed: \n " << *this << std::endl;
 }
 
+BasicBoid::~BasicBoid()
+{
+    if (DEBUG_IS_ON)
+    {
+        std::cout << "BasicBoid deconstructed" << std::endl;
+    }
+}
+
 void BasicBoid::setSpeed(double x, double y)
 {
     speed.setX(x);
