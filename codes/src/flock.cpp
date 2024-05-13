@@ -12,13 +12,11 @@ Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double fl
 
 Flock::~Flock()
 {
-    if (flockSize == 0)
-        flockMembers = nullptr;
-    delete[] flockMembers;
-    flockSize = 0;
-    if(DEBUG_IS_ON)
+    if (flockMembers != nullptr)
     {
-        std::cout << "Flock deconstructed" << std::endl;
+        delete[] flockMembers;
+        flockMembers = nullptr;
+        flockSize = 0;
     }
 }
 
@@ -32,7 +30,11 @@ void Flock::insert(BasicBoid *boid)
             tmp[i] = flockMembers[i];
         }
         tmp[flockSize] = boid;
-        delete[] flockMembers;
+        if (flockMembers != nullptr)
+        {
+            delete[] flockMembers;
+            flockMembers = nullptr;
+        }
         flockMembers = tmp;
         flockSize++;
     }
@@ -41,20 +43,36 @@ void Flock::insert(BasicBoid *boid)
 void Flock::remove(BasicBoid *boid)
 {
     if (flockSize == 0 || !isMemberOfFlock(boid))
+        throw std::runtime_error("Boid not found or flock is empty.");
+
+    if (flockSize == 1)
     {
-        throw 69;
-    }
-    else if (flockSize == 1)
-    {
-        this->~Flock();
+        if (flockMembers != nullptr)
+        {
+            delete[] flockMembers;
+            flockMembers = nullptr;
+        }
+        flockMembers = nullptr;
+        flockSize = 0;
         return;
     }
+
     BasicBoid **tmp = new BasicBoid *[flockSize - 1];
-    for (size_t i = 0; i < flockSize - 1; i++)
+    size_t index = 0;
+    for (size_t i = 0; i < flockSize; i++)
     {
-        if (!(*flockMembers[i] == *boid))
-            tmp[i] = flockMembers[i];
+        if (flockMembers[i] != boid)
+        {
+            tmp[index++] = flockMembers[i];
+        }
     }
+    if (flockMembers != nullptr)
+    {
+        delete[] flockMembers;
+        flockMembers = nullptr;
+    }
+    flockMembers = tmp;
+    flockSize--;
 }
 
 bool Flock::isMemberOfFlock(const BasicBoid *boid)
@@ -67,7 +85,7 @@ bool Flock::isMemberOfFlock(const BasicBoid *boid)
     return false;
 }
 
-void Flock::moveFlock(double dT,const sf::Vector2i & mousePosition)
+void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
 {
     for (size_t i = 0; i < flockSize; i++)
     {
@@ -76,7 +94,7 @@ void Flock::moveFlock(double dT,const sf::Vector2i & mousePosition)
         calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
         calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
         calculatedSumOfRules += alingment.calculateRuleForIndividual(flockMembers, *flockMembers[i], flockSize);
-        
+
         (*flockMembers[i]).MyTurn(calculatedSumOfRules, dT);
     }
 }

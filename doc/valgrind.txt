@@ -1,0 +1,190 @@
+==54364== Memcheck, a memory error detector
+==54364== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==54364== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==54364== Command: ./main
+==54364== 
+==54364== Warning: noted but unhandled ioctl 0x644f with no size/direction hints.
+==54364==    This could cause spurious value errors to appear.
+==54364==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+==54364== Warning: noted but unhandled ioctl 0x6444 with no size/direction hints.
+==54364==    This could cause spurious value errors to appear.
+==54364==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+.
+.
+.
+//A program kimenete
+.
+.
+.
+=54364== 
+==54364== HEAP SUMMARY:
+==54364==     in use at exit: 57,588 bytes in 523 blocks
+==54364==   total heap usage: 23,551 allocs, 23,028 frees, 678,115,111 bytes allocated
+==54364== 
+==54364== 0 bytes in 2 blocks are definitely lost in loss record 1 of 132
+==54364==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x4005A22: malloc (rtld-malloc.h:56)
+==54364==    by 0x4005A22: _dl_find_object_update (dl-find_object.c:791)
+==54364==    by 0x400ECCF: dl_open_worker_begin (dl-open.c:735)
+==54364==    by 0x4DA6A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==54364==    by 0x400DF99: dl_open_worker (dl-open.c:782)
+==54364==    by 0x4DA6A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==54364==    by 0x400E34D: _dl_open (dl-open.c:883)
+==54364==    by 0x4CC263B: dlopen_doit (dlopen.c:56)
+==54364==    by 0x4DA6A97: _dl_catch_exception (dl-error-skeleton.c:208)
+==54364==    by 0x4DA6B62: _dl_catch_error (dl-error-skeleton.c:227)
+==54364==    by 0x4CC212D: _dlerror_run (dlerror.c:138)
+==54364==    by 0x4CC26C7: dlopen_implementation (dlopen.c:71)
+==54364==    by 0x4CC26C7: dlopen@@GLIBC_2.34 (dlopen.c:81)
+==54364== 
+==54364== 8 bytes in 1 blocks are definitely lost in loss record 11 of 132
+==54364==    at 0x48487A9: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58A0379: ???
+==54364==    by 0x588A56F: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D5B1: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D913: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== 29 bytes in 1 blocks are definitely lost in loss record 24 of 132
+==54364==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58A78F3: ???
+==54364==    by 0x588DCE7: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x579FD37: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x5794575: glXCreateContextAttribsARB (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== 29 bytes in 1 blocks are definitely lost in loss record 25 of 132
+==54364==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58A78F3: ???
+==54364==    by 0x588DCAA: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x579FD37: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x5794575: glXCreateContextAttribsARB (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== 38 bytes in 1 blocks are definitely lost in loss record 31 of 132
+==54364==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58A78F3: ???
+==54364==    by 0x588DAD9: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x579FD37: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x5794575: glXCreateContextAttribsARB (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== 40 bytes in 1 blocks are definitely lost in loss record 43 of 132
+==54364==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58A7AD7: ???
+==54364==    by 0x58AE706: ???
+==54364==    by 0x58AE76F: ???
+==54364==    by 0x58AE7DC: ???
+==54364==    by 0x58858F8: drmSLInsert (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588C46B: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D9D6: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364== 
+==54364== 96 (24 direct, 72 indirect) bytes in 1 blocks are definitely lost in loss record 85 of 132
+==54364==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58AEF3D: ???
+==54364==    by 0x589AE35: ???
+==54364==    by 0x589FB0E: ???
+==54364==    by 0x588D3D2: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D65B: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D913: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364== 
+==54364== 152 (112 direct, 40 indirect) bytes in 1 blocks are definitely lost in loss record 88 of 132
+==54364==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58A6E2F: ???
+==54364==    by 0x588C66F: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D9D6: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x579FD37: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== 520 bytes in 13 blocks are definitely lost in loss record 115 of 132
+==54364==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x58AB045: ???
+==54364==    by 0x589F6FC: ???
+==54364==    by 0x588D804: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x579FD37: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== 567 (184 direct, 383 indirect) bytes in 1 blocks are definitely lost in loss record 116 of 132
+==54364==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x589A16F: ???
+==54364==    by 0x589B4DF: ???
+==54364==    by 0x588CFC9: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D3A0: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D65B: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D913: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364== 
+==54364== 10,637 (24 direct, 10,613 indirect) bytes in 1 blocks are definitely lost in loss record 132 of 132
+==54364==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==54364==    by 0x588AC67: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588C4CF: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x588D9D6: ??? (in /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0)
+==54364==    by 0x721BF4E: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x7232E4F: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x76B2E04: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71CAFD3: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x71D737A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.171.04)
+==54364==    by 0x57751B3: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x57752F7: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364==    by 0x579FD37: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.171.04)
+==54364== 
+==54364== LEAK SUMMARY:
+==54364==    definitely lost: 1,008 bytes in 24 blocks
+==54364==    indirectly lost: 11,108 bytes in 59 blocks
+==54364==      possibly lost: 0 bytes in 0 blocks
+==54364==    still reachable: 45,472 bytes in 440 blocks
+==54364==         suppressed: 0 bytes in 0 blocks
+==54364== Reachable blocks (those to which a pointer was found) are not shown.
+==54364== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==54364== 
+==54364== ERROR SUMMARY: 11 errors from 11 contexts (suppressed: 0 from 0)
+vncl@vncl:~/git/VBW5N9_nagy_hazi_feladat/codes/bin$ 
