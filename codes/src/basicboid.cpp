@@ -78,16 +78,12 @@ void BasicBoid::boidPrint(std::ostream &os) const
 {
     os << "    CP: " << getPosition()
        << "    SP: " << getSpeed()
-       << "    ACC: " << getAcceleration()
-        //           << "\thow fat I am: " << getMass()
-        ;
+       << "    ACC: " << getAcceleration();
 }
 
 std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
 {
     boid.boidPrint(os);
-    if (DEBUG_IS_ON)
-        os << "\t" << &boid;
     return os;
 }
 

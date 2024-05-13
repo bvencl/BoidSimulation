@@ -12,6 +12,7 @@
 #include <iostream>
 #include <ostream>
 #include <cmath>
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Vector2.hpp>
 

@@ -5,10 +5,12 @@
 #include "separationrule.h"
 #include "cohesionrule.h"
 #include "alingmentrule.h"
+#include <memory>
+#include <vector>
 
 class Flock
 {
-    BasicBoid **flockMembers;
+    std::vector<BasicBoid *> flockMembers;
     size_t flockSize;
     ChasingRule chase;
     SeparationRule separation;
@@ -17,10 +19,9 @@ class Flock
 
 public:
     Flock(double flock_chasing_coefficient = 1, double flock_repulsion = 1, double flock_cohesion = 1, double flock_alingment = 1);
-    ~Flock();
     void insert(BasicBoid *);
-    void remove(BasicBoid *);
-    void moveFlock(double,const sf::Vector2i &);
-    bool isMemberOfFlock(const BasicBoid *);
-    BasicBoid &operator[](int);
+    void remove(const BasicBoid *);
+    void moveFlock(double, const sf::Vector2i &);
+    bool isMemberOfFlock(const BasicBoid *) const;
+    BasicBoid &operator[](size_t);
 };

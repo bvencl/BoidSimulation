@@ -49,56 +49,58 @@ int main(int argc, char *argv[])
     flock1.insert(&boid9);
     flock1.insert(&boid10);
 
-    sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
-
-    std::vector<sf::CircleShape> boids;
-    for (int j = 0; j < 10; j++)
     {
-        sf::CircleShape shape(10);          // Állítsd be a megfelelő méretet
-        shape.setFillColor(sf::Color::Red); // Vagy bármilyen szín
-        boids.push_back(shape);
+        /*ITT VAN A MEMÓRIASZIVÁRGÁS!!!!!---------->>>>*/ sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
+        window.close();
     }
+    // std::vector<sf::CircleShape> boids;
+    // for (int j = 0; j < 10; j++)
+    // {
+    //     sf::CircleShape shape(10);          // Állítsd be a megfelelő méretet
+    //     shape.setFillColor(sf::Color::Red); // Vagy bármilyen szín
+    //     boids.push_back(shape);
+    // }
 
-    size_t i = 0;
-    sf::Clock COCK;
-    double dT = 0.0;
-    while (window.isOpen())
-    {
-        dT = COCK.restart().asSeconds();
+    // size_t i = 0;
+    // sf::Clock COCK;
+    // double dT = 0.0;
+    // while (window.isOpen())
+    // {
+    //     dT = COCK.restart().asSeconds();
 
-        sf::Event evnt;
-        while (window.pollEvent(evnt))
-        {
-            if (evnt.type == sf::Event::Closed)
-                window.close();
-        }
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-        window.clear();
+    //     sf::Event evnt;
+    //     while (window.pollEvent(evnt))
+    //     {
+    //         if (evnt.type == sf::Event::Closed)
+    //             window.close();
+    //     }
+    //     sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+    //     window.clear();
 
-        for (size_t j = 0; j < boids.size(); j++)
-        {
-            boids[j].setPosition((sf::Vector2f)(flock1[j].getPosition()));
-            window.draw(boids[j]);
-        }
+    //     for (size_t j = 0; j < boids.size(); j++)
+    //     {
+    //         boids[j].setPosition((sf::Vector2f)(flock1[j].getPosition()));
+    //         window.draw(boids[j]);
+    //     }
 
-        flock1.moveFlock(dT, mousePosition);
-        cout << flock1[0] << endl;
+    //     flock1.moveFlock(dT, mousePosition);
+    //     cout << flock1[0] << endl;
 
-        window.display();
+    //     window.display();
 
-        i++;
-    }
+    //     i++;
+    // }
 
-    flock1.insert(&boid1);
-    flock1.insert(&boid2);
-    flock1.insert(&boid3);
-    flock1.insert(&boid4);
-    flock1.insert(&boid5);
-    flock1.insert(&boid6);
-    flock1.insert(&boid7);
-    flock1.insert(&boid8);
-    flock1.insert(&boid9);
-    flock1.insert(&boid10);
+    flock1.remove(&boid1);
+    flock1.remove(&boid2);
+    flock1.remove(&boid3);
+    flock1.remove(&boid4);
+    flock1.remove(&boid5);
+    flock1.remove(&boid6);
+    flock1.remove(&boid7);
+    flock1.remove(&boid8);
+    flock1.remove(&boid9);
+    flock1.remove(&boid10);
 
     return 0;
 }
