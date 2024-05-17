@@ -1,8 +1,8 @@
-#include "alingmentrule.h"
+#include "alignmentrule.h"
 
-AlingmentRule::AlingmentRule(double rule_strength) : Rule(rule_strength) {}
+AlignmentRule::AlignmentRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector AlingmentRule::calculateRuleForIndividual(std::vector<BasicBoid *> flockMembers, const BasicBoid &boid) const
+Vector AlignmentRule::calculateRuleForIndividual(std::vector<BasicBoid *> &flockMembers, const BasicBoid &boid) const
 {
     Vector commonSpeedOfFlock(0, 0);
     double sumOfSpeed = 0.0;
@@ -28,12 +28,12 @@ Vector AlingmentRule::calculateRuleForIndividual(std::vector<BasicBoid *> flockM
     return commonSpeedOfFlock * scalingFactor;
 }
 
-Vector AlingmentRule::calculateRuleStrengthBetweenBoids(const BasicBoid &currentFlockMember, const BasicBoid &individual) const
+Vector AlignmentRule::calculateRuleStrengthBetweenBoids(const BasicBoid &currentFlockMember, const BasicBoid &individual) const
 {
     return Vector::nullVector;
 }
 
-double AlingmentRule::calculateScalingFactor(const BasicBoid &boid, double affectingMembers, double sumOfSpeed) const
+double AlignmentRule::calculateScalingFactor(const BasicBoid &boid, double affectingMembers, double sumOfSpeed) const
 {
     if (affectingMembers == 0)
         return 0;

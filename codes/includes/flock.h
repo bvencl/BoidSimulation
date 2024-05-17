@@ -4,7 +4,7 @@
 #include "chasingrule.h"
 #include "separationrule.h"
 #include "cohesionrule.h"
-#include "alingmentrule.h"
+#include "alignmentrule.h"
 #include <memory>
 #include <vector>
 
@@ -15,7 +15,7 @@ class Flock
     ChasingRule chase;
     SeparationRule separation;
     CohesionRule cohesion;
-    AlingmentRule alingment;
+    AlignmentRule alingment;
 
 public:
     Flock(double flock_chasing_coefficient = 1, double flock_repulsion = 1, double flock_cohesion = 1, double flock_alingment = 1);

@@ -16,7 +16,7 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, const sf::
 
     Vector acceleration = direction * distance;
 
-    if (boid.getSpeed() * direction < 0)
+    if (boid.getSpeed() * direction < 0) // Ezért van az a furcsa hirtelen fékezés hatás
     {
         double correctionFactor = 20;
         acceleration = acceleration * correctionFactor;

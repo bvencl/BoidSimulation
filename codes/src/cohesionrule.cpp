@@ -2,7 +2,7 @@
 
 CohesionRule::CohesionRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector CohesionRule::calculateRuleForIndividual(std::vector<BasicBoid *> flockMembers, const BasicBoid &boid) const
+Vector CohesionRule::calculateRuleForIndividual(std::vector<BasicBoid *>& flockMembers, const BasicBoid &boid) const
 {
     Point commonCenterOfMass(0.0, 0.0);
     double sumOfMasses = 0.0;

@@ -19,7 +19,7 @@ private:
     double mass;
 
 public:
-    BasicBoid(double, Point, Vector, Vector);
+    BasicBoid(double mass = 1, Point starting_position = Point::Origo, Vector starting_speed = Vector::nullVector, Vector starting_acceleration = Vector::nullVector);
     // mass = 1, starting_position_x = 0, starting_position_y = 0, speed_x = 0, speed_y = 0, acceleration_x = 0, acceleration_y = 0
     BasicBoid(double mass = 1, double starting_position_x = 0, double starting_position_y = 0, double speed_x = 0, double speed_y = 0, double acceleration_x = 0, double acceleration_y = 0);
     ~BasicBoid();

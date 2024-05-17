@@ -7,7 +7,7 @@
 #include "chasingrule.h"
 #include "separationrule.h"
 #include "cohesionrule.h"
-#include "alingmentrule.h"
+#include "alignmentrule.h"
 #include "memtrace.h"
 #include <iostream>
 #include <ostream>

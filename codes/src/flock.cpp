@@ -1,4 +1,5 @@
 #include "flock.h"
+#include "execution"
 
 Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment)
     : chase(flock_chasing_coefficient),
@@ -40,11 +41,12 @@ void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
     }
 }
 
+
 BasicBoid &Flock::operator[](size_t i)
 {
     if (i >= flockMembers.size())
     {
-        throw std::out_of_range("Mondj kisebbet");
+        throw std::out_of_range("Index out of range in Flock::operator[]: " + std::to_string(i));
     }
     return *flockMembers[i];
 }

@@ -2,7 +2,7 @@
 
 SeparationRule::SeparationRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector SeparationRule::calculateRuleForIndividual(std::vector<BasicBoid *> flockMembers, const BasicBoid &boid) const
+Vector SeparationRule::calculateRuleForIndividual(std::vector<BasicBoid *> &flockMembers, const BasicBoid &boid) const
 {
     Vector sumOfSeparationInFlock(0, 0);
 
@@ -24,8 +24,8 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 
     double scalingFactor = 0.0;
 
-    if (distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 50) // Ha nagyon közel vannak egymáshoz- azért arányos a súlyukkal,
-    {                                                                                // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg
+    if (distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 50) // Ha nagyon közel vannak egymáshoz  (azért arányos a súlyukkal,
+    {                                                                                // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg)
         scalingFactor = 500;
     }
     else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 15 && distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 150) // Ha kicsit távolabb vannak azért

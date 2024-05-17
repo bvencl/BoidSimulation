@@ -1,14 +1,14 @@
 #pragma once
 #include "rule.h"
 
-class AlingmentRule : public Rule
+class AlignmentRule : public Rule
 {
 
 private:
 public:
-    AlingmentRule(double rule_strength = 1);
+    AlignmentRule(double rule_strength = 1);
 
-    Vector calculateRuleForIndividual(std::vector<BasicBoid *>, const BasicBoid &) const override;
+    Vector calculateRuleForIndividual(std::vector<BasicBoid *>&, const BasicBoid &) const override;
 
     Vector calculateRuleStrengthBetweenBoids(const BasicBoid & , const BasicBoid &) const override;
     
