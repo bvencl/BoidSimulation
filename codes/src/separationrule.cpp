@@ -2,11 +2,11 @@
 
 SeparationRule::SeparationRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector SeparationRule::calculateRuleForIndividual(BasicBoid **flockMembers, const BasicBoid &boid, size_t flockSize) const
+Vector SeparationRule::calculateRuleForIndividual(std::vector<BasicBoid *> flockMembers, const BasicBoid &boid) const
 {
     Vector sumOfSeparationInFlock(0, 0);
 
-    for (size_t i = 0; i < flockSize; i++)
+    for (size_t i = 0; i < flockMembers.size(); i++)
     {
         if (!(*flockMembers[i] == boid))
         {

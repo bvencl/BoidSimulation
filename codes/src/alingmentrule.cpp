@@ -2,7 +2,7 @@
 
 AlingmentRule::AlingmentRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector AlingmentRule::calculateRuleForIndividual(BasicBoid **flockMembers, const BasicBoid &boid, size_t flockSize) const
+Vector AlingmentRule::calculateRuleForIndividual(std::vector<BasicBoid *> flockMembers, const BasicBoid &boid) const
 {
     Vector commonSpeedOfFlock(0, 0);
     double sumOfSpeed = 0.0;
@@ -11,7 +11,7 @@ Vector AlingmentRule::calculateRuleForIndividual(BasicBoid **flockMembers, const
     {
         return Vector::nullVector;
     }
-    for (size_t i = 0; i < flockSize; i++)
+    for (size_t i = 0; i < flockMembers.size(); i++)
     {
         Vector direction = boid.getPosition() - flockMembers[i]->getPosition();
         double distance = direction.getLength();
@@ -35,7 +35,7 @@ Vector AlingmentRule::calculateRuleStrengthBetweenBoids(const BasicBoid &current
 
 double AlingmentRule::calculateScalingFactor(const BasicBoid &boid, double affectingMembers, double sumOfSpeed) const
 {
-    if(affectingMembers == 0)
+    if (affectingMembers == 0)
         return 0;
     return getRuleStrength() * sumOfSpeed / (affectingMembers * 10000);
 }
