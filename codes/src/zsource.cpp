@@ -55,7 +55,9 @@ int main(int argc, char *argv[])
         }
 
         flock.moveFlock(dT, mousePosition);
-        cout << flock[0] << endl;
+
+        if (DEBUG_IS_ON)
+            cout << flock[0] << endl;
 
         window.display();
     }

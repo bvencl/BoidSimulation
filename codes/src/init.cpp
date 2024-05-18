@@ -3,7 +3,7 @@
 void initFlock(Flock &flock, double width, double height)
 {
     int boidCount = 0;
-    std::cout << "Please give me the siye of the flock" << std::endl;
+    std::cout << "Please give me the size of the flock" << std::endl;
     std::cin >> boidCount;
     Point center(width / 2, height / 2);
     for (int i = 0; i < boidCount; i++)
