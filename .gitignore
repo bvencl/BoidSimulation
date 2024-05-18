@@ -1,7 +1,4 @@
 .vscode
-.idea
 # **/bin/*
 **/obj/*
-codes/Makefile
-Makefile
-**Makefile
+**/Makefile
