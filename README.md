@@ -53,7 +53,7 @@ A zenefájl elérési útvonalát a Makefile-ban kell megadni. Mivel a program k
 
 ## Memóriaszivárgás problémák
 
-A program az SFML 2.5.1-es verziót használja. Több memóriaszivárgást tesztelő programmal is teszteltem (Memtrace, Dr. Memory, Valgrind), eddig még mindegyik memóriaszivárgást mutatott ki. Amennyiben sz SFML-hez kapcsolódó részeket nem tartalmazza a program, úgy egyáltalán nincsen memóriaszivárgás, a probléma csak az SFML jelenlétében jelentkezik. Ehhez a problémához az alábbi helyen találtam forrásokat:
+A program az SFML 2.5.1 verzióját használja. Több memóriaszivárgást tesztelő programmal is teszteltem (Memtrace, Dr. Memory, Valgrind), és memóriaszivárgásokat találtam, amelyek az SFML használatából erednek. Ha az SFML-hez kapcsolódó részeket eltávolítjuk, a program nem mutat memóriaszivárgást. Az alábbi forrásokat találtam a probléma megértéséhez, bár még nem sikerült teljesen rájönnöm a memóriaszivárgás okára:
 
 - [SFML Issue #1673](https://github.com/SFML/SFML/issues/1673)
 - [SFML Fórum](https://en.sfml-dev.org/forums/index.php?topic=27777.0)
