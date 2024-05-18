@@ -13,18 +13,27 @@ int main(int argc, char *argv[])
         sscanf(argv[1], "%d", &width);
         sscanf(argv[2], "%d", &height);
     }
-    /*Memoriaszivargas a window letrehozasakor*/
 
     Flock flock;
     std::vector<sf::CircleShape> boids;
-    sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
     sf::Clock engineTime;
     sf::Music music;
 
     initFlock(flock, width, height);
     initGraphics(boids, flock);
-    initMusic(music);
-    music.play();
+
+    /*Memoriaszivargas a window letrehozasakor*/
+    sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
+    try
+    {
+        initMusic(music);
+        music.play();
+    }
+    catch (std::runtime_error &musicerror)
+    {
+        std::cerr << musicerror.what() << std::endl;
+    }
+
     double dT = 0.0;
     while (window.isOpen())
     {

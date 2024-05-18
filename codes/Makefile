@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -g -DMEMTRACE
+CXXFLAGS = -Wall -g
 LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INCFLAGS = -I$(INCDIR)
 
@@ -10,16 +10,18 @@ INCDIR = includes
 
 
 ifeq ($(OS),Windows_NT)
-	CXXFLAGS += -IC:\msys64\mingw64\include
+	# CXXFLAGS += -IC:\msys64\mingw64\include
 	LDFLAGS = -LC:\msys64\mingw64\lib
-	MUSICF = C:\git\HAZI\codes\zenejo.ogg
+	MUSICF = C:\\git\\HAZI\\codes\\zenejo.ogg
+	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH="\"$(MUSICF)\""
 else
 	CXXFLAGS += 
 	LDLFLAGS =
 	MUSICF = /home/vncl/git/VBW5N9_nagy_hazi_feladat/codes/zenejo.ogg
+	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH=\"$(MUSICF)\"
 endif
 
-CXXFLAGS += -DMUSIC_FILE_PATH=\"$(MUSICF)\"
+CXXFLAGS += $(MUSIC_FILE_PATH_DEF)
 
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
