@@ -2,14 +2,14 @@
 
 Point::Point(double x, double y) : x(x), y(y)
 {
-    if (DEBUG_IS_ON)
-        std::cout << "Point constructed" << *this << std::endl;
+    // if (DEBUG_IS_ON)
+    //     std::cout << "Point constructed" << *this << std::endl;
 }
 
 Point::~Point()
 {
-    if (DEBUG_IS_ON)
-        std::cout << "deconstructed point " << *this << std::endl;
+    // if (DEBUG_IS_ON)
+    //     std::cout << "deconstructed point " << *this << std::endl;
 }
 
 double Point::getX() const

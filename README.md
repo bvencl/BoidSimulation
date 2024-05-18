@@ -1,6 +1,6 @@
 # Programozás alapjai 2 féléves házi feladat Bódi Vencel VBW5N9
 
-## A programról röviden
+## A projekt bemutatása
 
 Ez a projekt egy raj (nyáj) mozgásának szimulációját valósítja meg két dimenzióban. A nyáj tagjai különféle szabályok szerint mozognak, amelyek befolyásolják a gyorsulásukat és így a sebességüket is. A szimuláció célja a természetben megfigyelhető viselkedés modellezése.
 
@@ -20,19 +20,20 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
 
  1) **Fordítás:**
     A Makefile segítségével az alábbi módon egyszerűen fordíthatod:
-
+        cd codes
         make
 
-    Illetve ha debug módban szeretnéd elindítani (nem ajánlott, ilyenkor minden konstruktor illetve destruktor kiír a konzolra, illetve az egyedek aktuális pozíciója is kiíródik minden időlépésben):
-
+    Illetve ha debug módban szeretnéd elindítani (nem feltétlenül ajánlott, egy kiválasztott egyed aktuális pozíciója kiíródik minden időlépésben):
+        cd codes
         make debug
 
  2) **A program indítása**:
 
+        cd bin
         ./main param1 param2    
 
     vagy
-
+        cd bin
         .\main param1 param2
 
     ahol:

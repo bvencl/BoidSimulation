@@ -6,8 +6,8 @@ BasicBoid::BasicBoid(double mass, double starting_position_x, double starting_po
       currentPosition(starting_position_x, starting_position_y),
       mass(mass)
 {
-    if (DEBUG_IS_ON)
-        std::cout << "Boid constructed: \n " << *this << std::endl;
+    // if (DEBUG_IS_ON)
+    //     std::cout << "Boid constructed: \n " << *this << std::endl;
 }
 
 BasicBoid::BasicBoid(double mass, Point starting_position, Vector starting_speed, Vector starting_acceleration)
@@ -16,16 +16,16 @@ BasicBoid::BasicBoid(double mass, Point starting_position, Vector starting_speed
       currentPosition(starting_position),
       mass(mass)
 {
-    if (DEBUG_IS_ON)
-        std::cout << "Boid constructed: \n " << *this << std::endl;
+    // if (DEBUG_IS_ON)
+    //     std::cout << "Boid constructed: \n " << *this << std::endl;
 }
 
 BasicBoid::~BasicBoid()
 {
-    if (DEBUG_IS_ON)
-    {
-        std::cout << "BasicBoid deconstructed" << std::endl;
-    }
+    // if (DEBUG_IS_ON)
+    // {
+    //     std::cout << "BasicBoid deconstructed" << std::endl;
+    // }
 }
 
 void BasicBoid::setSpeed(double x, double y)

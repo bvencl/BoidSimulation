@@ -1,5 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -g
+# CXXFLAGS += -DMEMTRACE #itt van a gond alapvetően :/
 LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INCFLAGS = -I$(INCDIR)
 
@@ -7,7 +8,6 @@ SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 INCDIR = includes
-
 
 ifeq ($(OS),Windows_NT)
 	# CXXFLAGS += -IC:\msys64\mingw64\include
@@ -47,5 +47,6 @@ ifeq ($(OS),Windows_NT)
 else
 	rm -f  $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
 endif
+
 debug: CXXFLAGS += -DDEBUG
 debug: $(BINDIR)/main

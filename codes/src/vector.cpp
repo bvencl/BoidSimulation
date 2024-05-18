@@ -3,14 +3,14 @@
 //---------------------------------------------------------Konstruktorok Destruktorok
 Vector::Vector(double x, double y) : x(x), y(y)
 {
-    if (DEBUG_IS_ON)
-        std::cout << " vector constructed" << *this << std::endl;
+    // if (DEBUG_IS_ON)
+    //     std::cout << " vector constructed" << *this << std::endl;
 }
 
 Vector::Vector(const Vector &other) : x(other.x), y(other.y)
 {
-    if (DEBUG_IS_ON)
-        std::cout << "copyconstructed a vector" << *this << std::endl;
+    // if (DEBUG_IS_ON)
+    //     std::cout << "copyconstructed a vector" << *this << std::endl;
 }
 
 Vector::Vector(const sf::Vector2i &other)
@@ -21,8 +21,8 @@ Vector::Vector(const sf::Vector2i &other)
 
 Vector::~Vector()
 {
-    if (DEBUG_IS_ON)
-        std::cout << "deconstructed a vector " << *this << std::endl;
+    // if (DEBUG_IS_ON)
+        // std::cout << "deconstructed a vector " << *this << std::endl;
 }
 
 //--------------------------------------------------------Getter-Setter függvények---------------------------------------------------------------

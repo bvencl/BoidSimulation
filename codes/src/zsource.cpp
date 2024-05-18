@@ -22,7 +22,9 @@ int main(int argc, char *argv[])
     initFlock(flock, width, height);
     initGraphics(boids, flock);
 
+
     /*Memoriaszivargas a window letrehozasakor*/
+    //Amennyiben az sfml és a memtrace egyszerre van benne a programban, úgy a window generálásánál a program leáll! 
     sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
     try
     {
