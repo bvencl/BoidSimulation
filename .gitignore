@@ -3,5 +3,5 @@
 !**/bin/.gitkeep
 **/obj/*
 !**/obj/.gitkeep
-**/*.ogg
-**/*.mp3
+# **/*.ogg
+# **/*.mp3
