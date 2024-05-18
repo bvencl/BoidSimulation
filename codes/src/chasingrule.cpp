@@ -12,7 +12,16 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, const sf::
     Point target(mousePosition.x, mousePosition.y);
     double distance = target.calculateDistance(boid.getPosition());
     Vector direction = target - boid.getPosition();
-    direction.normaliastion();
+
+    try
+    {
+        direction.normaliastion();
+    }
+    catch (std::runtime_error &rte)
+    {
+        std::cerr << rte.what() << '\n';
+        return Vector::nullVector;
+    }
 
     Vector acceleration = direction * distance;
 

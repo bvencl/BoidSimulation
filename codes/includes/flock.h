@@ -10,8 +10,7 @@
 
 class Flock
 {
-    std::vector<BasicBoid *> flockMembers;
-    size_t flockSize;
+    std::vector<BasicBoid> flockMembers;
     ChasingRule chase;
     SeparationRule separation;
     CohesionRule cohesion;
@@ -19,9 +18,10 @@ class Flock
 
 public:
     Flock(double flock_chasing_coefficient = 1, double flock_repulsion = 1, double flock_cohesion = 1, double flock_alingment = 1);
-    void insert(BasicBoid *);
-    void remove(const BasicBoid *);
+    void insert(BasicBoid);
+    void remove(const BasicBoid &);
     void moveFlock(double, const sf::Vector2i &);
-    bool isMemberOfFlock(const BasicBoid *) const;
+    bool isMemberOfFlock(const BasicBoid &) const;
     BasicBoid &operator[](size_t);
+    size_t flockSize() const;
 };

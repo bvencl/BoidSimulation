@@ -100,6 +100,8 @@ Vector Vector::projectionOnto(const Vector &onto) const
 
 void Vector::normaliastion()
 {
+    if (getLength() == 0)
+        throw std::runtime_error("Normalization failed, dividing by zero");
     x /= getLength();
     y /= getLength();
 }

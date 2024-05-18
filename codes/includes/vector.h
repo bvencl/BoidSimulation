@@ -6,6 +6,7 @@
 #define DEBUG_IS_ON 0
 #endif
 
+#include <stdexcept>
 #include <iostream>
 #include <ostream>
 #include <iomanip>

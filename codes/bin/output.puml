@@ -6,9 +6,9 @@
 
 /' Objects '/
 
-class AlingmentRule {
-	+AlingmentRule(double rule_strength)
-	+calculateRuleForIndividual(std::vector<BasicBoid*>, const BasicBoid &) : Vector {query}
+class AlignmentRule {
+	+AlignmentRule(double rule_strength)
+	+calculateRuleForIndividual(std::vector<BasicBoid> &, const BasicBoid &) : Vector {query}
 	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 	+calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 }
@@ -46,7 +46,7 @@ class ChasingRule {
 
 class CohesionRule {
 	+CohesionRule(double rule_strength)
-	+calculateRuleForIndividual(std::vector<BasicBoid*>, const BasicBoid &) : Vector {query}
+	+calculateRuleForIndividual(std::vector<BasicBoid> &, const BasicBoid &) : Vector {query}
 	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 	+calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 }
@@ -54,17 +54,17 @@ class CohesionRule {
 
 class Flock {
 	+Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment)
-	-alingment : AlingmentRule
+	-alingment : AlignmentRule
 	+operator[](size_t) : BasicBoid&
 	-chase : ChasingRule
 	-cohesion : CohesionRule
 	-separation : SeparationRule
-	+isMemberOfFlock(const BasicBoid*) : bool {query}
-	-flockSize : size_t
-	-flockMembers : std::vector<BasicBoid*>
-	+insert(BasicBoid*) : void
+	+isMemberOfFlock(const BasicBoid &) : bool {query}
+	+flockSize() : size_t {query}
+	-flockMembers : std::vector<BasicBoid>
+	+insert(BasicBoid) : void
 	+moveFlock(double, const sf::Vector2i &) : void
-	+remove(const BasicBoid*) : void
+	+remove(const BasicBoid &) : void
 }
 
 
@@ -94,7 +94,7 @@ class Point {
 
 abstract class Rule {
 	+Rule(double rule_strength)
-	+{abstract} calculateRuleForIndividual(std::vector<BasicBoid*>, const BasicBoid &) : Vector {query}
+	+{abstract} calculateRuleForIndividual(std::vector<BasicBoid> &, const BasicBoid &) : Vector {query}
 	+{abstract} calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 	+{abstract} calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 	+getRuleStrength() : double {query}
@@ -104,7 +104,7 @@ abstract class Rule {
 
 class SeparationRule {
 	+SeparationRule(double rule_strength)
-	+calculateRuleForIndividual(std::vector<BasicBoid*>, const BasicBoid &) : Vector {query}
+	+calculateRuleForIndividual(std::vector<BasicBoid> &, const BasicBoid &) : Vector {query}
 	+calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) : Vector {query}
 	+calculateScalingFactor(const BasicBoid &, double, double) : double {query}
 }
@@ -157,7 +157,7 @@ class atexit_class {
 
 /' Inheritance relationships '/
 
-.Rule <|-- .AlingmentRule
+.Rule <|-- .AlignmentRule
 
 
 .Rule <|-- .CohesionRule
@@ -177,10 +177,10 @@ class atexit_class {
 .BasicBoid "2" *-- .Vector
 
 
-.Flock *-- .AlingmentRule
+.Flock *-- .AlignmentRule
 
 
-.Flock o-- .BasicBoid
+.Flock *-- .BasicBoid
 
 
 .Flock *-- .ChasingRule

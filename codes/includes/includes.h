@@ -8,13 +8,14 @@
 #include "separationrule.h"
 #include "cohesionrule.h"
 #include "alignmentrule.h"
-#include "memtrace.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <ostream>
 #include <cmath>
 #include <memory>
-#include <SFML/Graphics.hpp>
-#include <SFML/System/Vector2.hpp>
+#include "memtrace.h"
 
 #ifdef DEBUG
 #define DEBUG_IS_ON 1

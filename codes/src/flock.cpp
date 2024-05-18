@@ -9,7 +9,7 @@ Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double fl
 {
 }
 
-void Flock::insert(BasicBoid *boid)
+void Flock::insert(BasicBoid boid)
 {
     if (!isMemberOfFlock(boid))
     {
@@ -17,30 +17,29 @@ void Flock::insert(BasicBoid *boid)
     }
 }
 
-bool Flock::isMemberOfFlock(const BasicBoid *boid) const
+bool Flock::isMemberOfFlock(const BasicBoid &boid) const
 {
     return std::find(flockMembers.begin(), flockMembers.end(), boid) != flockMembers.end();
 }
 
-void Flock::remove(const BasicBoid *boid)
+void Flock::remove(const BasicBoid &boid)
 {
     flockMembers.erase(std::remove(flockMembers.begin(), flockMembers.end(), boid), flockMembers.end());
 }
 
 void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
 {
-    for (BasicBoid *boid : flockMembers)
+    for (size_t i = 0; i < flockMembers.size(); i++)
     {
         Vector calculatedSumOfRules;
-        calculatedSumOfRules += chase.calculateRuleForIndividual(*boid, mousePosition);
-        calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers, *boid);
-        calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers, *boid);
-        calculatedSumOfRules += alingment.calculateRuleForIndividual(flockMembers, *boid);
+        calculatedSumOfRules += chase.calculateRuleForIndividual(flockMembers[i], mousePosition);
+        calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers, flockMembers[i]);
+        calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers, flockMembers[i]);
+        calculatedSumOfRules += alingment.calculateRuleForIndividual(flockMembers, flockMembers[i]);
 
-        boid->MyTurn(calculatedSumOfRules, dT);
+        flockMembers[i].MyTurn(calculatedSumOfRules, dT);
     }
 }
-
 
 BasicBoid &Flock::operator[](size_t i)
 {
@@ -48,5 +47,10 @@ BasicBoid &Flock::operator[](size_t i)
     {
         throw std::out_of_range("Index out of range in Flock::operator[]: " + std::to_string(i));
     }
-    return *flockMembers[i];
+    return flockMembers[i];
+}
+
+size_t Flock::flockSize() const
+{
+    return flockMembers.size();
 }

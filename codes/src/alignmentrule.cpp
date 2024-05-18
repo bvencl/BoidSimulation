@@ -2,7 +2,7 @@
 
 AlignmentRule::AlignmentRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector AlignmentRule::calculateRuleForIndividual(std::vector<BasicBoid *> &flockMembers, const BasicBoid &boid) const
+Vector AlignmentRule::calculateRuleForIndividual(std::vector<BasicBoid> &flockMembers, const BasicBoid &boid) const
 {
     Vector commonSpeedOfFlock(0, 0);
     double sumOfSpeed = 0.0;
@@ -13,12 +13,12 @@ Vector AlignmentRule::calculateRuleForIndividual(std::vector<BasicBoid *> &flock
     }
     for (size_t i = 0; i < flockMembers.size(); i++)
     {
-        Vector direction = boid.getPosition() - flockMembers[i]->getPosition();
+        Vector direction = boid.getPosition() - flockMembers[i].getPosition();
         double distance = direction.getLength();
-        if (!(*flockMembers[i] == boid) && (direction.angleWith(boid.getSpeed()) < M_PI / 3 && distance < 300.0))
+        if (!(flockMembers[i] == boid) && (direction.angleWith(boid.getSpeed()) < M_PI / 3 && distance < 300.0))
         {
-            commonSpeedOfFlock += flockMembers[i]->getSpeed();
-            sumOfSpeed += flockMembers[i]->getSpeed().getLength();
+            commonSpeedOfFlock += flockMembers[i].getSpeed();
+            sumOfSpeed += flockMembers[i].getSpeed().getLength();
             affectingMembers++;
         }
     }

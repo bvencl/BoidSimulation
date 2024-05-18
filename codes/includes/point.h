@@ -6,10 +6,10 @@
 #define DEBUG_IS_ON 0
 #endif
 
+#include "vector.h"
 #include <ostream>
 #include <iostream>
 #include <cmath>
-#include "vector.h"
 #include <SFML/System/Vector2.hpp>
 
 class Point

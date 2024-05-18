@@ -2,15 +2,15 @@
 
 SeparationRule::SeparationRule(double rule_strength) : Rule(rule_strength) {}
 
-Vector SeparationRule::calculateRuleForIndividual(std::vector<BasicBoid *> &flockMembers, const BasicBoid &boid) const
+Vector SeparationRule::calculateRuleForIndividual(std::vector<BasicBoid> &flockMembers, const BasicBoid &boid) const
 {
     Vector sumOfSeparationInFlock(0, 0);
 
     for (size_t i = 0; i < flockMembers.size(); i++)
     {
-        if (!(*flockMembers[i] == boid))
+        if (!(flockMembers[i] == boid))
         {
-            sumOfSeparationInFlock += calculateRuleStrengthBetweenBoids(*flockMembers[i], boid);
+            sumOfSeparationInFlock += calculateRuleStrengthBetweenBoids(flockMembers[i], boid);
         }
     }
     return sumOfSeparationInFlock;
@@ -20,7 +20,15 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 {
     Vector direction = individual.getPosition() - currentFlockMember.getPosition();
     double distance = direction.getLength();
-    direction.normaliastion();
+    try
+    {
+        direction.normaliastion();
+    }
+    catch (std::runtime_error &rte)
+    {
+        std::cerr << rte.what() << '\n';
+        return Vector::nullVector;
+    }
 
     double scalingFactor = 0.0;
 
