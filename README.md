@@ -33,6 +33,7 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
         ./main param1 param2    
 
     vagy
+    
         cd bin
         .\main param1 param2
 
@@ -41,7 +42,7 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
     - param1 a megjelenő ablak kívánt szélessége pixelben (alapból 1920)
     - param2 a megjelenő ablak kívánt magassága pixelben (alapból 1080)
 
- 3) **Boid-ok számának megadása**:
+ 4) **Boid-ok számának megadása**:
 
     Ezután a terminálban kell megadni a szimulációban részt vevő egyedek számát.  
 
