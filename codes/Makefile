@@ -1,21 +1,22 @@
 CXX = g++
 CXXFLAGS = -Wall -g -DMEMTRACE
 LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+INCFLAGS = -I$(INCDIR)
 
 SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 INCDIR = includes
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-    CXXFLAGS += -I$(INCDIR)
-    MUSICF = /home/vncl/git/VBW5N9_nagy_hazi_feladat/codes/zenejo.ogg
-    LDFLAGS =
-else ifeq ($(OS),Windows_NT)
-    CXXFLAGS += -IC:\msys64\mingw64\include
-    MUSICF = C:/path/to/your/music.ogg
-    LDFLAGS = -LC:\msys64\mingw64\lib
+
+ifeq ($(OS),Windows_NT)
+	CXXFLAGS += -IC:\msys64\mingw64\include
+	LDFLAGS = -LC:\msys64\mingw64\lib
+	MUSICF = C:\git\HAZI\codes\zenejo.ogg
+else
+	CXXFLAGS += 
+	LDLFLAGS =
+	MUSICF = /home/vncl/git/VBW5N9_nagy_hazi_feladat/codes/zenejo.ogg
 endif
 
 CXXFLAGS += -DMUSIC_FILE_PATH=\"$(MUSICF)\"
@@ -39,7 +40,10 @@ uml: $(HEADERS)
 	hpp2plantuml -i "$(INCDIR)/*.h" -o $(UML_OUTPUT)
 
 clean:
-	$(RM) $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
-
+ifeq ($(OS),Windows_NT)
+	-del $(OBJDIR)\*.o $(OBJDIR)\*.d $(BINDIR)\main.exe /Q
+else
+	rm -f  $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
+endif
 debug: CXXFLAGS += -DDEBUG
 debug: $(BINDIR)/main

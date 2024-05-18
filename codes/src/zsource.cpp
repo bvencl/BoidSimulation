@@ -19,12 +19,12 @@ int main(int argc, char *argv[])
     std::vector<sf::CircleShape> boids;
     sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
     sf::Clock engineTime;
-    // sf::Music music;
+    sf::Music music;
 
     initFlock(flock, width, height);
     initGraphics(boids, flock);
-    // initMusic(music);
-    // music.play();
+    initMusic(music);
+    music.play();
     double dT = 0.0;
     while (window.isOpen())
     {
