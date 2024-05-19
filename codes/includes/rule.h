@@ -5,10 +5,10 @@
 
 /**
  * @class Rule
- * @brief Tisztán virtuális osztály, a szabály-osztályok őse.
+ * @brief Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok őse.
  *        Közös interfészt szolgáltat a szabály-osztályoknak.
  */
-template <typename Derived>
+template <class Derived> // Paraméterként kapja az éppen megvalósított számasztatott osztályt
 class Rule
 {
 private:
@@ -28,7 +28,7 @@ public:
     double getRuleStrength() const { return ruleStrength; }
 
     /**
-     * @brief Az egyes egyedek gyorsulás komponensét számoló függvény az adott szabályra
+     * @brief Azon függvény, amely meghívja az utódosztályok implementált "calculateRuleForIndividual(-Impl)" függvényét  
      * @param begin A boidok konténerének eleje
      * @param end A boidok konténerének vége
      * @param individual Az aktuális egyed

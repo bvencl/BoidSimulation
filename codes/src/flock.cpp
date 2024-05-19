@@ -40,13 +40,13 @@ void Flock::remove(const BasicBoid &boid)
 
 void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
 {
-    for (size_t i = 0; i < flockMembers.size(); i++)
+    for (size_t i = 0; i < flockMembers.size(); i++) //! --------------------------------Iterátorra váltás
     {
-        Vector calculatedSumOfRules;                                                                  // Vektor, ami a szabályok ezen időlépés alatti hatását gyűjti
-        calculatedSumOfRules += chase.calculateRuleForIndividual(flockMembers[i], mousePosition);     // Chase szabály egyedre vett számolása
-        calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers, flockMembers[i]); // Separation szabály egyedre vett számolása
-        calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers, flockMembers[i]);   // Cohesion szabály egyedre vett számolása
-        calculatedSumOfRules += alignment.calculateRuleForIndividual(flockMembers, flockMembers[i]);  // Alignment szabály egyedre vett számolása
+        Vector calculatedSumOfRules;                                                                                              // Vektor, ami a szabályok ezen időlépés alatti hatását gyűjti
+        calculatedSumOfRules += chase.calculateRuleForIndividual(flockMembers[i], mousePosition);                                 // Chase szabály egyedre vett számolása
+        calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers.begin(), flockMembers.end(), flockMembers[i]); // Separation szabály egyedre vett számolása
+        calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers.begin(), flockMembers.end(), flockMembers[i]);   // Cohesion szabály egyedre vett számolása
+        calculatedSumOfRules += alignment.calculateRuleForIndividual(flockMembers.begin(), flockMembers.end(), flockMembers[i]);  // Alignment szabály egyedre vett számolása
 
         flockMembers[i].MyTurn(calculatedSumOfRules, dT); // A Boid gyorsulását felülíró, sebességét és pozícióját ez alapján változtató függvény
     }

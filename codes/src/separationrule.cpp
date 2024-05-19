@@ -2,18 +2,18 @@
 #define DESIRED_MINIMAL_DISTANCE 150.0
 #define EMPIRIC_SCALING_VALUE 500.0
 
-SeparationRule::SeparationRule(double rule_strength) : Rule(rule_strength) {}
+SeparationRule::SeparationRule(double rule_strength) : Rule<SeparationRule>(rule_strength) {}
 
-template<typename chosenContainer>
-Vector SeparationRule::calculateRuleForIndividual(std::vector<BasicBoid> &flockMembers, const BasicBoid &boid) const
+template <typename Iterator>
+Vector SeparationRule::calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid &boid) const
 {
     Vector sumOfSeparationInFlock(0, 0);
 
-    for (size_t i = 0; i < flockMembers.size(); i++)
+    for (Iterator It = begin; It != end; It++)
     {
-        if (!(flockMembers[i] == boid))
+        if (!(*It == boid))
         {
-            sumOfSeparationInFlock += calculateRuleStrengthBetweenBoids(flockMembers[i], boid);
+            sumOfSeparationInFlock += calculateRuleStrengthBetweenBoids(*It, boid);
         }
     }
     return sumOfSeparationInFlock;
@@ -23,7 +23,7 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 {
     Vector direction = individual.getPosition() - currentFlockMember.getPosition();
     double distance = direction.getLength();
-    
+
     try
     {
         direction.normaliastion();
