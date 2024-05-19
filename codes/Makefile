@@ -1,5 +1,19 @@
+
+ifeq ($(OS),Windows_NT)
+	SFML_ROOT = C:\Users\venib\vcpkg\buildtrees\sfml\src
+	MUSICF = C:\\git\\HAZI\\codes\\zenejo.ogg
+	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH="\"$(MUSICF)\""
+	# LDFLAGS += $(SFML_ROOT)/bin
+	# CXXFLAGS += -I$(SFML_ROOT)/include
+else
+	CXXFLAGS += 
+	LDLFLAGS =
+	MUSICF = /home/vncl/git/VBW5N9_nagy_hazi_feladat/codes/zenejo.ogg
+	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH=\"$(MUSICF)\"
+endif
+
 CXX = g++
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -g -Werror -Wpedantic -fdiagnostics-color=always
 # CXXFLAGS += -DMEMTRACE #itt van a gond alapvetően :/
 LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INCFLAGS = -I$(INCDIR)
@@ -8,20 +22,6 @@ SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 INCDIR = includes
-
-ifeq ($(OS),Windows_NT)
-	CXXFLAGS += -IC:\msys64\mingw64\include
-	SFML_ROOT = 
-	MUSICF = C:\\git\\HAZI\\codes\\zenejo.ogg
-	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH="\"$(MUSICF)\""
-	LDFLAGS += $(SFML_ROOT)/bin
-	CXXFLAGS += -I$(SFML_ROOT)/include
-else
-	CXXFLAGS += 
-	LDLFLAGS =
-	MUSICF = /home/vncl/git/VBW5N9_nagy_hazi_feladat/codes/zenejo.ogg
-	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH=\"$(MUSICF)\"
-endif
 
 CXXFLAGS += $(MUSIC_FILE_PATH_DEF)
 
