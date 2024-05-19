@@ -1,30 +1,13 @@
 #include "vector.h"
 
 //---------------------------------------------------------Konstruktorok Destruktorok
-Vector::Vector(double x, double y) : x(x), y(y)
-{
-    // if (DEBUG_IS_ON)
-    //     std::cout << " vector constructed" << *this << std::endl;
-}
-
-Vector::Vector(const Vector &other) : x(other.x), y(other.y)
-{
-    // if (DEBUG_IS_ON)
-    //     std::cout << "copyconstructed a vector" << *this << std::endl;
-}
+Vector::Vector(double x, double y) : x(x), y(y){};
 
 Vector::Vector(const sf::Vector2i &other)
 {
     x = other.x;
     y = other.y;
 }
-
-Vector::~Vector()
-{
-    // if (DEBUG_IS_ON)
-    // std::cout << "deconstructed a vector " << *this << std::endl;
-}
-
 //--------------------------------------------------------Getter-Setter függvények---------------------------------------------------------------
 
 double Vector::getX() const
@@ -35,11 +18,6 @@ double Vector::getX() const
 double Vector::getY() const
 {
     return y;
-}
-
-Vector const &Vector::getVector() const
-{
-    return *this;
 }
 
 double Vector::getLength() const
@@ -55,18 +33,6 @@ void Vector::setX(double x)
 void Vector::setY(double y)
 {
     this->y = y;
-}
-
-void Vector::setVector(double x, double y)
-{
-    this->x = x;
-    this->y = y;
-}
-
-void Vector::setVector(const Vector &other)
-{
-    setX(other.getX());
-    setY(other.getY());
 }
 
 //--------------------------------------------Számoló függvények-----------------------------------------------------------------------------------
@@ -170,6 +136,3 @@ Vector::operator sf::Vector2f() const
 }
 
 const Vector Vector::nullVector(0, 0);
-
-// const Vector Vector::xAxis(INFINITY, 0.0);
-// const Vector Vector::yAxis(0.0, INFINITY);

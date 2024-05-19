@@ -5,10 +5,10 @@ void initFlock(Flock &flock, double width, double height)
     int boidCount = 0;
     std::cout << "Please give me the size of the flock" << std::endl;
     std::cin >> boidCount;
-    Point center(width / 2, height / 2);
+    Vector center(width / 2, height / 2);
     for (int i = 0; i < boidCount; i++)
     {
-        BasicBoid boid(10, width / 2 + 250 * std::cos(i * (2 * M_PI / boidCount)), height / 2 + 250 * std::sin(i * (2 * M_PI / boidCount)), 0, 0, 0, 0);
+        BasicBoid boid(10, width / 2 + 100 * std::cos(i * (2 * M_PI / boidCount)), height / 2 + 100 * std::sin(i * (2 * M_PI / boidCount)), 0, 0, 0, 0);
         flock.insert(boid);
     }
 }

@@ -10,10 +10,12 @@ BINDIR = bin
 INCDIR = includes
 
 ifeq ($(OS),Windows_NT)
-	# CXXFLAGS += -IC:\msys64\mingw64\include
-	LDFLAGS = -LC:\msys64\mingw64\lib
+	CXXFLAGS += -IC:\msys64\mingw64\include
+	SFML_ROOT = 
 	MUSICF = C:\\git\\HAZI\\codes\\zenejo.ogg
 	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH="\"$(MUSICF)\""
+	LDFLAGS += $(SFML_ROOT)/bin
+	CXXFLAGS += -I$(SFML_ROOT)/include
 else
 	CXXFLAGS += 
 	LDLFLAGS =
@@ -47,6 +49,3 @@ ifeq ($(OS),Windows_NT)
 else
 	rm -f  $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
 endif
-
-debug: CXXFLAGS += -DDEBUG
-debug: $(BINDIR)/main

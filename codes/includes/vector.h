@@ -1,11 +1,5 @@
 #pragma once
 
-#ifdef DEBUG
-#define DEBUG_IS_ON 1
-#else
-#define DEBUG_IS_ON 0
-#endif
-
 #include <stdexcept>
 #include <iostream>
 #include <ostream>
@@ -30,21 +24,10 @@ public:
     Vector(double x = 0.0, double y = 0.0);
 
     /**
-     * @brief Vector osztály copy konstruktora.
-     * @param other A másolni kívánt Vector objektum.
-     */
-    Vector(const Vector &other);
-
-    /**
      * @brief Vector osztály konstruktora egy sf::Vector2i objektumból.
      * @param other Az sf::Vector2i objektum, amelyből inicializáljuk a Vector objektumot.
      */
     Vector(const sf::Vector2i &other);
-
-    /**
-     * @brief Vector osztály destruktora.
-     */
-    ~Vector();
 
     /**
      * @brief Getter függvény az x koordinátához.
@@ -65,12 +48,6 @@ public:
     double getLength() const;
 
     /**
-     * @brief Getter függvény az egész vektorhoz.
-     * @return Az egész vektor.
-     */
-    Vector const &getVector() const;
-
-    /**
      * @brief Setter függvény az x koordinátához.
      * @param x Az új x koordináta.
      */
@@ -81,19 +58,6 @@ public:
      * @param y Az új y koordináta.
      */
     void setY(double y);
-
-    /**
-     * @brief Setter függvény az egész vektorhoz.
-     * @param x Az új x koordináta.
-     * @param y Az új y koordináta.
-     */
-    void setVector(double x, double y);
-
-    /**
-     * @brief Setter függvény az egész vektorhoz.
-     * @param other Az új vektor, amelyre beállítjuk az aktuális vektort.
-     */
-    void setVector(const Vector &other);
 
     /**
      * @brief Egy vektort elforgat a megadott radiánnal.

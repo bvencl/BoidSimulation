@@ -2,15 +2,8 @@
 
 #include "basicboid.h"
 #include "vector.h"
-#include "point.h"
 #include <SFML/Graphics.hpp>
 #include <optional>
-
-#ifdef DEBUG
-#define DEBUG_IS_ON 1
-#else
-#define DEBUG_IS_ON 0
-#endif
 
 /**
  * @class Rule
@@ -37,7 +30,7 @@ public:
      * @param individual Az aktuális egyed
      * @return A szabály által számolt gyorsulás komponens
      */
-    virtual Vector calculateRuleForIndividual(std::vector<BasicBoid>& boids, const BasicBoid& individual) const = 0;
+    virtual Vector calculateRuleForIndividual(std::vector<BasicBoid> &boids, const BasicBoid &individual) const = 0;
 
     /**
      * @brief A két boid közötti szabályerősség számolására szolgáló függvény
@@ -45,7 +38,7 @@ public:
      * @param boid2 A második boid
      * @return A számolt szabályerősség az egyedek között
      */
-    virtual Vector calculateRuleStrengthBetweenBoids(const BasicBoid& boid1, const BasicBoid& boid2) const = 0;
+    virtual Vector calculateRuleStrengthBetweenBoids(const BasicBoid &boid1, const BasicBoid &boid2) const = 0;
 
     /**
      * @brief Az olyan szabályoknál használt függvény, ahol van értelme külön egyedek közötti erőt számolni
@@ -54,7 +47,7 @@ public:
      * @param factor2 A második faktor
      * @return A számolt skálázó faktor
      */
-    virtual double calculateScalingFactor(const BasicBoid& boid, double factor1, double factor2) const = 0;
+    virtual double calculateScalingFactor(const BasicBoid &boid, double factor1, double factor2) const = 0;
 
     /**
      * @brief Getter függvény a szabály erősségének lekérdezéséhez

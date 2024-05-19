@@ -22,9 +22,8 @@ int main(int argc, char *argv[])
     initFlock(flock, width, height);
     initGraphics(boids, flock);
 
-
     /*Memoriaszivargas a window letrehozasakor*/
-    //Amennyiben az sfml és a memtrace egyszerre van benne a programban, úgy a window generálásánál a program leáll! 
+    // Amennyiben az sfml és a memtrace egyszerre van benne a programban, úgy a window generálásánál a program leáll!
     sf::RenderWindow window(sf::VideoMode(width, height), "Mars ter");
     try
     {
@@ -58,8 +57,7 @@ int main(int argc, char *argv[])
 
         flock.moveFlock(dT, mousePosition);
 
-        if (DEBUG_IS_ON)
-            cout << flock[0] << endl;
+        cout << flock[5] << endl;
 
         window.display();
     }

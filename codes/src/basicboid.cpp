@@ -6,67 +6,29 @@ BasicBoid::BasicBoid(double mass, double starting_position_x, double starting_po
       currentPosition(starting_position_x, starting_position_y),
       mass(mass)
 {
-    // if (DEBUG_IS_ON)
-    //     std::cout << "Boid constructed: \n " << *this << std::endl;
 }
 
-BasicBoid::BasicBoid(double mass, Point starting_position, Vector starting_speed, Vector starting_acceleration)
+BasicBoid::BasicBoid(double mass, Vector starting_position, Vector starting_speed, Vector starting_acceleration)
     : speed(starting_speed),
       acceleration(starting_acceleration),
       currentPosition(starting_position),
       mass(mass)
 {
-    // if (DEBUG_IS_ON)
-    //     std::cout << "Boid constructed: \n " << *this << std::endl;
-}
-
-BasicBoid::~BasicBoid()
-{
-    // if (DEBUG_IS_ON)
-    // {
-    //     std::cout << "BasicBoid deconstructed" << std::endl;
-    // }
-}
-
-void BasicBoid::setSpeed(double x, double y)
-{
-    speed.setX(x);
-    speed.setY(y);
-}
-
-void BasicBoid::setSpeed(const Vector &other)
-{
-    speed.setVector(other);
-}
-
-void BasicBoid::setAcceleration(double x, double y)
-{
-    if (Vector(x, y).getLength() < 20)
-    {
-        acceleration.setX(x);
-        acceleration.setY(y);
-    }
-}
-
-void BasicBoid::setAcceleration(const Vector &other)
-{
-    if (other.getLength() < 20)
-        acceleration.setVector(other);
 }
 
 Vector const &BasicBoid::getSpeed() const
 {
-    return speed.getVector();
+    return speed;
 }
 
 Vector const &BasicBoid::getAcceleration() const
 {
-    return acceleration.getVector();
+    return acceleration;
 }
 
-Point const &BasicBoid::getPosition() const
+Vector const &BasicBoid::getPosition() const
 {
-    return currentPosition.getPoint();
+    return currentPosition;
 }
 
 double BasicBoid::getMass() const
@@ -91,7 +53,7 @@ void BasicBoid::MyTurn(Vector calculatedSumOfRules, double dT)
 {
     acceleration = calculatedSumOfRules;
     speed += (acceleration * dT);
-    currentPosition.setPoint(currentPosition + (speed * dT));
+    currentPosition += speed * dT;
 }
 
 bool BasicBoid::operator==(const BasicBoid &other) const

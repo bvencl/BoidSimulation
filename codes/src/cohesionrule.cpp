@@ -5,7 +5,7 @@ CohesionRule::CohesionRule(double rule_strength) : Rule(rule_strength) {}
 // Az egyes egyedekre ható Kohéziós összetevőt határozza meg a nyáj tömegközéppontja alapján
 Vector CohesionRule::calculateRuleForIndividual(std::vector<BasicBoid> &flockMembers, const BasicBoid &boid) const
 {
-    Point commonCenterOfMass;
+    Vector commonCenterOfMass;
     double sumOfMasses = 0.0;
     for (size_t i = 0; i < flockMembers.size(); i++) // Közös tömegközéppont kiszámítása
     {

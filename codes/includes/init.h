@@ -1,5 +1,8 @@
 #pragma once
-#include "includes.h"
+
+#include "flock.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 void initFlock(Flock &, double, double);
 
