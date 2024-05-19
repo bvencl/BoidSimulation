@@ -33,7 +33,7 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
         ./main param1 param2    
 
     vagy
-    
+
         cd bin
         .\main param1 param2
 

@@ -26,5 +26,5 @@ void initGraphics(std::vector<sf::CircleShape> &boids, Flock &flock)
 void initMusic(sf::Music &music)
 {
     if (!music.openFromFile(MUSIC_FILE_PATH))
-        throw std::runtime_error("Couldnt opern music");
+        throw std::runtime_error("Couldnt open music");
 }

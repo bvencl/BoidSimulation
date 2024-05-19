@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     /*Memoriaszivargas a window letrehozasakor*/
     //Amennyiben az sfml és a memtrace egyszerre van benne a programban, úgy a window generálásánál a program leáll! 
-    sf::RenderWindow window(sf::VideoMode(width, height), "Boid For The Win");
+    sf::RenderWindow window(sf::VideoMode(width, height), "Mars ter");
     try
     {
         initMusic(music);

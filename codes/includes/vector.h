@@ -14,7 +14,7 @@
 #include <SFML/System/Vector2.hpp>
 
 /**
- * @brief Az osztály, amely egy kétdimenziós vektort reprezentál.
+ * @brief Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt, nem pedig tárolóként, mint az std::vectort
  */
 class Vector
 {
@@ -192,7 +192,7 @@ public:
 };
 
 /**
- * @brief Skalárral szorzás egy vektorral.
+ * @brief Vektor skalárral szorzása.
  * @param vector A vektor, amelyet szorozunk a skalárral.
  * @param scalar A skalár, amellyel szorozzuk a vektort.
  * @return Az eredményként kapott vektor.

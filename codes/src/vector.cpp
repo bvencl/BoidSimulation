@@ -22,10 +22,11 @@ Vector::Vector(const sf::Vector2i &other)
 Vector::~Vector()
 {
     // if (DEBUG_IS_ON)
-        // std::cout << "deconstructed a vector " << *this << std::endl;
+    // std::cout << "deconstructed a vector " << *this << std::endl;
 }
 
 //--------------------------------------------------------Getter-Setter függvények---------------------------------------------------------------
+
 double Vector::getX() const
 {
     return x;
@@ -107,6 +108,7 @@ void Vector::normaliastion()
 }
 
 //----------------------------------------Túlterhelt operátorok-------------------------------
+
 Vector Vector::operator-() const
 {
     return Vector(-x, -y);
