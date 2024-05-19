@@ -34,7 +34,7 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 
     if (distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 50) // Ha nagyon közel vannak egymáshoz  (azért arányos a súlyukkal,
     {                                                                                // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg)
-        scalingFactor = 500;
+        scalingFactor = 500;                                                         // Empirikusan választott scalingFactor erre az eshetőségre
     }
     else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 15 && distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 150) // Ha kicsit távolabb vannak azért
     {

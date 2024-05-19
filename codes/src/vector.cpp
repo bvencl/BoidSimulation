@@ -8,6 +8,7 @@ Vector::Vector(const sf::Vector2i &other)
     x = other.x;
     y = other.y;
 }
+
 //--------------------------------------------------------Getter-Setter függvények---------------------------------------------------------------
 
 double Vector::getX() const
@@ -98,7 +99,7 @@ void Vector::operator=(const Vector &rhs)
 
 bool Vector::operator==(const Vector &rhs) const
 {
-    return x == rhs.x && x == rhs.x;
+    return x == rhs.x && y == rhs.y;
 }
 
 double Vector::operator*(const Vector &rhs) const
