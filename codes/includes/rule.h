@@ -7,9 +7,8 @@
  * @class Rule
  * @brief Tisztán virtuális osztály, a szabály-osztályok őse.
  *        Közös interfészt szolgáltat a szabály-osztályoknak.
- *        A Chase összetevőt azért nem innen származtatom, mert annak teljesen más interfészre van szüksége,
- *        nem sok egyezést mutat a többi szabállyal, lévén hogy nem az egyedek között hat.
  */
+template <typename Derived>
 class Rule
 {
 private:
@@ -20,15 +19,26 @@ public:
      * @brief A szabály-osztály konstruktora
      * @param rule_strength A szabály erőssége
      */
-    Rule(double rule_strength) : ruleStrength(rule_strength){};
+    Rule(double rule_strength) : ruleStrength(rule_strength) {}
+
+    /**
+     * @brief Getter függvény a szabály erősségének lekérdezéséhez
+     * @return A szabály erőssége
+     */
+    double getRuleStrength() const { return ruleStrength; }
 
     /**
      * @brief Az egyes egyedek gyorsulás komponensét számoló függvény az adott szabályra
-     * @param boids A boidok vektora
+     * @param begin A boidok konténerének eleje
+     * @param end A boidok konténerének vége
      * @param individual Az aktuális egyed
      * @return A szabály által számolt gyorsulás komponens
      */
-    virtual Vector calculateRuleForIndividual(std::vector<BasicBoid> &boids, const BasicBoid &individual) const = 0;
+    template <typename Iterator>
+    Vector calculateRuleForIndividual(Iterator begin, Iterator end, const BasicBoid &individual) const
+    {
+        return static_cast<const Derived *>(this)->calculateRuleForIndividualImpl(begin, end, individual);
+    }
 
     /**
      * @brief A két boid közötti szabályerősség számolására szolgáló függvény
@@ -46,10 +56,4 @@ public:
      * @return A számolt skálázó faktor
      */
     virtual double calculateScalingFactor(const BasicBoid &boid, double factor1, double factor2) const = 0;
-
-    /**
-     * @brief Getter függvény a szabály erősségének lekérdezéséhez
-     * @return A szabály erőssége
-     */
-    double getRuleStrength() const { return ruleStrength; }
 };

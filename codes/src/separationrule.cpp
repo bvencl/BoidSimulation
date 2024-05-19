@@ -1,6 +1,4 @@
 #include "separationrule.h"
-#define DESIRED_MINIMAL_DISTANCE 150.0
-#define EMPIRIC_SCALING_VALUE 500.0
 
 SeparationRule::SeparationRule(double rule_strength) : Rule(rule_strength) {}
 
@@ -22,7 +20,6 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 {
     Vector direction = individual.getPosition() - currentFlockMember.getPosition();
     double distance = direction.getLength();
-    
     try
     {
         direction.normaliastion();
@@ -37,13 +34,13 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 
     if (distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 50) // Ha nagyon közel vannak egymáshoz  (azért arányos a súlyukkal,
     {                                                                                // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg)
-        scalingFactor = EMPIRIC_SCALING_VALUE;                                       // Empirikusan választott scalingFactor erre az eshetőségre
+        scalingFactor = 500;
     }
-    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 15 && distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + DESIRED_MINIMAL_DISTANCE) // Ha kicsit távolabb vannak azért
+    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 15 && distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 150) // Ha kicsit távolabb vannak azért
     {
         scalingFactor = 1.0 / (distance - (individual.getMass() + currentFlockMember.getMass()));
     }
-    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + DESIRED_MINIMAL_DISTANCE && direction.angleWith(individual.getSpeed()) > M_PI / 3)
+    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + 150 && direction.angleWith(individual.getSpeed()) > M_PI / 3)
     {
         scalingFactor = currentFlockMember.getMass() * individual.getMass() / (distance * distance);
     }
