@@ -41,19 +41,15 @@ void Flock::remove(const BasicBoid &boid)
 void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
 {
     size_t i = 0;
-    for (BasicBoid boid : flockMembers)
-    {  
-        Vector calculatedSumOfRules;                                                                                              // Vektor, ami a szabályok ezen időlépés alatti hatását gyűjti
+    for (BasicBoid &boid : flockMembers)
+    {
+        Vector calculatedSumOfRules;                                                                                   // Vektor, ami a szabályok ezen időlépés alatti hatását gyűjti
         calculatedSumOfRules += chase.calculateRuleForIndividual(boid, mousePosition);                                 // Chase szabály egyedre vett számolása
         calculatedSumOfRules += separation.calculateRuleForIndividual(flockMembers.begin(), flockMembers.end(), boid); // Separation szabály egyedre vett számolása
         calculatedSumOfRules += cohesion.calculateRuleForIndividual(flockMembers.begin(), flockMembers.end(), boid);   // Cohesion szabály egyedre vett számolása
         calculatedSumOfRules += alignment.calculateRuleForIndividual(flockMembers.begin(), flockMembers.end(), boid);  // Alignment szabály egyedre vett számolása
-        
-        //! ----------------- ha úgy írom, hogy boid.MyTurn(calculatedSumOfRules, dT), akkor nem mozognak valamiért, TODO!!
-        flockMembers[i].MyTurn(calculatedSumOfRules, dT); // A Boid gyorsulását felülíró, sebességét és pozícióját ez alapján változtató függvény
-        i++;
-        // if(1)
-        //     std::cout << "k"; // véletlenül sem debugolásra :D
+
+        boid.MyTurn(calculatedSumOfRules, dT); // A Boid gyorsulását felülíró, sebességét és pozícióját ez alapján változtató függvény
     }
 }
 

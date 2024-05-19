@@ -45,11 +45,10 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, const sf::
     // Amennyiben a sebesség ötöde nagyobb, mint a céltól való távolság, és a sebesség és irány skaláris szorzata kisebb mint nulla
     if (boid.getSpeed().getLength() / 5 > distance && direction * boid.getSpeed() > 0)
     {
-        double correctionFactor = -breakingForce * boid.getSpeed().getLength();                    // Erős fékezés a sebességgel ellentétes irányba
-        if ((!direction.projectionOnto(boid.getSpeed()).isNull()) && abs(correctionFactor) > 1e-6) // Amennyiben a sebesség nem null, és a correctionFactor sem közel nulla:
-            acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor;           // Vesszük a gyorsulás vetületés a sebességre, majd megszorozzuk a correctionFactorral,
-                                                                                                   // ami negatív, így a sebességgel ellentétes irányba fog mutatni a gyorsulás
+        double correctionFactor = -breakingForce * boid.getSpeed().getLength();                         // Erős fékezés a sebességgel ellentétes irányba
+        if ((!direction.projectionOnto(boid.getSpeed()).isNull()) && std::abs(correctionFactor) > 1e-6) // Amennyiben a sebesség nem null, és a correctionFactor sem közel nulla:
+            acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor;                // Vesszük a gyorsulás vetületés a sebességre, majd megszorozzuk a correctionFactorral,
+        /**/                                                                                            // ami negatív, így a sebességgel ellentétes irányba fog mutatni a gyorsulás
     }
-
     return acceleration * ruleStrength;
 }
