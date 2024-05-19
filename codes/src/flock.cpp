@@ -61,6 +61,15 @@ BasicBoid &Flock::operator[](size_t i)
     return flockMembers[i];
 }
 
+BasicBoid const &Flock::operator[](size_t i) const
+{
+    if (i >= flockMembers.size())
+    {
+        throw std::out_of_range("Index out of range in Flock::operator[] const: " + std::to_string(i));
+    }
+    return flockMembers[i];
+}
+
 size_t Flock::flockSize() const
 {
     return flockMembers.size();

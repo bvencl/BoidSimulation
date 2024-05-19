@@ -15,10 +15,9 @@ int main(int argc, char *argv[])
         sscanf(argv[2], "%d", &height);
     }
 
-    Flock flock;
-    
+    Flock flock(1, 1, 1, 1);
+
     std::vector<sf::CircleShape> boids;
-    sf::Clock engineTime;
     sf::Music music;
 
     initFlock(flock, width, height);
@@ -37,6 +36,7 @@ int main(int argc, char *argv[])
         cerr << musicerror.what() << endl;
     }
 
+    sf::Clock engineTime;
     double dT = 0.0;
     while (window.isOpen())
     {
@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
             boids[j].setPosition((sf::Vector2f)(flock[j].getPosition()));
             window.draw(boids[j]);
         }
-
         flock.moveFlock(dT, mousePosition);
 
         cout << flock[5] << endl;

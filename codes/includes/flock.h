@@ -65,6 +65,13 @@ public:
     BasicBoid &operator[](size_t index);
 
     /**
+     * @brief A nyáj indexelésére használt operátor konstans.
+     * @param index Az index, amelyre hivatkozni szeretnénk.
+     * @return A megadott indexű boid objektum konstans referenciája.
+     */
+    BasicBoid const &operator[](size_t index) const;
+
+    /**
      * @brief Visszaadja a nyáj méretét.
      * @return A nyáj mérete.
      */
