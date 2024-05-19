@@ -4,20 +4,7 @@
 
 SeparationRule::SeparationRule(double rule_strength) : Rule<SeparationRule>(rule_strength) {}
 
-template <typename Iterator>
-Vector SeparationRule::calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid &boid) const
-{
-    Vector sumOfSeparationInFlock(0, 0);
 
-    for (Iterator It = begin; It != end; It++)
-    {
-        if (!(*It == boid))
-        {
-            sumOfSeparationInFlock += calculateRuleStrengthBetweenBoids(*It, boid);
-        }
-    }
-    return sumOfSeparationInFlock;
-}
 
 Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &currentFlockMember, const BasicBoid &individual) const
 {

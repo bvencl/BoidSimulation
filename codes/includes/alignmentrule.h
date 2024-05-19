@@ -31,14 +31,14 @@ Vector AlignmentRule::calculateRuleForIndividualImpl(Iterator begin, Iterator en
     }
     for (Iterator It = begin; It != end; It++)
     {
-        Vector direction = boid.getPosition() - It.getPosition(); // Irány meghatározása két vektor kivonásával
+        Vector direction = boid.getPosition() - It->getPosition(); // Irány meghatározása két vektor kivonásával
         double distance = direction.getLength();                    // A két vizsgált egyed távolsága. A szabály szükségességének eldöntéséhez kell
         // Akkor van Alignment komponens, ha: (nem saját magához viszonyítjuk az egyedet) ÉS (A jelenlegi egyed "látószögében" van a nyáj éppen vizsgált másik tagja,
         // tehát látja azt) ÉS (megadott távon belül vannak)
-        if (!(It == boid) && (/*direction.angleWith(boid.getSpeed()) < M_PI / 3 &&*/ distance < DESIREDDISTANCE)) // a látószög it most PI/3, tehát +- 60fok
+        if (!(*It == boid) && (/*direction.angleWith(boid.getSpeed()) < M_PI / 3 &&*/ distance < DESIREDDISTANCE)) // a látószög it most PI/3, tehát +- 60fok
         {
-            commonSpeedOfFlock += It.getSpeed();     // Közös sebesség meghatározásához először összeadjuk a sebességeket
-            sumOfSpeed += It.getSpeed().getLength(); // Azok hosszát is nyílvántartjuk
+            commonSpeedOfFlock += It->getSpeed();     // Közös sebesség meghatározásához először összeadjuk a sebességeket
+            sumOfSpeed += It->getSpeed().getLength(); // Azok hosszát is nyílvántartjuk
             affectingMembers++;                        // megnöveljük az ehhez hozzájáruló egyedek számát
         }
     }

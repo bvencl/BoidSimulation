@@ -5,6 +5,7 @@
 #include "cohesionrule.h"
 #include "alignmentrule.h"
 #include <vector>
+#include <list>
 
 /**
  * @class Flock
