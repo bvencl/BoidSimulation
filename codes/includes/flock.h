@@ -1,27 +1,25 @@
 #pragma once
 #include "basicboid.h"
-#include "rule.h"
 #include "chasingrule.h"
 #include "separationrule.h"
 #include "cohesionrule.h"
 #include "alignmentrule.h"
-#include <memory>
 #include <vector>
 
 /**
  * @class Flock
  * @brief A nyáj osztály, amely tartalmazza a Boidokat és a nyáj szabályait.
- * 
+ *
  * A Flock osztály felelős a boidok tárolásáért és a nyáj szabályainak végrehajtásáért.
  * A boidokat egy std::vector-ban tárolja, és a nyáj szabályait külön-külön objektumokként kezeli.
  */
 class Flock
 {
     std::vector<BasicBoid> flockMembers; // Boidokat tároló std::vector tároló. Ebben az új megvalósításban már nem BasicBoid *-ot hanem az egész BasicBoid-ot tárolja
-    ChasingRule chase;  // A nyáj Chase szabálya
-    SeparationRule separation;   // A nyáj Separation szabálya
-    CohesionRule cohesion; // A nyáj Cohesion szabálya
-    AlignmentRule alignment;// A nyáj alignment szabálya
+    ChasingRule chase;                   // A nyáj Chase szabálya
+    SeparationRule separation;           // A nyáj Separation szabálya
+    CohesionRule cohesion;               // A nyáj Cohesion szabálya
+    AlignmentRule alignment;             // A nyáj alignment szabálya
 
 public:
     /**

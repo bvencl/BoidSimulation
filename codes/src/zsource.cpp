@@ -2,6 +2,7 @@
 
 using std::cout;
 using std::endl;
+using std::cerr;
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +16,7 @@ int main(int argc, char *argv[])
     }
 
     Flock flock;
+    
     std::vector<sf::CircleShape> boids;
     sf::Clock engineTime;
     sf::Music music;
@@ -32,7 +34,7 @@ int main(int argc, char *argv[])
     }
     catch (std::runtime_error &musicerror)
     {
-        std::cerr << musicerror.what() << std::endl;
+        cerr << musicerror.what() << endl;
     }
 
     double dT = 0.0;

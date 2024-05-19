@@ -1,9 +1,7 @@
 #pragma once
 
 #include "basicboid.h"
-#include "vector.h"
 #include <SFML/Graphics.hpp>
-#include <optional>
 
 /**
  * @class Rule

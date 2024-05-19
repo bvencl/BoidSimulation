@@ -1,6 +1,5 @@
 #pragma once
-#include "rule.h"
-
+#include "basicboid.h"
 class ChasingRule
 {
 private:
