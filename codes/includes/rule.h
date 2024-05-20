@@ -37,7 +37,7 @@ public:
     template <typename Iterator>
     Vector calculateRuleForIndividual(Iterator begin, Iterator end, const BasicBoid &individual) const
     {
-        return static_cast<const Derived *>(this)->calculateRuleForIndividualImpl(begin, end, individual);
+        return static_cast<const Derived *>(this)->calculateRuleForIndividualImpl(begin, end, individual); // közepesen brute force, de nekem tetszik
     }
 
     /**
