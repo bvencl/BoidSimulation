@@ -8,7 +8,6 @@ Vector AlignmentRule::calculateRuleStrengthBetweenBoids(const BasicBoid &current
     return Vector::nullVector;
 }
 
-// A scalingFactort kiszámító függvény
 double AlignmentRule::calculateScalingFactor(const BasicBoid &boid, double affectingMembers, double sumOfSpeed) const
 {
     // Amenniyben nincsenek a vizsgált Boid környezetében más boidok, úgy természetesen nulla lesz a scaling factor

@@ -1,4 +1,8 @@
 #pragma once
+
+// flock.h
+// A Flock osztály definícióját és metódusainak deklarációját tartalmazó header file
+
 #include "basicboid.h"
 #include "chasingrule.h"
 #include "separationrule.h"
@@ -13,6 +17,7 @@
  *
  * A Flock osztály felelős a boidok tárolásáért és a nyáj szabályainak végrehajtásáért.
  * A boidokat egy std::vector-ban tárolja, és a nyáj szabályait külön-külön objektumokként kezeli.
+ * A Boidokat tárolhatnánk akár std::list-ben is, minden metódus kompatibilis lenne azzal is.
  */
 class Flock
 {

@@ -1,4 +1,6 @@
 #pragma once
+// vector.h
+// Egy kétdimenzós vektort megvalósító osztály headerfájlja. Ezt használom az alapvető matematikai műveletekhez, a Boidok pozíciójának, sebességének és gyorsulásának leírásához.
 
 #include <stdexcept>
 #include <iostream>

@@ -1,5 +1,9 @@
 #pragma once
 
+// rule.h
+
+// Az absztrakt sablon osztály definícióját, és metódusainak definícióit, illetvve deklarációit tartalmazó header file.
+
 #include "basicboid.h"
 #include <SFML/Graphics.hpp>
 
@@ -28,7 +32,7 @@ public:
     double getRuleStrength() const { return ruleStrength; }
 
     /**
-     * @brief Azon függvény, amely meghívja az utódosztályok implementált "calculateRuleForIndividual(-Impl)" függvényét  
+     * @brief Azon függvény, amely meghívja az utódosztályok implementált "calculateRuleForIndividual(-Impl)" függvényét
      * @param begin A boidok konténerének eleje
      * @param end A boidok konténerének vége
      * @param individual Az aktuális egyed
@@ -41,7 +45,7 @@ public:
     }
 
     /**
-     * @brief A két boid közötti szabályerősség számolására szolgáló függvény
+     * @brief A két boid közötti szabályerősség számolására szolgáló virtuális függvény
      * @param boid1 Az első boid
      * @param boid2 A második boid
      * @return A számolt szabályerősség az egyedek között
@@ -49,7 +53,7 @@ public:
     virtual Vector calculateRuleStrengthBetweenBoids(const BasicBoid &boid1, const BasicBoid &boid2) const = 0;
 
     /**
-     * @brief Az olyan szabályoknál használt függvény, ahol van értelme külön egyedek közötti erőt számolni
+     * @brief Az olyan szabályoknál használt virtuális függvény, ahol van értelme külön egyedek közötti erőt számolni
      * @param boid Az aktuális boid
      * @param factor1 Az első faktor
      * @param factor2 A második faktor
