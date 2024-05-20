@@ -1,6 +1,5 @@
 #include "vector.h"
 
-//---------------------------------------------------------Konstruktorok Destruktorok
 Vector::Vector(double x, double y) : x(x), y(y){};
 
 Vector::Vector(const sf::Vector2i &other)
@@ -8,8 +7,6 @@ Vector::Vector(const sf::Vector2i &other)
     x = other.x;
     y = other.y;
 }
-
-//--------------------------------------------------------Getter-Setter függvények---------------------------------------------------------------
 
 double Vector::getX() const
 {
@@ -36,10 +33,9 @@ void Vector::setY(double y)
     this->y = y;
 }
 
-//--------------------------------------------Számoló függvények-----------------------------------------------------------------------------------
-
 Vector Vector::rotate(double thetaInRadians) const
 {
+    // Egyszerű forgatás képlet alapján:
     double cosTheta = std::cos(thetaInRadians);
     double sinTheta = std::sin(thetaInRadians);
     return Vector(x * cosTheta - y * sinTheta, x * sinTheta + y * cosTheta);
@@ -73,8 +69,6 @@ void Vector::normaliastion()
     x /= getLength();
     y /= getLength();
 }
-
-//----------------------------------------Túlterhelt operátorok-------------------------------
 
 Vector Vector::operator-() const
 {

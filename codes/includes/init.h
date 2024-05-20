@@ -1,17 +1,41 @@
 #pragma once
 
-// init.h
-// A szimuláció kezdeti állapotát beállító függvények deklarációját tartalmazó header file.
+/**
+ * @file init.h
+ * @brief A szimuláció kezdeti állapotát beállító függvények deklarációját tartalmazó header fájl.
+ */
 
 #include "flock.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-// A függvény, amely a nyájt "inicializálja", azaz bekéri a kívánt Boidok számát, feltölti a kezdőpozícióban lévő Boidokkal
-void initFlock(Flock &, double, double);
+/**
+ * @brief A függvény, amely a nyájat inicializálja.
+ * 
+ * Bekéri a kívánt Boidok számát, és feltölti a kezdőpozícióban lévő Boidokkal.
+ * 
+ * @param flock A nyáj, amelyet inicializálunk.
+ * @param width A képernyő szélessége pixelben.
+ * @param height A képernyő magassága pixelben.
+ */
+void initFlock(Flock &flock, double width, double height);
 
-// A nyájhoz tartozó grafikus objektumokkal feltölt egy std:.vectort. Ez nagyban megkönnyíti azoknak ábrázolását. A kívánt színnel lehet benne Boidokat létrehozni.
-void initGraphics(std::vector<sf::CircleShape> &, Flock &, sf::Color);
+/**
+ * @brief A nyájhoz tartozó grafikus objektumokkal feltölt egy std::vectort.
+ * 
+ * Ez nagyban megkönnyíti azok ábrázolását. A kívánt színnel lehet benne Boidokat létrehozni.
+ * 
+ * @param graphics A grafikus objektumokat tartalmazó std::vector.
+ * @param flock A nyáj, amelyhez a grafikus objektumok tartoznak.
+ * @param color A Boidok színe.
+ */
+void initGraphics(std::vector<sf::CircleShape> &graphics, Flock &flock, sf::Color color);
 
-// A zenét megkereső függvény.
-void initMusic(sf::Music &);
+/**
+ * @brief A zenét megkereső függvény.
+ * 
+ * Inicializálja és betölti a szükséges zenefájlokat.
+ * 
+ * @param music Az sf::Music objektum, amelyet inicializálunk.
+ */
+void initMusic(sf::Music &music);

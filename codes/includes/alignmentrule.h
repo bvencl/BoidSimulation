@@ -1,58 +1,96 @@
 #pragma once
+
 #include "rule.h"
-// alignemntrule.h
-// Az Alignment szabályt leíró osztályt, és annak egy metódusának definíciójaát is tartalmazó header fájl.
-// Azért tartalmazza ezt a metódust, mert a CRTP metódussal az jár, hogy linkelésnél szükség van ezen függvény definíciójára is.
+
+/**
+ * @file alignmentrule.h
+ * @brief Az Alignment szabályt leíró osztályt és annak egy metódusának definícióját is tartalmazó header fájl.
+ * 
+ */
 
 #define DESIREDDISTANCE 300.0
 #define CORRECTIONFACTOR 10000.0
+
+/**
+ * @class AlignmentRule
+ * @brief Az osztály, amely az Alignment ("Igazítás") szabályt valósítja meg.
+ * 
+ * Az AlignmentRule osztály a Rule absztrakt osztályból származik, és annak sablon paramétereként használja a CRTP (Curiously Recurring Template Pattern) mintát.
+ */
 class AlignmentRule : public Rule<AlignmentRule>
 {
-
 public:
-    // Az osztály konstruktora
+    /**
+     * @brief Az osztály konstruktora.
+     * @param rule_strength A szabály erőssége (alapértelmezetten 1).
+     */
     AlignmentRule(double rule_strength = 1);
 
-    // Ezen osztály calculateRuleForInividual sablon függvényének implementációja.
-    // Az egyedekre ható Alignment összetevő számolását elvégző függvény
+    /**
+     * @brief Ezen osztály calculateRuleForIndividual sablon függvényének implementációja.
+     * Az egyedekre ható Alignment összetevő számolását elvégző függvény.
+     * 
+     * Azért lett a header fájlban implementálva, mert a CRTP minta megköveteli, hogy a származtatott osztály metódusai elérhetőek legyenek a fordítási időben.
+     * 
+     * @tparam Iterator A boidok konténerének iterátora.
+     * @param begin A boidok konténerének eleje.
+     * @param end A boidok konténerének vége.
+     * @param boid Az aktuális boid.
+     * @return A szabály által számolt gyorsulás komponens.
+     */
     template <typename Iterator>
-    Vector calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid &) const;
+    Vector calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid &boid) const;
 
 private:
-    // Privát metódusok, amelyket a calculateRuleForIndividualImpl függvény hív:
+    /**
+     * @brief Privát metódusok, amelyeket a calculateRuleForIndividualImpl függvény hív.
+     * 
+     * Ezek a metódusok a szabály különböző aspektusainak számításához szükségesek.
+     */
 
-    // Erre a függvényre nincsen szükség, de mivel származtatott, így muszály definíciót adni neki
-    Vector calculateRuleStrengthBetweenBoids(const BasicBoid &, const BasicBoid &) const override;
+    /**
+     * @brief Erre a függvényre nincsen szükség, de mivel származtatott, így muszáj definíciót adni neki.
+     * @param boid1 Az első boid.
+     * @param boid2 A második boid.
+     * @return  nullVector, mivel ennek a metódusnak nincs szerepe ebben az osztályban.
+     */
+    Vector calculateRuleStrengthBetweenBoids(const BasicBoid &boid1, const BasicBoid &boid2) const override;
 
-    // Ez a függvény számolja ki a szabály adott pillanatbeli erősségének nagyságát (a szabály által szolgáltatott komponens-vektor hosszát)
-    double calculateScalingFactor(const BasicBoid &, double, double) const override;
+    /**
+     * @brief Ez a függvény számolja ki a szabály adott pillanatbeli erősségének nagyságát (a szabály által szolgáltatott komponens-vektor hosszát).
+     * @param boid Az aktuális boid.
+     * @param affectingMembers A ható egyedek száma.
+     * @param sumOfSpeed Az egyedek sebességeinek összege.
+     * @return A számolt skálázó faktor.
+     */
+    double calculateScalingFactor(const BasicBoid &boid, double affectingMembers, double sumOfSpeed) const override;
 };
 
-// Az egyedekre ható Alignment Összetevő számolását elvégző függvény
 template <typename Iterator>
 Vector AlignmentRule::calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid &boid) const
 {
-    Vector commonSpeedOfFlock(0.0, 0.0);
-    double sumOfSpeed = 0.0;
-    size_t affectingMembers = 0;
-    if (boid.getSpeed().isNull() || boid.getAcceleration().isNull()) // Ez a kezdeti pozícióban érvényes, ilyenkor értelmetlen eredményt adna, viszont máskor nem kell vele foglalkozni
+    Vector commonSpeedOfFlock(0.0, 0.0); // Az egyedek közös sebessége.
+    double sumOfSpeed = 0.0; // Az egyedek sebességeinek összege.
+    size_t affectingMembers = 0; // A ható egyedek száma.
+
+    if (boid.getSpeed().isNull() || boid.getAcceleration().isNull()) // Ha az egyed sebessége vagy gyorsulása nulla, nincs értelme számolni.
     {
         return Vector::nullVector;
     }
-    for (Iterator It = begin; It != end; It++)
+
+    for (Iterator It = begin; It != end; ++It)
     {
-        Vector direction = boid.getPosition() - It->getPosition(); // Irány meghatározása két vektor kivonásával
-        double distance = direction.getLength();                   // A két vizsgált egyed távolsága. A szabály szükségességének eldöntéséhez kell
-        // Akkor van Alignment komponens, ha: (nem saját magához viszonyítjuk az egyedet) ÉS (A jelenlegi egyed "látószögében" van a nyáj éppen vizsgált másik tagja,
-        // tehát látja azt) ÉS (megadott távon belül vannak)
-        if (!(*It == boid) && (/*direction.angleWith(boid.getSpeed()) < M_PI / 3 &&*/ distance < DESIREDDISTANCE)) // a látószög it most PI/3, tehát +- 60fok
+        Vector direction = boid.getPosition() - It->getPosition(); // Irány meghatározása két vektor kivonásával.
+        double distance = direction.getLength(); // A két vizsgált egyed távolsága. A szabály szükségességének eldöntéséhez kell.
+
+        if (!(*It == boid) && distance < DESIREDDISTANCE) // Ha az egyed nem saját maga és a megadott távolságon belül van.
         {
-            commonSpeedOfFlock += It->getSpeed();     // Közös sebesség meghatározásához először összeadjuk a sebességeket
-            sumOfSpeed += It->getSpeed().getLength(); // Azok hosszát is nyílvántartjuk
-            affectingMembers++;                       // megnöveljük az ehhez hozzájáruló egyedek számát
+            commonSpeedOfFlock += It->getSpeed(); // Közös sebesség meghatározásához először összeadjuk a sebességeket.
+            sumOfSpeed += It->getSpeed().getLength(); // Azok hosszát is nyilvántartjuk.
+            affectingMembers++; // Megnöveljük az ehhez hozzájáruló egyedek számát.
         }
     }
 
-    double scalingFactor = calculateScalingFactor(boid, (double)affectingMembers, sumOfSpeed); // scalingFactor számítása
-    return commonSpeedOfFlock * scalingFactor * getRuleStrength();                             // Végeredmény visszaadása
+    double scalingFactor = calculateScalingFactor(boid, affectingMembers, sumOfSpeed); // Skálázó faktor számítása.
+    return commonSpeedOfFlock * scalingFactor * getRuleStrength(); // Végeredmény visszaadása.
 }

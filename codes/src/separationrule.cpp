@@ -1,6 +1,5 @@
 #include "separationrule.h"
-#define DESIRED_MINIMAL_DISTANCE 150.0
-#define EMPIRIC_SCALING_VALUE 500.0
+
 
 SeparationRule::SeparationRule(double rule_strength) : Rule<SeparationRule>(rule_strength) {}
 

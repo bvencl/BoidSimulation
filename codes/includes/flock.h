@@ -1,7 +1,9 @@
 #pragma once
 
-// flock.h
-// A Flock osztály definícióját és metódusainak deklarációját tartalmazó header file
+/**
+ * @file flock.h
+ * @brief A Flock osztály definícióját és metódusainak deklarációját tartalmazó header fájl.
+ */
 
 #include "basicboid.h"
 #include "chasingrule.h"
@@ -21,11 +23,11 @@
  */
 class Flock
 {
-    std::vector<BasicBoid> flockMembers; // Boidokat tároló std::vector tároló. Ebben az új megvalósításban már nem BasicBoid *-ot hanem az egész BasicBoid-ot tárolja
-    ChasingRule chase;                   // A nyáj Chase szabálya
-    SeparationRule separation;           // A nyáj Separation szabálya
-    CohesionRule cohesion;               // A nyáj Cohesion szabálya
-    AlignmentRule alignment;             // A nyáj alignment szabálya
+    std::vector<BasicBoid> flockMembers; ///< Boidokat tároló std::vector. Ebben az új megvalósításban már nem BasicBoid *-ot, hanem az egész BasicBoid-ot tárolja.
+    ChasingRule chase; ///< A nyáj Chase szabálya.
+    SeparationRule separation; ///< A nyáj Separation szabálya.
+    CohesionRule cohesion; ///< A nyáj Cohesion szabálya.
+    AlignmentRule alignment; ///< A nyáj Alignment szabálya.
 
 public:
     /**
@@ -33,9 +35,9 @@ public:
      * @param flock_chasing_coefficient A nyáj üldözési együtthatója.
      * @param flock_repulsion A nyáj taszítási együtthatója.
      * @param flock_cohesion A nyáj összetartási együtthatója.
-     * @param flock_alingment A nyáj igazítási együtthatója.
+     * @param flock_alignment A nyáj igazodási együtthatója.
      */
-    Flock(double flock_chasing_coefficient = 1, double flock_repulsion = 1, double flock_cohesion = 1, double flock_alingment = 1);
+    Flock(double flock_chasing_coefficient = 1, double flock_repulsion = 1, double flock_cohesion = 1, double flock_alignment = 1);
 
     /**
      * @brief Boid beillesztése a nyájba.
@@ -83,3 +85,4 @@ public:
      */
     size_t flockSize() const;
 };
+

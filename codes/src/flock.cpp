@@ -39,7 +39,6 @@ void Flock::remove(const BasicBoid &boid)
 }
 
 // flock-ban lévő boidok mozgatásáért felelős függvény. működik mind std::vectorra, mind std::list-re is
-// TODO: Legyenen dinamikusan tárolva a flock szabályai, ezzel itt annyi változik, hogy egy dupla ciklusban boidonként-és szabályonként megyünk
 
 void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
 {

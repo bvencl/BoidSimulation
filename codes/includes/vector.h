@@ -1,6 +1,9 @@
 #pragma once
-// vector.h
-// Egy kétdimenzós vektort megvalósító osztály headerfájlja. Ezt használom az alapvető matematikai műveletekhez, a Boidok pozíciójának, sebességének és gyorsulásának leírásához.
+/**
+ * @file vector.h
+ * @brief Egy kétdimenziós vektort megvalósító osztály headerfájlja.
+ *        Ezt használom az alapvető matematikai műveletekhez, a Boidok pozíciójának, sebességének és gyorsulásának leírásához.
+ */
 
 #include <stdexcept>
 #include <iostream>
@@ -10,7 +13,9 @@
 #include <SFML/System/Vector2.hpp>
 
 /**
- * @brief Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt, nem pedig tárolóként, mint az std::vectort
+ * @class Vector
+ * @brief Az osztály, amely egy kétdimenziós vektort reprezentál.
+ *        Vektorműveletekhez használom ezt az osztályt, nem pedig tárolóként, mint az std::vectort.
  */
 class Vector
 {

@@ -48,3 +48,6 @@ ifeq ($(OS),Windows_NT)
 else
 	rm -f  $(OBJDIR)/*.o $(OBJDIR)/*.d $(BINDIR)/main
 endif
+
+doc: $(SOURCES) $(HEADERS)
+	doxygen
