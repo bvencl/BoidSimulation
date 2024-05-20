@@ -46,13 +46,7 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
 
     Ezután a terminálban kell megadni a szimulációban részt vevő egyedek számát.  
 
-### Zene útvonal megadás
-
-A zenefájl elérési útvonalát a Makefile-ban kell megadni. Mivel a program konkrét elérési útvonalat igényel, ezt manuálisan kell megadni a következő módon:
-
-    MUSICF = path/to/your/favourite/musicfile.ogg
-
-## Memóriaszivárgás problémák
+## Memóriaszivárgás "problémák"
 
 A program az SFML 2.5.1 verzióját használja. Több memóriaszivárgást tesztelő programmal is teszteltem (Memtrace, Dr. Memory, Valgrind), és memóriaszivárgásokat találtam, amelyek az SFML használatából erednek. Ha az SFML-hez kapcsolódó részeket eltávolítjuk, a program nem mutat memóriaszivárgást. Az alábbi forrásokat találtam a probléma megértéséhez, bár még nem sikerült teljesen rájönnöm a memóriaszivárgás okára:
 
