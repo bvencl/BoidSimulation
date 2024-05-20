@@ -1,11 +1,11 @@
 #pragma once
 
-#include "rule.h"
-
 /**
  * @file cohesion.h
  * @brief A Cohesion ("Kohézió") szabály osztályának definíciója és metódusainak deklarációja.
  */
+
+#include "rule.h"
 
 /**
  * @class CohesionRule

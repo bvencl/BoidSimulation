@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hu">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rajzásszimuláció: src/alignmentrule.cpp Forrásfájl</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Rajzásszimuláció<span id="projectnumber">&#160;6.9</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Készítette Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Keresés');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Betöltés...</div>
+<div class="SRStatus" id="Searching">Keresés...</div>
+<div class="SRStatus" id="NoMatches">Nincs egyezés</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">alignmentrule.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="alignmentrule_8cpp.html">Ugrás a fájl dokumentációjához.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="alignmentrule_8h.html">alignmentrule.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="class_alignment_rule.html#aaa585821993a0ee46201b57187765ca0">    3</a></span><a class="code hl_function" href="class_alignment_rule.html#aaa585821993a0ee46201b57187765ca0">AlignmentRule::AlignmentRule</a>(<span class="keywordtype">double</span> rule_strength) : <a class="code hl_class" href="class_rule.html">Rule</a>(rule_strength) {}</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// A szabály szempontjából nehezen értelmezhető függvény, nincsen rá szükség, így nullVectort ad vissza</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><a class="code hl_class" href="class_vector.html">Vector</a> AlignmentRule::calculateRuleStrengthBetweenBoids(<span class="keyword">const</span> <a class="code hl_class" href="class_basic_boid.html">BasicBoid</a> &amp;currentFlockMember, <span class="keyword">const</span> <a class="code hl_class" href="class_basic_boid.html">BasicBoid</a> &amp;individual)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_vector.html#ab643a4abad1bf68ac3b32a7a38e731f9">Vector::nullVector</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>}</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keywordtype">double</span> AlignmentRule::calculateScalingFactor(<span class="keyword">const</span> <a class="code hl_class" href="class_basic_boid.html">BasicBoid</a> &amp;boid, <span class="keywordtype">double</span> affectingMembers, <span class="keywordtype">double</span> sumOfSpeed)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// Amenniyben nincsenek a vizsgált Boid környezetében más boidok, úgy természetesen nulla lesz a scaling factor</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">if</span> (affectingMembers == 0)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// A sebsségek összes hossza / (A befolyásoló egyedek száma * empirikus correction factor)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">return</span> sumOfSpeed / (affectingMembers * <a class="code hl_define" href="alignmentrule_8h.html#a19341d0ef3aa8be135b9b86acc527244">CORRECTIONFACTOR</a>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="ttc" id="aalignmentrule_8h_html"><div class="ttname"><a href="alignmentrule_8h.html">alignmentrule.h</a></div><div class="ttdoc">Az Alignment szabályt leíró osztályt és annak egy metódusának definícióját is tartalmazó header fájl.</div></div>
+<div class="ttc" id="aalignmentrule_8h_html_a19341d0ef3aa8be135b9b86acc527244"><div class="ttname"><a href="alignmentrule_8h.html#a19341d0ef3aa8be135b9b86acc527244">CORRECTIONFACTOR</a></div><div class="ttdeci">#define CORRECTIONFACTOR</div><div class="ttdef"><b>Definition</b> <a href="alignmentrule_8h_source.html#l00012">alignmentrule.h:12</a></div></div>
+<div class="ttc" id="aclass_alignment_rule_html_aaa585821993a0ee46201b57187765ca0"><div class="ttname"><a href="class_alignment_rule.html#aaa585821993a0ee46201b57187765ca0">AlignmentRule::AlignmentRule</a></div><div class="ttdeci">AlignmentRule(double rule_strength=1)</div><div class="ttdoc">Az osztály konstruktora.</div><div class="ttdef"><b>Definition</b> <a href="#l00003">alignmentrule.cpp:3</a></div></div>
+<div class="ttc" id="aclass_basic_boid_html"><div class="ttname"><a href="class_basic_boid.html">BasicBoid</a></div><div class="ttdoc">Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-os &quot;Boid...</div><div class="ttdef"><b>Definition</b> <a href="basicboid_8h_source.html#l00018">basicboid.h:19</a></div></div>
+<div class="ttc" id="aclass_rule_html"><div class="ttname"><a href="class_rule.html">Rule</a></div><div class="ttdoc">Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok ős...</div><div class="ttdef"><b>Definition</b> <a href="rule_8h_source.html#l00019">rule.h:20</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector</a></div><div class="ttdoc">Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt,...</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00020">vector.h:21</a></div></div>
+<div class="ttc" id="aclass_vector_html_ab643a4abad1bf68ac3b32a7a38e731f9"><div class="ttname"><a href="class_vector.html#ab643a4abad1bf68ac3b32a7a38e731f9">Vector::nullVector</a></div><div class="ttdeci">static const Vector nullVector</div><div class="ttdoc">A nullvektor konstans.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00156">vector.h:156</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Készítette&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

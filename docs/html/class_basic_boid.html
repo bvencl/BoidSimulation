@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hu">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rajzásszimuláció: BasicBoid osztályreferencia</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Rajzásszimuláció<span id="projectnumber">&#160;6.9</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Készítette Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Keresés');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Betöltés...</div>
+<div class="SRStatus" id="Searching">Keresés...</div>
+<div class="SRStatus" id="NoMatches">Nincs egyezés</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Publikus tagfüggvények</a> &#124;
+<a href="class_basic_boid-members.html">A tagok teljes listája</a>  </div>
+  <div class="headertitle"><div class="title">BasicBoid osztályreferencia</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-os "Boids" mesterséges élet projektje után kapta nevét. Későbbi bővítés miatt kapta a "Basic" Boid nevet, ugyanis később több különféle, más viselkedéseket mutató Boidot is hozzá lehetne majd adni a programhoz.  
+ <a href="#details">Részletek...</a></p>
+
+<p><code>#include &lt;<a class="el" href="basicboid_8h_source.html">basicboid.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Publikus tagfüggvények</h2></td></tr>
+<tr class="memitem:a94367c76ba052c50a0967e14fe8af580" id="r_a94367c76ba052c50a0967e14fe8af580"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94367c76ba052c50a0967e14fe8af580">BasicBoid</a> (double mass, <a class="el" href="class_vector.html">Vector</a> starting_position, <a class="el" href="class_vector.html">Vector</a> starting_speed, <a class="el" href="class_vector.html">Vector</a> starting_acceleration)</td></tr>
+<tr class="memdesc:a94367c76ba052c50a0967e14fe8af580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boid konstruktora, amelyet a kezdeti tesztelésnél könnyebbség kedvéért 1 double értéket és 3 vektort várt. A végső implementációban ennek már nem nagyon van szerepe.  <br /></td></tr>
+<tr class="separator:a94367c76ba052c50a0967e14fe8af580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb436ba172e74e5054f9a20fc88d680c" id="r_afb436ba172e74e5054f9a20fc88d680c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb436ba172e74e5054f9a20fc88d680c">BasicBoid</a> (double mass=1, double starting_position_x=0, double starting_position_y=0, double speed_x=0, double speed_y=0, double acceleration_x=0, double acceleration_y=0)</td></tr>
+<tr class="memdesc:afb436ba172e74e5054f9a20fc88d680c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boid osztály fő konstruktora, a program ezt használja Boidok létrehozására. Egyben default konstruktor is.  <br /></td></tr>
+<tr class="separator:afb436ba172e74e5054f9a20fc88d680c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6602f0a063a7e51bd59e4c6b1f0105c5" id="r_a6602f0a063a7e51bd59e4c6b1f0105c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector.html">Vector</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6602f0a063a7e51bd59e4c6b1f0105c5">getSpeed</a> () const</td></tr>
+<tr class="memdesc:a6602f0a063a7e51bd59e4c6b1f0105c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boid sebességét visszaadó függvény.  <br /></td></tr>
+<tr class="separator:a6602f0a063a7e51bd59e4c6b1f0105c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b677df49060a02084a34864d288d732" id="r_a3b677df49060a02084a34864d288d732"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector.html">Vector</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b677df49060a02084a34864d288d732">getAcceleration</a> () const</td></tr>
+<tr class="memdesc:a3b677df49060a02084a34864d288d732"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boid gyorsulását visszaadó függvény.  <br /></td></tr>
+<tr class="separator:a3b677df49060a02084a34864d288d732"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a172fdef0bccd339ec78098542073e" id="r_a13a172fdef0bccd339ec78098542073e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector.html">Vector</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13a172fdef0bccd339ec78098542073e">getPosition</a> () const</td></tr>
+<tr class="memdesc:a13a172fdef0bccd339ec78098542073e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boid pozícióját visszaadó függvény.  <br /></td></tr>
+<tr class="separator:a13a172fdef0bccd339ec78098542073e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf1c9dcff361ccf8ec6494c238cce988" id="r_aaf1c9dcff361ccf8ec6494c238cce988"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf1c9dcff361ccf8ec6494c238cce988">getMass</a> () const</td></tr>
+<tr class="memdesc:aaf1c9dcff361ccf8ec6494c238cce988"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boid tömegét (és ezzel méretét is) visszaadó függvény.  <br /></td></tr>
+<tr class="separator:aaf1c9dcff361ccf8ec6494c238cce988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac001d9cd6fc44172c6e286399ab7aebb" id="r_ac001d9cd6fc44172c6e286399ab7aebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac001d9cd6fc44172c6e286399ab7aebb">boidPrint</a> (std::ostream &amp;os) const</td></tr>
+<tr class="memdesc:ac001d9cd6fc44172c6e286399ab7aebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boidok pozícióját, sebességét és gyorsulását kiíró függvény, hibakeresésnél rendkívül hasznos lehet.  <br /></td></tr>
+<tr class="separator:ac001d9cd6fc44172c6e286399ab7aebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2373872358891c59d21b1523e78e6a32" id="r_a2373872358891c59d21b1523e78e6a32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2373872358891c59d21b1523e78e6a32">MyTurn</a> (<a class="el" href="class_vector.html">Vector</a> acceleration, double dT)</td></tr>
+<tr class="memdesc:a2373872358891c59d21b1523e78e6a32"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Boidok mozgásáért felelős függvény. Ez frissíti és számolja a szabályok által szolgáltatott gyorsulás komponenssel a Boid gyorsulását, sebességét, majd pozícióját. A moveFlock() függvény által szolgáltatott dT idővel működik.  <br /></td></tr>
+<tr class="separator:a2373872358891c59d21b1523e78e6a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64646550b7ef23eeebae9a5a91c65104" id="r_a64646550b7ef23eeebae9a5a91c65104"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64646550b7ef23eeebae9a5a91c65104">operator==</a> (const <a class="el" href="class_basic_boid.html">BasicBoid</a> &amp;other) const</td></tr>
+<tr class="memdesc:a64646550b7ef23eeebae9a5a91c65104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boidok egyenlőségét vizsgáló függvény. A nyájban történő nyilvántartásuknál használatos leginkább.  <br /></td></tr>
+<tr class="separator:a64646550b7ef23eeebae9a5a91c65104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Részletes leírás</h2>
+<div class="textblock"><p>Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-os "Boids" mesterséges élet projektje után kapta nevét. Későbbi bővítés miatt kapta a "Basic" Boid nevet, ugyanis később több különféle, más viselkedéseket mutató Boidot is hozzá lehetne majd adni a programhoz. </p>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8h_source.html">basicboid.h</a> fájl <a class="el" href="basicboid_8h_source.html#l00018">18</a>. sorában.</p>
+</div><h2 class="groupheader">Konstruktorok és destruktorok dokumentációja</h2>
+<a id="a94367c76ba052c50a0967e14fe8af580" name="a94367c76ba052c50a0967e14fe8af580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94367c76ba052c50a0967e14fe8af580">&#9670;&#160;</a></span>BasicBoid() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BasicBoid::BasicBoid </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>mass</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a></td>          <td class="paramname"><span class="paramname"><em>starting_position</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a></td>          <td class="paramname"><span class="paramname"><em>starting_speed</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a></td>          <td class="paramname"><span class="paramname"><em>starting_acceleration</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boid konstruktora, amelyet a kezdeti tesztelésnél könnyebbség kedvéért 1 double értéket és 3 vektort várt. A végső implementációban ennek már nem nagyon van szerepe. </p>
+<dl class="params"><dt>Paraméterek</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mass</td><td>A Boid tömege. </td></tr>
+    <tr><td class="paramname">starting_position</td><td>A Boid kezdő pozíciója. </td></tr>
+    <tr><td class="paramname">starting_speed</td><td>A Boid kezdő sebessége. </td></tr>
+    <tr><td class="paramname">starting_acceleration</td><td>A Boid kezdő gyorsulása. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00011">11</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>    : speed(starting_speed),</div>
+<div class="line"><span class="lineno">   13</span>      acceleration(starting_acceleration),</div>
+<div class="line"><span class="lineno">   14</span>      currentPosition(starting_position),</div>
+<div class="line"><span class="lineno">   15</span>      mass(mass)</div>
+<div class="line"><span class="lineno">   16</span>{</div>
+<div class="line"><span class="lineno">   17</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afb436ba172e74e5054f9a20fc88d680c" name="afb436ba172e74e5054f9a20fc88d680c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb436ba172e74e5054f9a20fc88d680c">&#9670;&#160;</a></span>BasicBoid() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BasicBoid::BasicBoid </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>mass</em><span class="paramdefsep"> = </span><span class="paramdefval">1</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>starting_position_x</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>starting_position_y</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>speed_x</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>speed_y</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>acceleration_x</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>acceleration_y</em><span class="paramdefsep"> = </span><span class="paramdefval">0</span></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boid osztály fő konstruktora, a program ezt használja Boidok létrehozására. Egyben default konstruktor is. </p>
+<dl class="params"><dt>Paraméterek</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mass</td><td>A Boid tömege (alapértelmezetten 1). </td></tr>
+    <tr><td class="paramname">starting_position_x</td><td>A kezdő pozíció x koordinátája (alapértelmezetten 0). </td></tr>
+    <tr><td class="paramname">starting_position_y</td><td>A kezdő pozíció y koordinátája (alapértelmezetten 0). </td></tr>
+    <tr><td class="paramname">speed_x</td><td>A kezdő sebesség x koordinátája (alapértelmezetten 0). </td></tr>
+    <tr><td class="paramname">speed_y</td><td>A kezdő sebesség y koordinátája (alapértelmezetten 0). </td></tr>
+    <tr><td class="paramname">acceleration_x</td><td>A kezdő gyorsulás x koordinátája (alapértelmezetten 0). </td></tr>
+    <tr><td class="paramname">acceleration_y</td><td>A kezdő gyorsulás y koordinátája (alapértelmezetten 0). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00003">3</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">    4</span>    : speed(speed_x, speed_y),</div>
+<div class="line"><span class="lineno">    5</span>      acceleration(acceleration_x, acceleration_y),</div>
+<div class="line"><span class="lineno">    6</span>      currentPosition(starting_position_x, starting_position_y),</div>
+<div class="line"><span class="lineno">    7</span>      mass(mass)</div>
+<div class="line"><span class="lineno">    8</span>{</div>
+<div class="line"><span class="lineno">    9</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Tagfüggvények dokumentációja</h2>
+<a id="ac001d9cd6fc44172c6e286399ab7aebb" name="ac001d9cd6fc44172c6e286399ab7aebb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac001d9cd6fc44172c6e286399ab7aebb">&#9670;&#160;</a></span>boidPrint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BasicBoid::boidPrint </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boidok pozícióját, sebességét és gyorsulását kiíró függvény, hibakeresésnél rendkívül hasznos lehet. </p>
+<dl class="params"><dt>Paraméterek</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Az ostream objektum, amelybe kiírjuk az aktuális Boid adatait. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00039">39</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    os &lt;&lt; <span class="stringliteral">&quot;    CP: &quot;</span> &lt;&lt; <a class="code hl_function" href="#a13a172fdef0bccd339ec78098542073e">getPosition</a>()</div>
+<div class="line"><span class="lineno">   42</span>       &lt;&lt; <span class="stringliteral">&quot;    SP: &quot;</span> &lt;&lt; <a class="code hl_function" href="#a6602f0a063a7e51bd59e4c6b1f0105c5">getSpeed</a>()</div>
+<div class="line"><span class="lineno">   43</span>       &lt;&lt; <span class="stringliteral">&quot;    ACC: &quot;</span> &lt;&lt; <a class="code hl_function" href="#a3b677df49060a02084a34864d288d732">getAcceleration</a>();</div>
+<div class="line"><span class="lineno">   44</span>}</div>
+<div class="ttc" id="aclass_basic_boid_html_a13a172fdef0bccd339ec78098542073e"><div class="ttname"><a href="#a13a172fdef0bccd339ec78098542073e">BasicBoid::getPosition</a></div><div class="ttdeci">Vector const &amp; getPosition() const</div><div class="ttdoc">A Boid pozícióját visszaadó függvény.</div><div class="ttdef"><b>Definition</b> <a href="basicboid_8cpp_source.html#l00029">basicboid.cpp:29</a></div></div>
+<div class="ttc" id="aclass_basic_boid_html_a3b677df49060a02084a34864d288d732"><div class="ttname"><a href="#a3b677df49060a02084a34864d288d732">BasicBoid::getAcceleration</a></div><div class="ttdeci">Vector const &amp; getAcceleration() const</div><div class="ttdoc">A Boid gyorsulását visszaadó függvény.</div><div class="ttdef"><b>Definition</b> <a href="basicboid_8cpp_source.html#l00024">basicboid.cpp:24</a></div></div>
+<div class="ttc" id="aclass_basic_boid_html_a6602f0a063a7e51bd59e4c6b1f0105c5"><div class="ttname"><a href="#a6602f0a063a7e51bd59e4c6b1f0105c5">BasicBoid::getSpeed</a></div><div class="ttdeci">Vector const &amp; getSpeed() const</div><div class="ttdoc">A Boid sebességét visszaadó függvény.</div><div class="ttdef"><b>Definition</b> <a href="basicboid_8cpp_source.html#l00019">basicboid.cpp:19</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3b677df49060a02084a34864d288d732" name="a3b677df49060a02084a34864d288d732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b677df49060a02084a34864d288d732">&#9670;&#160;</a></span>getAcceleration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector.html">Vector</a> const  &amp; BasicBoid::getAcceleration </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boid gyorsulását visszaadó függvény. </p>
+<dl class="section return"><dt>Visszatérési érték</dt><dd>A Boid gyorsulása. </dd></dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00024">24</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> acceleration;</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aaf1c9dcff361ccf8ec6494c238cce988" name="aaf1c9dcff361ccf8ec6494c238cce988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf1c9dcff361ccf8ec6494c238cce988">&#9670;&#160;</a></span>getMass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double BasicBoid::getMass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boid tömegét (és ezzel méretét is) visszaadó függvény. </p>
+<dl class="section return"><dt>Visszatérési érték</dt><dd>A Boid tömege. </dd></dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00034">34</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> mass;</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a13a172fdef0bccd339ec78098542073e" name="a13a172fdef0bccd339ec78098542073e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a172fdef0bccd339ec78098542073e">&#9670;&#160;</a></span>getPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector.html">Vector</a> const  &amp; BasicBoid::getPosition </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boid pozícióját visszaadó függvény. </p>
+<dl class="section return"><dt>Visszatérési érték</dt><dd>A Boid pozíciója. </dd></dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00029">29</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> currentPosition;</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6602f0a063a7e51bd59e4c6b1f0105c5" name="a6602f0a063a7e51bd59e4c6b1f0105c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6602f0a063a7e51bd59e4c6b1f0105c5">&#9670;&#160;</a></span>getSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector.html">Vector</a> const  &amp; BasicBoid::getSpeed </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boid sebességét visszaadó függvény. </p>
+<dl class="section return"><dt>Visszatérési érték</dt><dd>A Boid sebessége. </dd></dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00019">19</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">return</span> speed;</div>
+<div class="line"><span class="lineno">   22</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2373872358891c59d21b1523e78e6a32" name="a2373872358891c59d21b1523e78e6a32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2373872358891c59d21b1523e78e6a32">&#9670;&#160;</a></span>MyTurn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BasicBoid::MyTurn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vector.html">Vector</a></td>          <td class="paramname"><span class="paramname"><em>acceleration</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>dT</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A Boidok mozgásáért felelős függvény. Ez frissíti és számolja a szabályok által szolgáltatott gyorsulás komponenssel a Boid gyorsulását, sebességét, majd pozícióját. A moveFlock() függvény által szolgáltatott dT idővel működik. </p>
+<dl class="params"><dt>Paraméterek</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">acceleration</td><td>Az új gyorsulás vektor. </td></tr>
+    <tr><td class="paramname">dT</td><td>Az eltelt idő. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00053">53</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
+<div class="line"><span class="lineno">   55</span>    acceleration = calculatedSumOfRules; <span class="comment">// A Boid gyorsulását felülírjuk az újonnal számított gyorsulással,</span></div>
+<div class="line"><span class="lineno">   56</span>                                         <span class="comment">// ugyanis a gyorsulás minden időpillanatban változhat, a sebességre viszont ez nem igaz</span></div>
+<div class="line"><span class="lineno">   57</span>    speed += (acceleration * dT);        <span class="comment">// Itt a sebességhez hozzáadjuk az új sebességet. Szakszerűtlenül mondva a gyorsulás integrálását végezzük el</span></div>
+<div class="line"><span class="lineno">   58</span>    currentPosition += speed * dT;       <span class="comment">// Itt változtatjuk meg a Boid pozícióját. Ugyancsak szekszerűtlenül mondva, itt a Boid sebességének integrálását végezzük el</span></div>
+<div class="line"><span class="lineno">   59</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a64646550b7ef23eeebae9a5a91c65104" name="a64646550b7ef23eeebae9a5a91c65104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64646550b7ef23eeebae9a5a91c65104">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BasicBoid::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_basic_boid.html">BasicBoid</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boidok egyenlőségét vizsgáló függvény. A nyájban történő nyilvántartásuknál használatos leginkább. </p>
+<dl class="params"><dt>Paraméterek</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>A másik Boid, amelyet összehasonlítunk az aktuális Boiddal. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Visszatérési érték</dt><dd>True, ha a Boidok egyenlőek, különben false. </dd></dl>
+
+<p class="definition">Definíció a(z) <a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a> fájl <a class="el" href="basicboid_8cpp_source.html#l00061">61</a>. sorában.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">return</span> <span class="keyword">this</span> == &amp;other;</div>
+<div class="line"><span class="lineno">   64</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>Ez a dokumentáció az osztályról a következő fájlok alapján készült:<ul>
+<li>includes/<a class="el" href="basicboid_8h_source.html">basicboid.h</a></li>
+<li>src/<a class="el" href="basicboid_8cpp_source.html">basicboid.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Készítette&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

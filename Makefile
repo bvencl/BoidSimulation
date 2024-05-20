@@ -1,13 +1,11 @@
-	MUSICF = codes/zenejo.ogg
+	MUSICF = zenejo.ogg
 
 ifeq ($(OS),Windows_NT)
 	SFML_ROOT = C:\Users\venib\vcpkg\buildtrees\sfml\src
-	# MUSICF = C:\\git\\HAZI\\codes\\zenejo.ogg
 	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH="\"$(MUSICF)\""
 	# LDFLAGS += $(SFML_ROOT)/bin
 	# CXXFLAGS += -I$(SFML_ROOT)/include
 else
-	MUSICF = /home/vncl/git/VBW5N9_nagy_hazi_feladat/codes/zenejo.ogg
 	MUSIC_FILE_PATH_DEF = -DMUSIC_FILE_PATH=\"$(MUSICF)\"
 endif
 
