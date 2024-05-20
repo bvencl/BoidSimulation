@@ -1,4 +1,5 @@
 #include "flock.h"
+#include <iterator>
 
 Flock::Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alingment)
     : chase(flock_chasing_coefficient),
@@ -27,15 +28,18 @@ bool Flock::isMemberOfFlock(const BasicBoid &boid) const
 }
 
 /*
-Az std:: remove függvény először úgy rendezi a vectort, hogy az elejére kerüljenek a nem eltávolítandó elemek, és a végére kerüljenek az
-eltávolítandóak. Ez után visszaad egy iterátort a vector új végére, és ezt használja fel az std::erase függvény, amely ténylegesen eltávolítja
-az eltávolítandó Boidot a vectorból. Amennyiben olyat távolítanánk el, ami nincs is benne, azt csendesen kezelik a remove és erase függvények,
-nem módosítják a vectort.
+Az std:: remove függvény először úgy rendezi a választott tárolót, hogy az elejére kerüljenek a nem eltávolítandó elemek, és a végére kerüljenek az
+eltávolítandóak. Ez után visszaad egy iterátort a választott tároló új végére, és ezt használja fel az std::erase függvény, amely ténylegesen eltávolítja
+az eltávolítandó Boidot a választott tárolóból. Amennyiben olyat távolítanánk el, ami nincs is benne, azt csendesen kezelik a remove és erase függvények,
+nem módosítják a tárolót.
 */
 void Flock::remove(const BasicBoid &boid)
 {
     flockMembers.erase(std::remove(flockMembers.begin(), flockMembers.end(), boid), flockMembers.end());
 }
+
+// flock-ban lévő boidok mozgatásáért felelős függvény. működik mind std::vectorra, mind std::list-re is
+// TODO: Legyenen dinamikusan tárolva a flock szabályai, ezzel itt annyi változik, hogy egy dupla ciklusban boidonként-és szabályonként megyünk
 
 void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
 {
@@ -52,22 +56,28 @@ void Flock::moveFlock(double dT, const sf::Vector2i &mousePosition)
     }
 }
 
+// std::vectorra és std::list-re is működő op[], a kiíratásnál lehet hasznos
 BasicBoid &Flock::operator[](size_t i)
 {
     if (i >= flockMembers.size())
     {
         throw std::out_of_range("Index out of range in Flock::operator[]: " + std::to_string(i));
     }
-    return flockMembers[i];
+    // return flockMembers[i];
+    auto It = std::next(flockMembers.begin(), i);
+    return *It;
 }
 
+// std::vectorra és std::list-re is működő konstans op[], a kiíratásnál lehet hasznos
 BasicBoid const &Flock::operator[](size_t i) const
 {
     if (i >= flockMembers.size())
     {
         throw std::out_of_range("Index out of range in Flock::operator[] const: " + std::to_string(i));
     }
-    return flockMembers[i];
+    // return flockMembers[i];
+    auto It = std::next(flockMembers.begin(), i);
+    return *It;
 }
 
 size_t Flock::flockSize() const
