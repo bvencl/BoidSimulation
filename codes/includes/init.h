@@ -6,6 +6,6 @@
 
 void initFlock(Flock &, double, double);
 
-void initGraphics(std::vector<sf::CircleShape> &, Flock &);
+void initGraphics(std::vector<sf::CircleShape> &, Flock &, sf::Color);
 
 void initMusic(sf::Music &);

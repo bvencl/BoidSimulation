@@ -49,11 +49,13 @@ std::ostream &operator<<(std::ostream &os, BasicBoid const &boid)
     return os;
 }
 
+// Itt történik a Boid tényleges mozgatása.
 void BasicBoid::MyTurn(Vector calculatedSumOfRules, double dT)
 {
-    acceleration = calculatedSumOfRules;
-    speed += (acceleration * dT);
-    currentPosition += speed * dT;
+    acceleration = calculatedSumOfRules; // A Boid gyorsulását felülírjuk az újonnal számított gyorsulással,
+                                         // ugyanis a gyorsulás minden időpillanatban változhat, a sebességre viszont ez nem igaz
+    speed += (acceleration * dT);        // Itt a sebességhez hozzáadjuk az új sebességet. Szakszerűtlenül mondva a gyorsulás integrálását végezzük el
+    currentPosition += speed * dT;       // Itt változtatjuk meg a Boid pozícióját. Ugyancsak szekszerűtlenül mondva, itt a Boid sebességének integrálását végezzük el
 }
 
 bool BasicBoid::operator==(const BasicBoid &other) const
