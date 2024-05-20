@@ -30,12 +30,3 @@ void initFlock(Flock &flock, double width, double height);
  * @param color A Boidok színe.
  */
 void initGraphics(std::vector<sf::CircleShape> &graphics, Flock &flock, sf::Color color);
-
-/**
- * @brief A zenét megkereső függvény.
- * 
- * Inicializálja és betölti a szükséges zenefájlokat.
- * 
- * @param music Az sf::Music objektum, amelyet inicializálunk.
- */
-void initMusic(sf::Music &music);

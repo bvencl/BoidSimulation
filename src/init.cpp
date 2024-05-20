@@ -28,10 +28,3 @@ void initGraphics(std::vector<sf::CircleShape> &boids, Flock &flock, sf::Color c
         boids.push_back(shape);
     }
 }
-
-// A zene inicializálásáért felelős függvény.
-void initMusic(sf::Music &music)
-{
-    if (!music.openFromFile(MUSIC_FILE_PATH)) // Amennyiben nem találja a zenét, vagy az nem támogatott az sfml által nem áll le a program, hanem hibát dob.
-        throw std::runtime_error("Couldnt open music");
-}

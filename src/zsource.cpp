@@ -22,18 +22,6 @@ int main(int argc, char *argv[])
 
     // Itt történik az ablak létrehozása a megadott szélességgel és magassággal.
     sf::RenderWindow window(sf::VideoMode(width, height), "Ugye milyen szepek?");
-    try
-    {
-        // Zene inicializálása. Mivel a zene nem lényegi része a programnak, így nem olyan hatalmas probléma ha nem indul el,
-        // a program emiatt ne álljon le, ezért csak egy kivételt dob ha nem sikerül, és bár nagyon szomorkodva, de továbblépünk
-        initMusic(music);
-        // A zenét a program elején egyszer elindítjuk.
-        music.play();
-    }
-    catch (std::runtime_error &musicerror)
-    {
-        std::cerr << musicerror.what() << std::endl;
-    }
 
     sf::Clock engineTime;
     double dT = 0.0;
