@@ -1,6 +1,5 @@
 #include "separationrule.h"
 
-
 SeparationRule::SeparationRule(double rule_strength) : Rule<SeparationRule>(rule_strength) {}
 
 Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &currentFlockMember, const BasicBoid &individual) const
@@ -28,18 +27,18 @@ Vector SeparationRule::calculateRuleStrengthBetweenBoids(const BasicBoid &curren
 
     //! Az alábbi képletek empirikusan vannak meghatározva, így tudtam a "talán legtermészetesebb" hatást elérni
     //  Ha nagyon közel vannak egymáshoz
-    if (distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + DESIRED_MINIMAL_DISTANCE / 3) // (azért arányos a súlyukkal,
-    {                                                                                                          // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg)
-        scalingFactor = EMPIRIC_SCALING_VALUE;                                                                 // Empirikusan választott scalingFactor erre az eshetőségre
+    if (distance <= individual.getMass() + currentFlockMember.getMass() + DESIRED_MINIMAL_DISTANCE / 3) // (azért arányos a súlyukkal,
+    {                                                                                                   // mert az ábrázolásnál a méretük (kör sugara) a súlyukkal egyezik meg)
+        scalingFactor = EMPIRIC_SCALING_VALUE;                                                          // Empirikusan választott scalingFactor erre az eshetőségre
     }
     // Amennyiben azért valamennyire távolabb vannak egymástól
-    else if (distance > individual.getMass() / 2 + currentFlockMember.getMass() / 2 + DESIRED_MINIMAL_DISTANCE / 3 && distance < individual.getMass() / 2 + currentFlockMember.getMass() / 2 + DESIRED_MINIMAL_DISTANCE) // Ha kicsit távolabb vannak azért
+    else if (distance >= individual.getMass() + currentFlockMember.getMass() + DESIRED_MINIMAL_DISTANCE / 3 && distance <= individual.getMass() + currentFlockMember.getMass() + DESIRED_MINIMAL_DISTANCE) // Ha kicsit távolabb vannak azért
     {
         scalingFactor = 1.0 / (distance - (individual.getMass() + currentFlockMember.getMass())); // 1 / (Távolság - Boidok méretének (őket reprezentáló körök sugarainak hosszának) összege)
     }
 
     // Amennyiben már elég távol vannak, és a vizsgált egyed "előtt" helyezkedik el, azaz benne van annak +- 60 fokos látószögében
-    else if (individual.getMass() / 2 + currentFlockMember.getMass() / 2 + DESIRED_MINIMAL_DISTANCE < distance && direction.angleWith(individual.getSpeed()) > M_PI / 3)
+    else if (individual.getMass() + currentFlockMember.getMass() + DESIRED_MINIMAL_DISTANCE <= distance && direction.angleWith(individual.getSpeed()) <= M_PI / 3)
     {
         scalingFactor = currentFlockMember.getMass() * individual.getMass() / (distance * distance); // (Boidok mérete) / (távolság^2)
     }

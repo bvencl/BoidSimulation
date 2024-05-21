@@ -21,34 +21,29 @@ Vector ChasingRule::calculateRuleForIndividual(const BasicBoid &boid, const sf::
     }
     catch (std::runtime_error &rte)
     {
+        // ha nulla hosszal osztanánk le, akkor úgyis nulla körüli gyorsulást adnánk vissza
         std::cerr << rte.what() << '\n';
         return Vector::nullVector;
     }
 
+    Vector speedOfBoid = boid.getSpeed();
+
+    // Alapesetben a gyorsulás megfelel az irányvektor és a távolság szoratának
     Vector acceleration = direction * distance;
 
-    // if (boid.getSpeed().getLength() > distance && distance < 300)
-    // {
-
-    //     double correctionFactor = -breakingForce * boid.getSpeed().getLength();                    // Erős fékezés a sebességgel ellentétes irányba
-    //     if ((!direction.projectionOnto(boid.getSpeed()).isNull()) && abs(correctionFactor) > 1e-6) // Amennyiben a sebesség nem null, és a correctionFactor sem közel nulla:
-    //         acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor;           // Vesszük a gyorsulás vetületés a sebességre, majd megszorozzuk a correctionFactorral,
-    // }
-
-    // Amennyiben az irány és a Boid sebességének skaláris szorzata
-    if (boid.getSpeed() * direction < 0) // Ezért van az a furcsa hirtelen fékezés hatás
+    // Amennyiben az irány és a Boid sebességének skaláris szorzata negatív
+    if (speedOfBoid * direction < 0) // Emiatt érzékelhetjük azt a "megrántás" szerű fékezését a Boidoknak, amikor túllőnek
     {
-        double correctionFactor = breakingForce;
-        acceleration = acceleration * correctionFactor;
+        acceleration = acceleration * breakingForce;
     }
 
-    // Amennyiben a sebesség ötöde nagyobb, mint a céltól való távolság, és a sebesség és irány skaláris szorzata kisebb mint nulla
-    if (boid.getSpeed().getLength() / 5 > distance && direction * boid.getSpeed() > 0)
+    // Amennyiben a sebesség harmada nagyobb, mint a céltól való távolság, és a sebesség és irány skaláris szorzata nagyobb mint nulla
+    if (speedOfBoid.getLength() / 3 > distance && direction * speedOfBoid > 0)
     {
-        double correctionFactor = -breakingForce * boid.getSpeed().getLength();                         // Erős fékezés a sebességgel ellentétes irányba
-        if ((!direction.projectionOnto(boid.getSpeed()).isNull()) && std::abs(correctionFactor) > 1e-6) // Amennyiben a sebesség nem null, és a correctionFactor sem közel nulla:
-            acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor;                // Vesszük a gyorsulás vetületés a sebességre, majd megszorozzuk a correctionFactorral,
-        /**/                                                                                            // ami negatív, így a sebességgel ellentétes irányba fog mutatni a gyorsulás
+        double correctionFactor = -breakingForce * speedOfBoid.getLength();          // Erős fékezés a sebességgel ellentétes irányba
+        acceleration = direction.projectionOnto(boid.getSpeed()) * correctionFactor; // Vesszük az irányvektor vetületét a sebességre, majd megszorozzuk a correctionFactorral,
+        /**/                                                                         // ami negatív, így a sebességgel ellentétes irányba fog mutatni a gyorsulás, azaz lassulunk
     }
+
     return acceleration * ruleStrength;
 }
