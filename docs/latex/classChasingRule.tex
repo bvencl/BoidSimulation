@@ -1,0 +1,154 @@
+\hypertarget{classChasingRule}{}\doxysection{Chasing\+Rule osztályreferencia}
+\label{classChasingRule}\index{ChasingRule@{ChasingRule}}
+
+
+Az az osztály, amely a Chasing (\char`\"{}Üldözés\char`\"{}) szabályt valósítja meg. Erre a szabályra fektettem a legnagyobb hangsúlyt, ugyanis ez a leglátványosabb a szabályok közül.  
+
+
+
+
+{\ttfamily \#include $<$chasingrule.\+h$>$}
+
+\doxysubsection*{Publikus tagfüggvények}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classChasingRule_a2049375a63314ac57cc666f7065e6174}{Chasing\+Rule}} (double rule\+\_\+strength=1)
+\begin{DoxyCompactList}\small\item\em A szabály konstruktora. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classChasingRule_a5aa4654573596d9bfc3e42e239f78cde}{calculate\+Rule\+For\+Individual}} (const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&individual, const sf\+::\+Vector2i \&mouse\+Position)
+\begin{DoxyCompactList}\small\item\em Ez a függvény számolja a szabály által szolgáltatott gyorsulás komponenst a Boidok mozgásához. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classChasingRule_a50766fe75cb2059a06b6d363cc57c8f9}{get\+Rule\+Strength}} () const
+\begin{DoxyCompactList}\small\item\em A szabály erősségét visszaadó függvény. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Részletes leírás}
+Az az osztály, amely a Chasing (\char`\"{}Üldözés\char`\"{}) szabályt valósítja meg. Erre a szabályra fektettem a legnagyobb hangsúlyt, ugyanis ez a leglátványosabb a szabályok közül. 
+
+Ez az osztály azért nem származik a \mbox{\hyperlink{classRule}{Rule}} osztályból, mert ez nem az egyes Boidok között hat, így nagyon másak a metódusai, és nagyon nehezen lehetett volna abból származtatni. 
+
+Definíció a(z) chasingrule.\+h fájl 18. sorában.
+
+
+
+\doxysubsection{Konstruktorok és destruktorok dokumentációja}
+\mbox{\Hypertarget{classChasingRule_a2049375a63314ac57cc666f7065e6174}\label{classChasingRule_a2049375a63314ac57cc666f7065e6174}} 
+\index{ChasingRule@{ChasingRule}!ChasingRule@{ChasingRule}}
+\index{ChasingRule@{ChasingRule}!ChasingRule@{ChasingRule}}
+\doxysubsubsection{\texorpdfstring{ChasingRule()}{ChasingRule()}}
+{\footnotesize\ttfamily Chasing\+Rule\+::\+Chasing\+Rule (\begin{DoxyParamCaption}\item[{double}]{rule\+\_\+strength = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+A szabály konstruktora. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em rule\+\_\+strength} & A szabály erőssége (alapértelmezetten 1). \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) chasingrule.\+cpp fájl 5. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5 : ruleStrength(rule\_strength) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Tagfüggvények dokumentációja}
+\mbox{\Hypertarget{classChasingRule_a5aa4654573596d9bfc3e42e239f78cde}\label{classChasingRule_a5aa4654573596d9bfc3e42e239f78cde}} 
+\index{ChasingRule@{ChasingRule}!calculateRuleForIndividual@{calculateRuleForIndividual}}
+\index{calculateRuleForIndividual@{calculateRuleForIndividual}!ChasingRule@{ChasingRule}}
+\doxysubsubsection{\texorpdfstring{calculateRuleForIndividual()}{calculateRuleForIndividual()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} Chasing\+Rule\+::calculate\+Rule\+For\+Individual (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{individual,  }\item[{const sf\+::\+Vector2i \&}]{mouse\+Position }\end{DoxyParamCaption})}
+
+
+
+Ez a függvény számolja a szabály által szolgáltatott gyorsulás komponenst a Boidok mozgásához. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em individual} & Az egyed, amelyre éppen a komponenst számolni kell. \\
+\hline
+{\em mouse\+Position} & Az egér pozíciója az ablakhoz képest. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály által számolt gyorsulás komponens. 
+\end{DoxyReturn}
+
+
+Definíció a(z) chasingrule.\+cpp fájl 12. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13 \{}
+\DoxyCodeLine{14     \mbox{\hyperlink{classVector}{Vector}} target(mousePosition.x, mousePosition.y);}
+\DoxyCodeLine{15     \mbox{\hyperlink{classVector}{Vector}} direction = target -\/ boid.getPosition();}
+\DoxyCodeLine{16     \textcolor{keywordtype}{double} distance = direction.\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}();}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         direction.\mbox{\hyperlink{classVector_a94db098c1a77891b06718776e5e493b4}{normaliastion}}();}
+\DoxyCodeLine{21     \}}
+\DoxyCodeLine{22     \textcolor{keywordflow}{catch} (std::runtime\_error \&rte)}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         \textcolor{comment}{// ha nulla hosszal osztanánk le, akkor úgyis nulla körüli gyorsulást adnánk vissza}}
+\DoxyCodeLine{25         std::cerr << rte.what() << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector_ab643a4abad1bf68ac3b32a7a38e731f9}{Vector::nullVector}};}
+\DoxyCodeLine{27     \}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \mbox{\hyperlink{classVector}{Vector}} speedOfBoid = boid.getSpeed();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{comment}{// Alapesetben a gyorsulás megfelel az irányvektor és a távolság szoratának}}
+\DoxyCodeLine{32     \mbox{\hyperlink{classVector}{Vector}} acceleration = direction * distance;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// Amennyiben az irány és a Boid sebességének skaláris szorzata negatív}}
+\DoxyCodeLine{35     \textcolor{keywordflow}{if} (speedOfBoid * direction < 0) \textcolor{comment}{// Emiatt érzékelhetjük azt a "{}megrántás"{} szerű fékezését a Boidoknak, amikor túllőnek}}
+\DoxyCodeLine{36     \{}
+\DoxyCodeLine{37         acceleration = acceleration * \mbox{\hyperlink{chasingrule_8cpp_aa57c02bb5913c0174e18e8ab68878872}{breakingForce}};}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{comment}{// Amennyiben a sebesség harmada nagyobb, mint a céltól való távolság, és a sebesség és irány skaláris szorzata nagyobb mint nulla}}
+\DoxyCodeLine{41     \textcolor{keywordflow}{if} (speedOfBoid.\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}() / 3 > distance \&\& direction * speedOfBoid > 0)}
+\DoxyCodeLine{42     \{}
+\DoxyCodeLine{43         \textcolor{keywordtype}{double} correctionFactor = -\/\mbox{\hyperlink{chasingrule_8cpp_aa57c02bb5913c0174e18e8ab68878872}{breakingForce}} * speedOfBoid.\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}();          \textcolor{comment}{// Erős fékezés a sebességgel ellentétes irányba}}
+\DoxyCodeLine{44         acceleration = direction.\mbox{\hyperlink{classVector_a6ecd13d67650ca1f1c891691b940be53}{projectionOnto}}(boid.getSpeed()) * correctionFactor; \textcolor{comment}{// Vesszük az irányvektor vetületét a sebességre, majd megszorozzuk a correctionFactorral,}}
+\DoxyCodeLine{45                                                                                  \textcolor{comment}{// ami negatív, így a sebességgel ellentétes irányba fog mutatni a gyorsulás, azaz lassulunk}}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} acceleration * ruleStrength;}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classChasingRule_a50766fe75cb2059a06b6d363cc57c8f9}\label{classChasingRule_a50766fe75cb2059a06b6d363cc57c8f9}} 
+\index{ChasingRule@{ChasingRule}!getRuleStrength@{getRuleStrength}}
+\index{getRuleStrength@{getRuleStrength}!ChasingRule@{ChasingRule}}
+\doxysubsubsection{\texorpdfstring{getRuleStrength()}{getRuleStrength()}}
+{\footnotesize\ttfamily double Chasing\+Rule\+::get\+Rule\+Strength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A szabály erősségét visszaadó függvény. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály erőssége. 
+\end{DoxyReturn}
+
+
+Definíció a(z) chasingrule.\+cpp fájl 7. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9     \textcolor{keywordflow}{return} ruleStrength;}
+\DoxyCodeLine{10 \}}
+
+\end{DoxyCode}
+
+
+Ez a dokumentáció az osztályról a következő fájlok alapján készült\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{chasingrule_8h}{chasingrule.\+h}}\item 
+src/\mbox{\hyperlink{chasingrule_8cpp}{chasingrule.\+cpp}}\end{DoxyCompactItemize}

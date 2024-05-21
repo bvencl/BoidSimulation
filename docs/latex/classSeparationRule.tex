@@ -1,0 +1,183 @@
+\hypertarget{classSeparationRule}{}\doxysection{Separation\+Rule osztályreferencia}
+\label{classSeparationRule}\index{SeparationRule@{SeparationRule}}
+
+
+Az osztály, amely a Separation (\char`\"{}\+Szeparáció\char`\"{}) szabályt valósítja meg.  
+
+
+
+
+{\ttfamily \#include $<$separationrule.\+h$>$}
+
+A Separation\+Rule osztály származási diagramja\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSeparationRule}
+\end{center}
+\end{figure}
+\doxysubsection*{Publikus tagfüggvények}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSeparationRule_a56dab8b213082044520461db9fb36413}{Separation\+Rule}} (double rule\+\_\+strength=1)
+\begin{DoxyCompactList}\small\item\em Az osztály konstruktora. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterator $>$ }\\\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classSeparationRule_ae7eaae8093b0a59ac7774af967e737a1}{calculate\+Rule\+For\+Individual\+Impl}} (Iterator begin, Iterator end, const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&boid) const
+\begin{DoxyCompactList}\small\item\em Ezen osztály calculate\+Rule\+For\+Individual sablon függvényének implementációja. Az egyedekre ható szeparációs összetevő számolását elvégző függvény. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRule_a90c834b77e88e097b087630cd928e0f5}{get\+Rule\+Strength}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény a szabály erősségének lekérdezéséhez. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classRule_ad8f7874dbefcdec6c8687ca191c495d2}{calculate\+Rule\+For\+Individual}} (Iterator begin, Iterator end, const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&individual) const
+\begin{DoxyCompactList}\small\item\em Azon függvény, amely meghívja az utódosztályok implementált \char`\"{}calculate\+Rule\+For\+Individual\+Impl\char`\"{} függvényét. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Részletes leírás}
+Az osztály, amely a Separation (\char`\"{}\+Szeparáció\char`\"{}) szabályt valósítja meg. 
+
+A \mbox{\hyperlink{classSeparationRule}{Separation\+Rule}} osztály a \mbox{\hyperlink{classRule}{Rule}} absztrakt osztályból származik, és annak sablon paramétereként használja a CRTP (Curiously Recurring Template Pattern) mintát. 
+
+Definíció a(z) separationrule.\+h fájl 18. sorában.
+
+
+
+\doxysubsection{Konstruktorok és destruktorok dokumentációja}
+\mbox{\Hypertarget{classSeparationRule_a56dab8b213082044520461db9fb36413}\label{classSeparationRule_a56dab8b213082044520461db9fb36413}} 
+\index{SeparationRule@{SeparationRule}!SeparationRule@{SeparationRule}}
+\index{SeparationRule@{SeparationRule}!SeparationRule@{SeparationRule}}
+\doxysubsubsection{\texorpdfstring{SeparationRule()}{SeparationRule()}}
+{\footnotesize\ttfamily Separation\+Rule\+::\+Separation\+Rule (\begin{DoxyParamCaption}\item[{double}]{rule\+\_\+strength = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Az osztály konstruktora. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em rule\+\_\+strength} & A szabály erőssége (alapértelmezetten 1). \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) separationrule.\+cpp fájl 3. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{3 : \mbox{\hyperlink{classRule}{Rule<SeparationRule>}}(rule\_strength) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Tagfüggvények dokumentációja}
+\mbox{\Hypertarget{classRule_ad8f7874dbefcdec6c8687ca191c495d2}\label{classRule_ad8f7874dbefcdec6c8687ca191c495d2}} 
+\index{SeparationRule@{SeparationRule}!calculateRuleForIndividual@{calculateRuleForIndividual}}
+\index{calculateRuleForIndividual@{calculateRuleForIndividual}!SeparationRule@{SeparationRule}}
+\doxysubsubsection{\texorpdfstring{calculateRuleForIndividual()}{calculateRuleForIndividual()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classRule}{Rule}}$<$ \mbox{\hyperlink{classSeparationRule}{Separation\+Rule}}  $>$\+::calculate\+Rule\+For\+Individual (\begin{DoxyParamCaption}\item[{Iterator}]{begin,  }\item[{Iterator}]{end,  }\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{individual }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Azon függvény, amely meghívja az utódosztályok implementált \char`\"{}calculate\+Rule\+For\+Individual\+Impl\char`\"{} függvényét. 
+
+
+\begin{DoxyTemplParams}{Sablon paraméterek}
+{\em Iterator} & A boidok konténerének iterátora. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Paraméterek}
+{\em begin} & A boidok konténerének eleje. \\
+\hline
+{\em end} & A boidok konténerének vége. \\
+\hline
+{\em individual} & Az aktuális egyed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály által számolt gyorsulás komponens. 
+\end{DoxyReturn}
+
+
+Definíció a(z) rule.\+h fájl 46. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const }Derived *\textcolor{keyword}{>}(\textcolor{keyword}{this})-\/>calculateRuleForIndividualImpl(begin, end, individual);}
+\DoxyCodeLine{49     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classSeparationRule_ae7eaae8093b0a59ac7774af967e737a1}\label{classSeparationRule_ae7eaae8093b0a59ac7774af967e737a1}} 
+\index{SeparationRule@{SeparationRule}!calculateRuleForIndividualImpl@{calculateRuleForIndividualImpl}}
+\index{calculateRuleForIndividualImpl@{calculateRuleForIndividualImpl}!SeparationRule@{SeparationRule}}
+\doxysubsubsection{\texorpdfstring{calculateRuleForIndividualImpl()}{calculateRuleForIndividualImpl()}}
+{\footnotesize\ttfamily template$<$typename Iterator $>$ \\
+\mbox{\hyperlink{classVector}{Vector}} Separation\+Rule\+::calculate\+Rule\+For\+Individual\+Impl (\begin{DoxyParamCaption}\item[{Iterator}]{begin,  }\item[{Iterator}]{end,  }\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{boid }\end{DoxyParamCaption}) const}
+
+
+
+Ezen osztály calculate\+Rule\+For\+Individual sablon függvényének implementációja. Az egyedekre ható szeparációs összetevő számolását elvégző függvény. 
+
+Azért lett a header fájlban implementálva, mert a CRTP minta megköveteli, hogy a származtatott osztály metódusai elérhetőek legyenek a fordítási időben.
+
+
+\begin{DoxyTemplParams}{Sablon paraméterek}
+{\em Iterator} & A boidok konténerének iterátora. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Paraméterek}
+{\em begin} & A boidok konténerének eleje. \\
+\hline
+{\em end} & A boidok konténerének vége. \\
+\hline
+{\em boid} & Az aktuális boid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály által számolt gyorsulás komponens. 
+\end{DoxyReturn}
+
+
+Definíció a(z) separationrule.\+h fájl 62. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63 \{}
+\DoxyCodeLine{64     \mbox{\hyperlink{classVector}{Vector}} sumOfSeparationInFlock(0, 0); \textcolor{comment}{// Az egyedre ható szeparációs komponens.}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{keywordflow}{for} (Iterator It = begin; It != end; ++It) \textcolor{comment}{// Iterátorok használatával végigmegyünk a tárolón.}}
+\DoxyCodeLine{67     \{}
+\DoxyCodeLine{68         \textcolor{keywordflow}{if} (!(*It == boid)) \textcolor{comment}{// Amennyiben ugyanaz az egyed, amit vizsgálunk, akkor átugorjuk, ugyanis magától nem tud távolodni.}}
+\DoxyCodeLine{69         \{}
+\DoxyCodeLine{70             sumOfSeparationInFlock += calculateRuleStrengthBetweenBoids(*It, boid); \textcolor{comment}{// Összegezzük a közvetlen szomszédok által az egyedre ható "{}erőket"{}.}}
+\DoxyCodeLine{71         \}}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73     \textcolor{keywordflow}{return} sumOfSeparationInFlock; \textcolor{comment}{// Visszaadjuk a számolt gyorsulást.}}
+\DoxyCodeLine{74 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRule_a90c834b77e88e097b087630cd928e0f5}\label{classRule_a90c834b77e88e097b087630cd928e0f5}} 
+\index{SeparationRule@{SeparationRule}!getRuleStrength@{getRuleStrength}}
+\index{getRuleStrength@{getRuleStrength}!SeparationRule@{SeparationRule}}
+\doxysubsubsection{\texorpdfstring{getRuleStrength()}{getRuleStrength()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classRule}{Rule}}$<$ \mbox{\hyperlink{classSeparationRule}{Separation\+Rule}}  $>$\+::get\+Rule\+Strength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Getter függvény a szabály erősségének lekérdezéséhez. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály erőssége. 
+\end{DoxyReturn}
+
+
+Definíció a(z) rule.\+h fájl 35. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{ \textcolor{keywordflow}{return} ruleStrength; \}}
+
+\end{DoxyCode}
+
+
+Ez a dokumentáció az osztályról a következő fájlok alapján készült\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{separationrule_8h}{separationrule.\+h}}\item 
+src/\mbox{\hyperlink{separationrule_8cpp}{separationrule.\+cpp}}\end{DoxyCompactItemize}

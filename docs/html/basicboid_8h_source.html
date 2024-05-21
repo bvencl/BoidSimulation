@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rajzásszimuláció: includes/basicboid.h Forrásfájl</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js.js", "TeX/AMSsymbols.js.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Rajzásszimuláció
+   &#160;<span id="projectnumber">6.9</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Készítette Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Keresés','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Keresés');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_09e761304027c904456130627fd4dcf5.html">includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">basicboid.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="basicboid_8h.html">Ugrás a fájl dokumentációjához.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vector_8h.html">vector.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classBasicBoid.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBasicBoid.html">BasicBoid</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classVector.html">Vector</a> speed;           </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classVector.html">Vector</a> acceleration;    </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classVector.html">Vector</a> currentPosition; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">double</span> mass;            </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classBasicBoid.html#a94367c76ba052c50a0967e14fe8af580">BasicBoid</a>(<span class="keywordtype">double</span> mass, <a class="code" href="classVector.html">Vector</a> starting_position, <a class="code" href="classVector.html">Vector</a> starting_speed, <a class="code" href="classVector.html">Vector</a> starting_acceleration);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classBasicBoid.html#a94367c76ba052c50a0967e14fe8af580">BasicBoid</a>(<span class="keywordtype">double</span> mass = 1, <span class="keywordtype">double</span> starting_position_x = 0, <span class="keywordtype">double</span> starting_position_y = 0, <span class="keywordtype">double</span> speed_x = 0, <span class="keywordtype">double</span> speed_y = 0, <span class="keywordtype">double</span> acceleration_x = 0, <span class="keywordtype">double</span> acceleration_y = 0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classVector.html">Vector</a> <span class="keyword">const</span> &amp;<a class="code" href="classBasicBoid.html#a6602f0a063a7e51bd59e4c6b1f0105c5">getSpeed</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classVector.html">Vector</a> <span class="keyword">const</span> &amp;<a class="code" href="classBasicBoid.html#a3b677df49060a02084a34864d288d732">getAcceleration</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="classVector.html">Vector</a> <span class="keyword">const</span> &amp;<a class="code" href="classBasicBoid.html#a13a172fdef0bccd339ec78098542073e">getPosition</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classBasicBoid.html#aaf1c9dcff361ccf8ec6494c238cce988">getMass</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBasicBoid.html#ac001d9cd6fc44172c6e286399ab7aebb">boidPrint</a>(std::ostream &amp;os) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classBasicBoid.html#a2373872358891c59d21b1523e78e6a32">MyTurn</a>(<a class="code" href="classVector.html">Vector</a> acceleration, <span class="keywordtype">double</span> dT);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classBasicBoid.html#a64646550b7ef23eeebae9a5a91c65104">operator==</a>(<span class="keyword">const</span> <a class="code" href="classBasicBoid.html">BasicBoid</a> &amp;other) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;std::ostream &amp;<a class="code" href="basicboid_8h.html#a87a69f32de19397b1376b708d8258629">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classBasicBoid.html">BasicBoid</a> &amp;boid);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="ttc" id="abasicboid_8h_html_a87a69f32de19397b1376b708d8258629"><div class="ttname"><a href="basicboid_8h.html#a87a69f32de19397b1376b708d8258629">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const BasicBoid &amp;boid)</div><div class="ttdoc">A Boidok kiíratását megkönnyítő operátor.</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00046">basicboid.cpp:46</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html"><div class="ttname"><a href="classBasicBoid.html">BasicBoid</a></div><div class="ttdoc">Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-os &quot;Boid...</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8h_source.html#l00018">basicboid.h:19</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_a13a172fdef0bccd339ec78098542073e"><div class="ttname"><a href="classBasicBoid.html#a13a172fdef0bccd339ec78098542073e">BasicBoid::getPosition</a></div><div class="ttdeci">Vector const  &amp; getPosition() const</div><div class="ttdoc">A Boid pozícióját visszaadó függvény.</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00029">basicboid.cpp:29</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_a2373872358891c59d21b1523e78e6a32"><div class="ttname"><a href="classBasicBoid.html#a2373872358891c59d21b1523e78e6a32">BasicBoid::MyTurn</a></div><div class="ttdeci">void MyTurn(Vector acceleration, double dT)</div><div class="ttdoc">A Boidok mozgásáért felelős függvény. Ez frissíti és számolja a szabályok által szolgáltatott gyorsul...</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00053">basicboid.cpp:53</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_a3b677df49060a02084a34864d288d732"><div class="ttname"><a href="classBasicBoid.html#a3b677df49060a02084a34864d288d732">BasicBoid::getAcceleration</a></div><div class="ttdeci">Vector const  &amp; getAcceleration() const</div><div class="ttdoc">A Boid gyorsulását visszaadó függvény.</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00024">basicboid.cpp:24</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_a64646550b7ef23eeebae9a5a91c65104"><div class="ttname"><a href="classBasicBoid.html#a64646550b7ef23eeebae9a5a91c65104">BasicBoid::operator==</a></div><div class="ttdeci">bool operator==(const BasicBoid &amp;other) const</div><div class="ttdoc">Boidok egyenlőségét vizsgáló függvény. A nyájban történő nyilvántartásuknál használatos leginkább.</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00061">basicboid.cpp:61</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_a6602f0a063a7e51bd59e4c6b1f0105c5"><div class="ttname"><a href="classBasicBoid.html#a6602f0a063a7e51bd59e4c6b1f0105c5">BasicBoid::getSpeed</a></div><div class="ttdeci">Vector const  &amp; getSpeed() const</div><div class="ttdoc">A Boid sebességét visszaadó függvény.</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00019">basicboid.cpp:19</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_a94367c76ba052c50a0967e14fe8af580"><div class="ttname"><a href="classBasicBoid.html#a94367c76ba052c50a0967e14fe8af580">BasicBoid::BasicBoid</a></div><div class="ttdeci">BasicBoid(double mass, Vector starting_position, Vector starting_speed, Vector starting_acceleration)</div><div class="ttdoc">Boid konstruktora, amelyet a kezdeti tesztelésnél könnyebbség kedvéért 1 double értéket és 3 vektort ...</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00011">basicboid.cpp:11</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_aaf1c9dcff361ccf8ec6494c238cce988"><div class="ttname"><a href="classBasicBoid.html#aaf1c9dcff361ccf8ec6494c238cce988">BasicBoid::getMass</a></div><div class="ttdeci">double getMass() const</div><div class="ttdoc">A Boid tömegét (és ezzel méretét is) visszaadó függvény.</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00034">basicboid.cpp:34</a></div></div>
+<div class="ttc" id="aclassBasicBoid_html_ac001d9cd6fc44172c6e286399ab7aebb"><div class="ttname"><a href="classBasicBoid.html#ac001d9cd6fc44172c6e286399ab7aebb">BasicBoid::boidPrint</a></div><div class="ttdeci">void boidPrint(std::ostream &amp;os) const</div><div class="ttdoc">A Boidok pozícióját, sebességét és gyorsulását kiíró függvény, hibakeresésnél rendkívül hasznos lehet...</div><div class="ttdef"><b>Definition:</b> <a href="basicboid_8cpp_source.html#l00039">basicboid.cpp:39</a></div></div>
+<div class="ttc" id="aclassVector_html"><div class="ttname"><a href="classVector.html">Vector</a></div><div class="ttdoc">Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt,...</div><div class="ttdef"><b>Definition:</b> <a href="vector_8h_source.html#l00020">vector.h:21</a></div></div>
+<div class="ttc" id="avector_8h_html"><div class="ttname"><a href="vector_8h.html">vector.h</a></div><div class="ttdoc">Egy kétdimenziós vektort megvalósító osztály headerfájlja. Ezt használom az alapvető matematikai műve...</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Készítette&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

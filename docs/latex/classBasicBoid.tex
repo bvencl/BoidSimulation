@@ -1,0 +1,311 @@
+\hypertarget{classBasicBoid}{}\doxysection{Basic\+Boid osztályreferencia}
+\label{classBasicBoid}\index{BasicBoid@{BasicBoid}}
+
+
+Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-\/os \char`\"{}\+Boids\char`\"{} mesterséges élet projektje után kapta nevét. Későbbi bővítés miatt kapta a \char`\"{}\+Basic\char`\"{} Boid nevet, ugyanis később több különféle, más viselkedéseket mutató Boidot is hozzá lehetne majd adni a programhoz.  
+
+
+
+
+{\ttfamily \#include $<$basicboid.\+h$>$}
+
+\doxysubsection*{Publikus tagfüggvények}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBasicBoid_a94367c76ba052c50a0967e14fe8af580}{Basic\+Boid}} (double mass, \mbox{\hyperlink{classVector}{Vector}} starting\+\_\+position, \mbox{\hyperlink{classVector}{Vector}} starting\+\_\+speed, \mbox{\hyperlink{classVector}{Vector}} starting\+\_\+acceleration)
+\begin{DoxyCompactList}\small\item\em Boid konstruktora, amelyet a kezdeti tesztelésnél könnyebbség kedvéért 1 double értéket és 3 vektort várt. A végső implementációban ennek már nem nagyon van szerepe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBasicBoid_afb436ba172e74e5054f9a20fc88d680c}{Basic\+Boid}} (double mass=1, double starting\+\_\+position\+\_\+x=0, double starting\+\_\+position\+\_\+y=0, double speed\+\_\+x=0, double speed\+\_\+y=0, double acceleration\+\_\+x=0, double acceleration\+\_\+y=0)
+\begin{DoxyCompactList}\small\item\em A Boid osztály fő konstruktora, a program ezt használja Boidok létrehozására. Egyben default konstruktor is. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} const  \& \mbox{\hyperlink{classBasicBoid_a6602f0a063a7e51bd59e4c6b1f0105c5}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em A Boid sebességét visszaadó függvény. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} const  \& \mbox{\hyperlink{classBasicBoid_a3b677df49060a02084a34864d288d732}{get\+Acceleration}} () const
+\begin{DoxyCompactList}\small\item\em A Boid gyorsulását visszaadó függvény. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} const  \& \mbox{\hyperlink{classBasicBoid_a13a172fdef0bccd339ec78098542073e}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em A Boid pozícióját visszaadó függvény. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBasicBoid_aaf1c9dcff361ccf8ec6494c238cce988}{get\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em A Boid tömegét (és ezzel méretét is) visszaadó függvény. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBasicBoid_ac001d9cd6fc44172c6e286399ab7aebb}{boid\+Print}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em A Boidok pozícióját, sebességét és gyorsulását kiíró függvény, hibakeresésnél rendkívül hasznos lehet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBasicBoid_a2373872358891c59d21b1523e78e6a32}{My\+Turn}} (\mbox{\hyperlink{classVector}{Vector}} acceleration, double dT)
+\begin{DoxyCompactList}\small\item\em A Boidok mozgásáért felelős függvény. Ez frissíti és számolja a szabályok által szolgáltatott gyorsulás komponenssel a Boid gyorsulását, sebességét, majd pozícióját. A move\+Flock() függvény által szolgáltatott dT idővel működik. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBasicBoid_a64646550b7ef23eeebae9a5a91c65104}{operator==}} (const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&other) const
+\begin{DoxyCompactList}\small\item\em Boidok egyenlőségét vizsgáló függvény. A nyájban történő nyilvántartásuknál használatos leginkább. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Részletes leírás}
+Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-\/os \char`\"{}\+Boids\char`\"{} mesterséges élet projektje után kapta nevét. Későbbi bővítés miatt kapta a \char`\"{}\+Basic\char`\"{} Boid nevet, ugyanis később több különféle, más viselkedéseket mutató Boidot is hozzá lehetne majd adni a programhoz. 
+
+Definíció a(z) basicboid.\+h fájl 18. sorában.
+
+
+
+\doxysubsection{Konstruktorok és destruktorok dokumentációja}
+\mbox{\Hypertarget{classBasicBoid_a94367c76ba052c50a0967e14fe8af580}\label{classBasicBoid_a94367c76ba052c50a0967e14fe8af580}} 
+\index{BasicBoid@{BasicBoid}!BasicBoid@{BasicBoid}}
+\index{BasicBoid@{BasicBoid}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{BasicBoid()}{BasicBoid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Basic\+Boid\+::\+Basic\+Boid (\begin{DoxyParamCaption}\item[{double}]{mass,  }\item[{\mbox{\hyperlink{classVector}{Vector}}}]{starting\+\_\+position,  }\item[{\mbox{\hyperlink{classVector}{Vector}}}]{starting\+\_\+speed,  }\item[{\mbox{\hyperlink{classVector}{Vector}}}]{starting\+\_\+acceleration }\end{DoxyParamCaption})}
+
+
+
+Boid konstruktora, amelyet a kezdeti tesztelésnél könnyebbség kedvéért 1 double értéket és 3 vektort várt. A végső implementációban ennek már nem nagyon van szerepe. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em mass} & A Boid tömege. \\
+\hline
+{\em starting\+\_\+position} & A Boid kezdő pozíciója. \\
+\hline
+{\em starting\+\_\+speed} & A Boid kezdő sebessége. \\
+\hline
+{\em starting\+\_\+acceleration} & A Boid kezdő gyorsulása. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) basicboid.\+cpp fájl 11. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12     : speed(starting\_speed),}
+\DoxyCodeLine{13       acceleration(starting\_acceleration),}
+\DoxyCodeLine{14       currentPosition(starting\_position),}
+\DoxyCodeLine{15       mass(mass)}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_afb436ba172e74e5054f9a20fc88d680c}\label{classBasicBoid_afb436ba172e74e5054f9a20fc88d680c}} 
+\index{BasicBoid@{BasicBoid}!BasicBoid@{BasicBoid}}
+\index{BasicBoid@{BasicBoid}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{BasicBoid()}{BasicBoid()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Basic\+Boid\+::\+Basic\+Boid (\begin{DoxyParamCaption}\item[{double}]{mass = {\ttfamily 1},  }\item[{double}]{starting\+\_\+position\+\_\+x = {\ttfamily 0},  }\item[{double}]{starting\+\_\+position\+\_\+y = {\ttfamily 0},  }\item[{double}]{speed\+\_\+x = {\ttfamily 0},  }\item[{double}]{speed\+\_\+y = {\ttfamily 0},  }\item[{double}]{acceleration\+\_\+x = {\ttfamily 0},  }\item[{double}]{acceleration\+\_\+y = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A Boid osztály fő konstruktora, a program ezt használja Boidok létrehozására. Egyben default konstruktor is. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em mass} & A Boid tömege (alapértelmezetten 1). \\
+\hline
+{\em starting\+\_\+position\+\_\+x} & A kezdő pozíció x koordinátája (alapértelmezetten 0). \\
+\hline
+{\em starting\+\_\+position\+\_\+y} & A kezdő pozíció y koordinátája (alapértelmezetten 0). \\
+\hline
+{\em speed\+\_\+x} & A kezdő sebesség x koordinátája (alapértelmezetten 0). \\
+\hline
+{\em speed\+\_\+y} & A kezdő sebesség y koordinátája (alapértelmezetten 0). \\
+\hline
+{\em acceleration\+\_\+x} & A kezdő gyorsulás x koordinátája (alapértelmezetten 0). \\
+\hline
+{\em acceleration\+\_\+y} & A kezdő gyorsulás y koordinátája (alapértelmezetten 0). \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) basicboid.\+cpp fájl 3. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{4     : speed(speed\_x, speed\_y),}
+\DoxyCodeLine{5       acceleration(acceleration\_x, acceleration\_y),}
+\DoxyCodeLine{6       currentPosition(starting\_position\_x, starting\_position\_y),}
+\DoxyCodeLine{7       mass(mass)}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Tagfüggvények dokumentációja}
+\mbox{\Hypertarget{classBasicBoid_ac001d9cd6fc44172c6e286399ab7aebb}\label{classBasicBoid_ac001d9cd6fc44172c6e286399ab7aebb}} 
+\index{BasicBoid@{BasicBoid}!boidPrint@{boidPrint}}
+\index{boidPrint@{boidPrint}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{boidPrint()}{boidPrint()}}
+{\footnotesize\ttfamily void Basic\+Boid\+::boid\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+A Boidok pozícióját, sebességét és gyorsulását kiíró függvény, hibakeresésnél rendkívül hasznos lehet. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em os} & Az ostream objektum, amelybe kiírjuk az aktuális Boid adatait. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) basicboid.\+cpp fájl 39. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40 \{}
+\DoxyCodeLine{41     os << \textcolor{stringliteral}{"{}    CP: "{}} << \mbox{\hyperlink{classBasicBoid_a13a172fdef0bccd339ec78098542073e}{getPosition}}()}
+\DoxyCodeLine{42        << \textcolor{stringliteral}{"{}    SP: "{}} << \mbox{\hyperlink{classBasicBoid_a6602f0a063a7e51bd59e4c6b1f0105c5}{getSpeed}}()}
+\DoxyCodeLine{43        << \textcolor{stringliteral}{"{}    ACC: "{}} << \mbox{\hyperlink{classBasicBoid_a3b677df49060a02084a34864d288d732}{getAcceleration}}();}
+\DoxyCodeLine{44 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_a3b677df49060a02084a34864d288d732}\label{classBasicBoid_a3b677df49060a02084a34864d288d732}} 
+\index{BasicBoid@{BasicBoid}!getAcceleration@{getAcceleration}}
+\index{getAcceleration@{getAcceleration}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{getAcceleration()}{getAcceleration()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} const  \& Basic\+Boid\+::get\+Acceleration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A Boid gyorsulását visszaadó függvény. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A Boid gyorsulása. 
+\end{DoxyReturn}
+
+
+Definíció a(z) basicboid.\+cpp fájl 24. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26     \textcolor{keywordflow}{return} acceleration;}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_aaf1c9dcff361ccf8ec6494c238cce988}\label{classBasicBoid_aaf1c9dcff361ccf8ec6494c238cce988}} 
+\index{BasicBoid@{BasicBoid}!getMass@{getMass}}
+\index{getMass@{getMass}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{getMass()}{getMass()}}
+{\footnotesize\ttfamily double Basic\+Boid\+::get\+Mass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A Boid tömegét (és ezzel méretét is) visszaadó függvény. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A Boid tömege. 
+\end{DoxyReturn}
+
+
+Definíció a(z) basicboid.\+cpp fájl 34. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36     \textcolor{keywordflow}{return} mass;}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_a13a172fdef0bccd339ec78098542073e}\label{classBasicBoid_a13a172fdef0bccd339ec78098542073e}} 
+\index{BasicBoid@{BasicBoid}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} const  \& Basic\+Boid\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A Boid pozícióját visszaadó függvény. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A Boid pozíciója. 
+\end{DoxyReturn}
+
+
+Definíció a(z) basicboid.\+cpp fájl 29. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31     \textcolor{keywordflow}{return} currentPosition;}
+\DoxyCodeLine{32 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_a6602f0a063a7e51bd59e4c6b1f0105c5}\label{classBasicBoid_a6602f0a063a7e51bd59e4c6b1f0105c5}} 
+\index{BasicBoid@{BasicBoid}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} const  \& Basic\+Boid\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+A Boid sebességét visszaadó függvény. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A Boid sebessége. 
+\end{DoxyReturn}
+
+
+Definíció a(z) basicboid.\+cpp fájl 19. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21     \textcolor{keywordflow}{return} speed;}
+\DoxyCodeLine{22 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_a2373872358891c59d21b1523e78e6a32}\label{classBasicBoid_a2373872358891c59d21b1523e78e6a32}} 
+\index{BasicBoid@{BasicBoid}!MyTurn@{MyTurn}}
+\index{MyTurn@{MyTurn}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{MyTurn()}{MyTurn()}}
+{\footnotesize\ttfamily void Basic\+Boid\+::\+My\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector}{Vector}}}]{acceleration,  }\item[{double}]{dT }\end{DoxyParamCaption})}
+
+
+
+A Boidok mozgásáért felelős függvény. Ez frissíti és számolja a szabályok által szolgáltatott gyorsulás komponenssel a Boid gyorsulását, sebességét, majd pozícióját. A move\+Flock() függvény által szolgáltatott dT idővel működik. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em acceleration} & Az új gyorsulás vektor. \\
+\hline
+{\em dT} & Az eltelt idő. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) basicboid.\+cpp fájl 53. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54 \{}
+\DoxyCodeLine{55     acceleration = calculatedSumOfRules; \textcolor{comment}{// A Boid gyorsulását felülírjuk az újonnal számított gyorsulással,}}
+\DoxyCodeLine{56                                          \textcolor{comment}{// ugyanis a gyorsulás minden időpillanatban változhat, a sebességre viszont ez nem igaz}}
+\DoxyCodeLine{57     speed += (acceleration * dT);        \textcolor{comment}{// Itt a sebességhez hozzáadjuk az új sebességet. Szakszerűtlenül mondva a gyorsulás integrálását végezzük el}}
+\DoxyCodeLine{58     currentPosition += speed * dT;       \textcolor{comment}{// Itt változtatjuk meg a Boid pozícióját. Ugyancsak szekszerűtlenül mondva, itt a Boid sebességének integrálását végezzük el}}
+\DoxyCodeLine{59 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBasicBoid_a64646550b7ef23eeebae9a5a91c65104}\label{classBasicBoid_a64646550b7ef23eeebae9a5a91c65104}} 
+\index{BasicBoid@{BasicBoid}!operator==@{operator==}}
+\index{operator==@{operator==}!BasicBoid@{BasicBoid}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Basic\+Boid\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Boidok egyenlőségét vizsgáló függvény. A nyájban történő nyilvántartásuknál használatos leginkább. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A másik Boid, amelyet összehasonlítunk az aktuális Boiddal. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+True, ha a Boidok egyenlőek, különben false. 
+\end{DoxyReturn}
+
+
+Definíció a(z) basicboid.\+cpp fájl 61. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     \textcolor{keywordflow}{return} \textcolor{keyword}{this} == \&other;}
+\DoxyCodeLine{64 \}}
+
+\end{DoxyCode}
+
+
+Ez a dokumentáció az osztályról a következő fájlok alapján készült\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{basicboid_8h}{basicboid.\+h}}\item 
+src/\mbox{\hyperlink{basicboid_8cpp}{basicboid.\+cpp}}\end{DoxyCompactItemize}

@@ -88,19 +88,19 @@ Ezeken felül a Rule osztály koherens interfészt szolgáltat a három olyan sz
 
 A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurzor és a paraméterül kapott Boid pozíciójából számolja a gyorsulást, amellyel a Boid a kurzor felé fog gyorsulni az adott időpillanatban. Erre a szabályra fektettem a legnagyobb hangsúlyt, ugyanis szerintem ez a leglátványosabb a szabályok között, ugyanakkor még mindig nem vagyok teljesen elégedett vele, szeretnék még finomítani rajta. A szabályt a következő képletekkel számolom:
 
- 1) Alapesetben:
+1) Alapesetben:
 
     $$
     \vec{a} = \left( \vec{d} \cdot d \right) \cdot S
     $$
 
- 2) Ha az irányvektor ($\vec{d}$) és a Boid sebességének ($\vec{v}$) skaláris szorzata negatív, akkor a gyorsulás az irányvektor, és egy empirikusan meghatározott korrekciós tényező ($breakinForce$) szorzatára módosul:
+2) Ha az irányvektor ($\vec{d}$) és a Boid sebességének ($\vec{v}$) skaláris szorzata negatív, akkor a gyorsulás az irányvektor, és egy empirikusan meghatározott korrekciós tényező ($breakinForce$) szorzatára módosul:
 
     $$
     \vec{d} \cdot \vec{v} < 0 \quad \Rightarrow \quad \vec{a} = \vec{d} \cdot breakingForce \cdot S
     $$
 
- 3) Ha a Boid sebességének harmada nagyobb, mint a célponttól való távolság ($d$), és az irányvektor és a sebesség skaláris szorzata pozitív, akkor a gyorsulás egy másik korrekciós tényezővel módosul, amelyet a sebesség és az irányvektor vetülete alapján számolunk ki:
+3) Ha a Boid sebességének harmada nagyobb, mint a célponttól való távolság ($d$), és az irányvektor és a sebesség skaláris szorzata pozitív, akkor a gyorsulás egy másik korrekciós tényezővel módosul, amelyet a sebesség és az irányvektor vetülete alapján számolunk ki:
 
     $$
     \frac{|\vec{v}|}{3} > d \quad \text{és} \quad \vec{d} \cdot \vec{v} > 0
@@ -118,82 +118,60 @@ A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurz
     \vec{a} = \vec{d}.proj(\vec{v})  \cdot  correctionFactor
     $$
 
-    ahol:
+ahol:
 
-- @f$ d @f$ a célpont és a Boid közötti távolság (distance),
-- @f$ \vec{d} @f$  az irányvektor (direction),
-- @f$ \vec{v} @f$ a sebesség (speed),
-- @f$ \vec{a} @f$ a gyorsulás (acceleration),
-- @f$ S @f$ a szabály erőssége (ruleStrength)
-- @f$ breakingForce = 30 @f$, ez egy empirikusan meghatározott konstans.
+- $d$ a célpont és a Boid közötti távolság (distance),
+- $\vec{d}$ az irányvektor (direction),
+- $\vec{v}$ a sebesség (speed),
+- $\vec{a}$ a gyorsulás (acceleration),
+- $S$ a szabály erőssége (ruleStrength)
+- $breakingForce$ = 30, ez egy empirikusan meghatározott konstans.
 
 #### SeparationRule osztály
 
 A Separation ("Szeparáció") szabály megvalósításáért felelős osztály. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calcualateRuleForIndividual* függvény hívja meg. Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$ számolása a lényeges):
 
- 1. Amennyiben a Boidok nagyon közel vannak egymáshoz:
+ 1) Amennyiben a Boidok nagyon közel vannak egymáshoz:
 
     $$
+    \text{}\newline
     distance < M_i + M_o + \frac{desiredMinimalDistance}{3} \quad \Rightarrow  \quad scalingFactor = empiricScalingValue
+    \text{}\newline
     $$
 
- 2. Amennyiben a kívánt távolságnál közelebb, de a fentebbinél távolabb helyezkednek el:
+ 2) Amennyiben a kívánt távolságnál közelebb, de a fentebbinél távolabb helyezkednek el:
 
     $$
+    \text{}\newline
     M_i + M_o+ \frac{desiredMinimalDistance}{3} \leq distance \leq M_i + M_o + desiredMinimalDistance
     \Rightarrow
     scalingFactor = \frac{1}{distance - (M_i + M_o)}
+    \text{}\newline
     $$
-
- 3. Amennyiben a kívánt határon kívül helyezkednek el, és a vizsgált Boid látóterében van a másik Boid:
+ 3) Amennyiben a kívánt határon kívül helyezkednek el, és a vizsgált Boid látóterében van a másik Boid:
 
     $$
+    \text{}\newline
     M_i + M_o+ desiredMinimalDistance \ge distance \quad \text{és} \quad \vec{d}.angleWith(\vec{v}) \leq \frac{\pi}{3} \quad \Rightarrow \quad scalingFactor = \frac{M_i + M_o}{distance^2}
     $$
-    Így a szabály által visszaadott gyorsulás komponens:
     $$
-    \vec{a} = \vec{d} \cdot scalingFactor \cdot S
+    \text{}\newline
+    \text{Így a szabály által visszaadott gyorsulás komponens: }
+    $$
+    $$
+    \vec{d} \cdot scalingFactor \cdot S
     $$
 
-ahol:
+    ahol:
 
-- @f$ M_i @f$: A vizsgált Boid tömege (individual.getMass()),
-- @f$ M_o @f$: A másik Boid, amelyikkel éppen vizsgáljuk a vizsgált egyedünket (currentFlockMembergetMass()),
-- @f$ scalingFactor @f$: A skálázó faktor, amellyel az irányvektort szorozni fogjuk,
-- @f$ \vec{d} @f$: Az irányvektor (direction)
-- @f$ \vec{a} @f$ a gyorsulás (acceleration),
-- @f$ distance @f$: A két Boid közötti távolság (distance)
-- @f$ desiredMinimalDistance = 150 @f$ [pixel]
-- @f$ empiricScalingValue = 500 @f$
-- @f$ S @f$: Szabály erőssége (ruleStrength)
+- $M_i$: A vizsgált Boid tömege (individual.getMass()),
+- $M_o$: A másik Boid, amelyikkel éppen vizsgáljuk a vizsgált egyedünket (currentFlockMembergetMass()),
+- $scalingFactor$: A skálázó faktor, amellyel az irányvektort szorozni fogjuk,
+- $\vec{d}$: Az irányvektor (direction)
+- $distance$: A két Boid közötti távolság (distance)
+- $desiredMinimalDistance$ = 150 [pixel]
+- $empiricScalingValue$ = 500
+- $S$: Szabály erőssége (ruleStrength)
 
 #### CohesionRule osztály
 
-A Cohesion ("Kohézió") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok mindig a raj tömegközéppontja felé is gyorsuljanak, és nehezebben szakadjanak le a rajtól. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calcualateRuleForIndividual* függvény hívja meg. Ennél a szabálynál a lényegi számolás a raj tömegközéppontjának számolásában rejlik, ez a következő módon írható le:
-
- 1. A tömegközéppont kiszámítása során a Boidok tömegével súlyozottan átlagoljuk a helyvektoraikat, majd leosztunk a nyáj össztömegével:
-
-    $$
-    \vec{C} = \frac{1}{M} \sum_{i = 1}^N \vec{p_i} \cdot m_i
-    $$
-
- 2. Innen az irányvektor:
-
-    $$
-    \vec{d} = \vec{C} - \vec{p_b}
-    $$
-
- 3. Majd a visszaadott gyorsulásvektor:
-
-    $$
-    \vec{a} = \vec{d} \cdot S
-    $$
-
-ahol:
-
-- @f$ \vec{C} @f$ a tömegközéppontba mutató vektor (commonCenterOfMass),
-- @f$ M @f$: A raj össztömege (sumOfMasses),
-- @f$ \vec{a} @f$ a gyorsulás (return value),
-- @f$ \vec{p_b} @f$ a vizsgált Boid helyvektora(boid.getPosition()),
-- @f$ \vec{d} @f$: Az irányvektor (direction),
-- @f$ S @f$: Szabály erőssége (ruleStrength).

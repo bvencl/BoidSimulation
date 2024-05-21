@@ -1,0 +1,197 @@
+\hypertarget{classCohesionRule}{}\doxysection{Cohesion\+Rule osztályreferencia}
+\label{classCohesionRule}\index{CohesionRule@{CohesionRule}}
+
+
+Az osztály, amely a Cohesion (\char`\"{}\+Kohézió\char`\"{}) szabályt valósítja meg.  
+
+
+
+
+{\ttfamily \#include $<$cohesionrule.\+h$>$}
+
+A Cohesion\+Rule osztály származási diagramja\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCohesionRule}
+\end{center}
+\end{figure}
+\doxysubsection*{Publikus tagfüggvények}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCohesionRule_a73f7b24bf9246c0b4c3dde51ea841556}{Cohesion\+Rule}} (double rule\+\_\+strength=1)
+\begin{DoxyCompactList}\small\item\em Az osztály konstruktora. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Iterator $>$ }\\\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classCohesionRule_aab0c37d92cf2c24adc4dbf0fab573e08}{calculate\+Rule\+For\+Individual\+Impl}} (Iterator begin, Iterator end, const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&boid) const
+\begin{DoxyCompactList}\small\item\em Ezen osztály calculate\+Rule\+For\+Individual sablon függvényének implementációja. Az egyedekre ható kohéziós összetevő számolását elvégző függvény. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRule_a90c834b77e88e097b087630cd928e0f5}{get\+Rule\+Strength}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény a szabály erősségének lekérdezéséhez. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classRule_ad8f7874dbefcdec6c8687ca191c495d2}{calculate\+Rule\+For\+Individual}} (Iterator begin, Iterator end, const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&individual) const
+\begin{DoxyCompactList}\small\item\em Azon függvény, amely meghívja az utódosztályok implementált \char`\"{}calculate\+Rule\+For\+Individual\+Impl\char`\"{} függvényét. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Részletes leírás}
+Az osztály, amely a Cohesion (\char`\"{}\+Kohézió\char`\"{}) szabályt valósítja meg. 
+
+A \mbox{\hyperlink{classCohesionRule}{Cohesion\+Rule}} osztály a \mbox{\hyperlink{classRule}{Rule}} absztrakt osztályból származik, és annak sablon paramétereként használja a CRTP (Curiously Recurring Template Pattern) mintát. 
+
+Definíció a(z) cohesionrule.\+h fájl 16. sorában.
+
+
+
+\doxysubsection{Konstruktorok és destruktorok dokumentációja}
+\mbox{\Hypertarget{classCohesionRule_a73f7b24bf9246c0b4c3dde51ea841556}\label{classCohesionRule_a73f7b24bf9246c0b4c3dde51ea841556}} 
+\index{CohesionRule@{CohesionRule}!CohesionRule@{CohesionRule}}
+\index{CohesionRule@{CohesionRule}!CohesionRule@{CohesionRule}}
+\doxysubsubsection{\texorpdfstring{CohesionRule()}{CohesionRule()}}
+{\footnotesize\ttfamily Cohesion\+Rule\+::\+Cohesion\+Rule (\begin{DoxyParamCaption}\item[{double}]{rule\+\_\+strength = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Az osztály konstruktora. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em rule\+\_\+strength} & A szabály erőssége (alapértelmezetten 1). \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) cohesionrule.\+cpp fájl 3. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{3 : \mbox{\hyperlink{classRule_a3abcb4a02577891a006241246d4f2a0c}{Rule}}(rule\_strength) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Tagfüggvények dokumentációja}
+\mbox{\Hypertarget{classRule_ad8f7874dbefcdec6c8687ca191c495d2}\label{classRule_ad8f7874dbefcdec6c8687ca191c495d2}} 
+\index{CohesionRule@{CohesionRule}!calculateRuleForIndividual@{calculateRuleForIndividual}}
+\index{calculateRuleForIndividual@{calculateRuleForIndividual}!CohesionRule@{CohesionRule}}
+\doxysubsubsection{\texorpdfstring{calculateRuleForIndividual()}{calculateRuleForIndividual()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classRule}{Rule}}$<$ \mbox{\hyperlink{classCohesionRule}{Cohesion\+Rule}}  $>$\+::calculate\+Rule\+For\+Individual (\begin{DoxyParamCaption}\item[{Iterator}]{begin,  }\item[{Iterator}]{end,  }\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{individual }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Azon függvény, amely meghívja az utódosztályok implementált \char`\"{}calculate\+Rule\+For\+Individual\+Impl\char`\"{} függvényét. 
+
+
+\begin{DoxyTemplParams}{Sablon paraméterek}
+{\em Iterator} & A boidok konténerének iterátora. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Paraméterek}
+{\em begin} & A boidok konténerének eleje. \\
+\hline
+{\em end} & A boidok konténerének vége. \\
+\hline
+{\em individual} & Az aktuális egyed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály által számolt gyorsulás komponens. 
+\end{DoxyReturn}
+
+
+Definíció a(z) rule.\+h fájl 46. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47     \{}
+\DoxyCodeLine{48         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keyword}{const }Derived *\textcolor{keyword}{>}(\textcolor{keyword}{this})-\/>calculateRuleForIndividualImpl(begin, end, individual);}
+\DoxyCodeLine{49     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCohesionRule_aab0c37d92cf2c24adc4dbf0fab573e08}\label{classCohesionRule_aab0c37d92cf2c24adc4dbf0fab573e08}} 
+\index{CohesionRule@{CohesionRule}!calculateRuleForIndividualImpl@{calculateRuleForIndividualImpl}}
+\index{calculateRuleForIndividualImpl@{calculateRuleForIndividualImpl}!CohesionRule@{CohesionRule}}
+\doxysubsubsection{\texorpdfstring{calculateRuleForIndividualImpl()}{calculateRuleForIndividualImpl()}}
+{\footnotesize\ttfamily template$<$typename Iterator $>$ \\
+\mbox{\hyperlink{classVector}{Vector}} Cohesion\+Rule\+::calculate\+Rule\+For\+Individual\+Impl (\begin{DoxyParamCaption}\item[{Iterator}]{begin,  }\item[{Iterator}]{end,  }\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{boid }\end{DoxyParamCaption}) const}
+
+
+
+Ezen osztály calculate\+Rule\+For\+Individual sablon függvényének implementációja. Az egyedekre ható kohéziós összetevő számolását elvégző függvény. 
+
+Azért lett a header fájlban implementálva, mert a CRTP minta megköveteli, hogy a származtatott osztály metódusai elérhetőek legyenek a fordítási időben.
+
+
+\begin{DoxyTemplParams}{Sablon paraméterek}
+{\em Iterator} & A boidok konténerének iterátora. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Paraméterek}
+{\em begin} & A boidok konténerének eleje. \\
+\hline
+{\em end} & A boidok konténerének vége. \\
+\hline
+{\em boid} & Az aktuális boid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály által számolt gyorsulás komponens. 
+\end{DoxyReturn}
+
+
+Definíció a(z) cohesionrule.\+h fájl 60. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62     \mbox{\hyperlink{classVector}{Vector}} commonCenterOfMass;}
+\DoxyCodeLine{63     \textcolor{keywordtype}{double} sumOfMasses = 0.0;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keywordflow}{for} (Iterator It = begin; It != end; ++It) \textcolor{comment}{// Közös tömegközéppont kiszámítása.}}
+\DoxyCodeLine{66     \{}
+\DoxyCodeLine{67         commonCenterOfMass = commonCenterOfMass + It-\/>getPosition(); \textcolor{comment}{// Egyedek pozíciójának összeadása.}}
+\DoxyCodeLine{68         sumOfMasses += It-\/>getMass();                                \textcolor{comment}{// Leosztás az egyedek össztömegével.}}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71     \mbox{\hyperlink{classVector}{Vector}} direction = (commonCenterOfMass -\/ boid.\mbox{\hyperlink{classBasicBoid_a13a172fdef0bccd339ec78098542073e}{getPosition}}()) * (1.0 / sumOfMasses); \textcolor{comment}{// Az irány meghatározása.}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{double} distance = direction.\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}(); \textcolor{comment}{// Az egyed és a tömegközéppont távolsága.}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{76     \{}
+\DoxyCodeLine{77         direction.\mbox{\hyperlink{classVector_a94db098c1a77891b06718776e5e493b4}{normaliastion}}(); \textcolor{comment}{// Az irányvektor normalizálása.}}
+\DoxyCodeLine{78     \}}
+\DoxyCodeLine{79     \textcolor{keywordflow}{catch} (std::runtime\_error \&rte)}
+\DoxyCodeLine{80     \{}
+\DoxyCodeLine{81         std::cerr << rte.what() << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector_ab643a4abad1bf68ac3b32a7a38e731f9}{Vector::nullVector}}; \textcolor{comment}{// Ha hiba történik, visszatérünk egy nullvektorral.}}
+\DoxyCodeLine{83     \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordflow}{return} direction * calculateScalingFactor(boid, distance, sumOfMasses); \textcolor{comment}{// Visszaadjuk a számolt gyorsulást.}}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classRule_a90c834b77e88e097b087630cd928e0f5}\label{classRule_a90c834b77e88e097b087630cd928e0f5}} 
+\index{CohesionRule@{CohesionRule}!getRuleStrength@{getRuleStrength}}
+\index{getRuleStrength@{getRuleStrength}!CohesionRule@{CohesionRule}}
+\doxysubsubsection{\texorpdfstring{getRuleStrength()}{getRuleStrength()}}
+{\footnotesize\ttfamily double \mbox{\hyperlink{classRule}{Rule}}$<$ \mbox{\hyperlink{classCohesionRule}{Cohesion\+Rule}}  $>$\+::get\+Rule\+Strength (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Getter függvény a szabály erősségének lekérdezéséhez. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A szabály erőssége. 
+\end{DoxyReturn}
+
+
+Definíció a(z) rule.\+h fájl 35. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{ \textcolor{keywordflow}{return} ruleStrength; \}}
+
+\end{DoxyCode}
+
+
+Ez a dokumentáció az osztályról a következő fájlok alapján készült\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{cohesionrule_8h}{cohesionrule.\+h}}\item 
+src/\mbox{\hyperlink{cohesionrule_8cpp}{cohesionrule.\+cpp}}\end{DoxyCompactItemize}

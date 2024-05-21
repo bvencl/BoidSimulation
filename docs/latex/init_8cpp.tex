@@ -1,0 +1,92 @@
+\hypertarget{init_8cpp}{}\doxysection{src/init.cpp fájlreferencia}
+\label{init_8cpp}\index{src/init.cpp@{src/init.cpp}}
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\newline
+\doxysubsection*{Függvények}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{init_8cpp_a645594133b14142186aea8306cacafaa}{init\+Flock}} (\mbox{\hyperlink{classFlock}{Flock}} \&flock, double width, double height)
+\begin{DoxyCompactList}\small\item\em A függvény, amely a nyájat inicializálja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{init_8cpp_a19ae3a109752eaaef5b3bcc612017e3e}{init\+Graphics}} (std\+::vector$<$ sf\+::\+Circle\+Shape $>$ \&boids, \mbox{\hyperlink{classFlock}{Flock}} \&flock, sf\+::\+Color color)
+\begin{DoxyCompactList}\small\item\em A nyájhoz tartozó grafikus objektumokkal feltölt egy std\+::vectort. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Függvények dokumentációja}
+\mbox{\Hypertarget{init_8cpp_a645594133b14142186aea8306cacafaa}\label{init_8cpp_a645594133b14142186aea8306cacafaa}} 
+\index{init.cpp@{init.cpp}!initFlock@{initFlock}}
+\index{initFlock@{initFlock}!init.cpp@{init.cpp}}
+\doxysubsubsection{\texorpdfstring{initFlock()}{initFlock()}}
+{\footnotesize\ttfamily void init\+Flock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFlock}{Flock}} \&}]{flock,  }\item[{double}]{width,  }\item[{double}]{height }\end{DoxyParamCaption})}
+
+
+
+A függvény, amely a nyájat inicializálja. 
+
+Bekéri a kívánt Boidok számát, és feltölti a kezdőpozícióban lévő Boidokkal.
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em flock} & A nyáj, amelyet inicializálunk. \\
+\hline
+{\em width} & A képernyő szélessége pixelben. \\
+\hline
+{\em height} & A képernyő magassága pixelben. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) init.\+cpp fájl 5. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} boidCount = 0;}
+\DoxyCodeLine{8     std::cout << \textcolor{stringliteral}{"{}Please give me the size of the flock"{}} << std::endl;}
+\DoxyCodeLine{9     std::cin >> boidCount;}
+\DoxyCodeLine{10     \mbox{\hyperlink{classVector}{Vector}} center(width / 2, height / 2);}
+\DoxyCodeLine{11     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < boidCount; i++) \textcolor{comment}{// Itt a Boidokat egy 100 pixel sugarú körben helyezzük el, függetlenül a számuktól}}
+\DoxyCodeLine{12     \{}
+\DoxyCodeLine{13         \textcolor{comment}{// Boidokat hozunk létre 10-\/es tömeggel, a függvény által kiszámolt koordinátákkal, nulla kezdősebességgel, illetve nulla kezdeti gyorsulással}}
+\DoxyCodeLine{14         \mbox{\hyperlink{classBasicBoid}{BasicBoid}} boid(10, width / 2 + 100 * std::cos(i * (2 * M\_PI / boidCount)), height / 2 + 100 * std::sin(i * (2 * M\_PI / boidCount)), 0, 0, 0, 0);}
+\DoxyCodeLine{15         flock.\mbox{\hyperlink{classFlock_aef4dbe87575fc5dee0883fc24219126c}{insert}}(boid); \textcolor{comment}{// A létrejött Boidot "{}be is töltjük"{} a nyájba}}
+\DoxyCodeLine{16     \}}
+\DoxyCodeLine{17 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{init_8cpp_a19ae3a109752eaaef5b3bcc612017e3e}\label{init_8cpp_a19ae3a109752eaaef5b3bcc612017e3e}} 
+\index{init.cpp@{init.cpp}!initGraphics@{initGraphics}}
+\index{initGraphics@{initGraphics}!init.cpp@{init.cpp}}
+\doxysubsubsection{\texorpdfstring{initGraphics()}{initGraphics()}}
+{\footnotesize\ttfamily void init\+Graphics (\begin{DoxyParamCaption}\item[{std\+::vector$<$ sf\+::\+Circle\+Shape $>$ \&}]{graphics,  }\item[{\mbox{\hyperlink{classFlock}{Flock}} \&}]{flock,  }\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+A nyájhoz tartozó grafikus objektumokkal feltölt egy std\+::vectort. 
+
+Ez nagyban megkönnyíti azok ábrázolását. A kívánt színnel lehet benne Boidokat létrehozni.
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em graphics} & A grafikus objektumokat tartalmazó std\+::vector. \\
+\hline
+{\em flock} & A nyáj, amelyhez a grafikus objektumok tartoznak. \\
+\hline
+{\em color} & A Boidok színe. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) init.\+cpp fájl 21. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < flock.\mbox{\hyperlink{classFlock_af441489b73a1f178c67ff25d7be462e6}{flockSize}}(); j++) \textcolor{comment}{// Végigmegy a flockon és minden Boidhoz rendel egy sf::shape objektumot a megjeleníthetőségért}}
+\DoxyCodeLine{24     \{}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         sf::CircleShape shape(flock[j].getMass()); \textcolor{comment}{// Itt megfigyelhető, hogy a Boidok mérete arányos tömegükkel.}}
+\DoxyCodeLine{27         shape.setFillColor(color);}
+\DoxyCodeLine{28         boids.push\_back(shape);}
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30 \}}
+
+\end{DoxyCode}

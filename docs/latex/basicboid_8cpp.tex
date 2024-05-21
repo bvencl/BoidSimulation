@@ -1,0 +1,43 @@
+\hypertarget{basicboid_8cpp}{}\doxysection{src/basicboid.cpp fájlreferencia}
+\label{basicboid_8cpp}\index{src/basicboid.cpp@{src/basicboid.cpp}}
+{\ttfamily \#include \char`\"{}basicboid.\+h\char`\"{}}\newline
+\doxysubsection*{Függvények}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{basicboid_8cpp_ad7d8961c8955ff3024cac3c8028abda4}{operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} const \&boid)
+\begin{DoxyCompactList}\small\item\em A Boidok kiíratását megkönnyítő operátor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Függvények dokumentációja}
+\mbox{\Hypertarget{basicboid_8cpp_ad7d8961c8955ff3024cac3c8028abda4}\label{basicboid_8cpp_ad7d8961c8955ff3024cac3c8028abda4}} 
+\index{basicboid.cpp@{basicboid.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!basicboid.cpp@{basicboid.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classBasicBoid}{Basic\+Boid}} \&}]{boid }\end{DoxyParamCaption})}
+
+
+
+A Boidok kiíratását megkönnyítő operátor. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em os} & Az ostream objektum, amelybe kiírjuk a Boidot. \\
+\hline
+{\em boid} & A Boid, amelyet kiírunk. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+Az ostream objektum. 
+\end{DoxyReturn}
+
+
+Definíció a(z) basicboid.\+cpp fájl 46. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47 \{}
+\DoxyCodeLine{48     boid.boidPrint(os);}
+\DoxyCodeLine{49     \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}

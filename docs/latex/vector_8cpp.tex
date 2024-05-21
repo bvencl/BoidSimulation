@@ -1,0 +1,76 @@
+\hypertarget{vector_8cpp}{}\doxysection{src/vector.cpp fájlreferencia}
+\label{vector_8cpp}\index{src/vector.cpp@{src/vector.cpp}}
+{\ttfamily \#include \char`\"{}vector.\+h\char`\"{}}\newline
+\doxysubsection*{Függvények}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{vector_8cpp_ac18fbd91eb8dc9e0b9ef29a852c6f258}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classVector}{Vector}} \&vec)
+\begin{DoxyCompactList}\small\item\em Kiírja a vektort az ostream objektumba. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{vector_8cpp_ac395f39ae3eded6b9192a38df0820c0f}{operator$\ast$}} (const \mbox{\hyperlink{classVector}{Vector}} \&vec, double lambda)
+\begin{DoxyCompactList}\small\item\em Vektor skalárral szorzása. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Függvények dokumentációja}
+\mbox{\Hypertarget{vector_8cpp_ac395f39ae3eded6b9192a38df0820c0f}\label{vector_8cpp_ac395f39ae3eded6b9192a38df0820c0f}} 
+\index{vector.cpp@{vector.cpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!vector.cpp@{vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{vector,  }\item[{double}]{scalar }\end{DoxyParamCaption})}
+
+
+
+Vektor skalárral szorzása. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em vector} & A vektor, amelyet szorozunk a skalárral. \\
+\hline
+{\em scalar} & A skalár, amellyel szorozzuk a vektort. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+Az eredményként kapott vektor. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 123. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{124 \{}
+\DoxyCodeLine{125     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector}{Vector}}(vec.\mbox{\hyperlink{classVector_a984196abdf694dee3cf48b98e51f47d0}{getX}}() * lambda, vec.\mbox{\hyperlink{classVector_ab1616160da0a66a21f0c2c7925dae1c2}{getY}}() * lambda);}
+\DoxyCodeLine{126 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{vector_8cpp_ac18fbd91eb8dc9e0b9ef29a852c6f258}\label{vector_8cpp_ac18fbd91eb8dc9e0b9ef29a852c6f258}} 
+\index{vector.cpp@{vector.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!vector.cpp@{vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Kiírja a vektort az ostream objektumba. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em os} & Az ostream objektum, amelybe kiírjuk a vektort. \\
+\hline
+{\em vector} & A vektor, amelyet kiírunk. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+Az ostream objektum. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 117. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{118 \{}
+\DoxyCodeLine{119     vec.\mbox{\hyperlink{classVector_af6fdabeb2f89fab205dfe5a87d729343}{vectorPrint}}(os);}
+\DoxyCodeLine{120     \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{121 \}}
+
+\end{DoxyCode}

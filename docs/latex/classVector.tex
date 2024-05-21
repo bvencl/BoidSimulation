@@ -1,0 +1,664 @@
+\hypertarget{classVector}{}\doxysection{Vector osztályreferencia}
+\label{classVector}\index{Vector@{Vector}}
+
+
+Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt, nem pedig tárolóként, mint az std\+::vectort.  
+
+
+
+
+{\ttfamily \#include $<$vector.\+h$>$}
+
+\doxysubsection*{Publikus tagfüggvények}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVector_a49a6283b0d62d2ad68948c873aed581f}{Vector}} (double x=0.\+0, double y=0.\+0)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classVector}{Vector}} osztály konstruktora. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector_a1af4fb8882d9091bb294778578e283a5}{Vector}} (const sf\+::\+Vector2i \&other)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classVector}{Vector}} osztály konstruktora egy sf\+::\+Vector2i objektumból. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVector_a984196abdf694dee3cf48b98e51f47d0}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény az x koordinátához. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVector_ab1616160da0a66a21f0c2c7925dae1c2}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény az y koordinátához. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{get\+Length}} () const
+\begin{DoxyCompactList}\small\item\em Getter függvény a vektor hosszához. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVector_af979b4e93ca3b4f0e0c5f92e4698e776}{setX}} (double x)
+\begin{DoxyCompactList}\small\item\em Setter függvény az x koordinátához. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVector_a48ae8b759a04ca3a7ea696fbf0375bd6}{setY}} (double y)
+\begin{DoxyCompactList}\small\item\em Setter függvény az y koordinátához. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classVector_a82c525a056dd2b98986309e35c312db5}{rotate}} (double angle) const
+\begin{DoxyCompactList}\small\item\em Egy vektort elforgat a megadott radiánnal. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVector_afe75e20ec0048d92938cc965837f7ffb}{is\+Null}} () const
+\begin{DoxyCompactList}\small\item\em Ellenőrzi, hogy a vektor nullvektor-\/e. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVector_a8e5bd58101599855e4e113cbe5f598ef}{angle\+With}} (const \mbox{\hyperlink{classVector}{Vector}} \&other) const
+\begin{DoxyCompactList}\small\item\em Kiszámítja a két vektor közötti szöget. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classVector_a6ecd13d67650ca1f1c891691b940be53}{projection\+Onto}} (const \mbox{\hyperlink{classVector}{Vector}} \&other) const
+\begin{DoxyCompactList}\small\item\em Kiszámítja a vektor vetületét a paraméter vektorra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVector_a94db098c1a77891b06718776e5e493b4}{normaliastion}} ()
+\begin{DoxyCompactList}\small\item\em Normálja az aktuális vektort egységnyi hosszúságra. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classVector_a8226fda013671ae804712d085cc0a12c}{operator-\/}} () const
+\begin{DoxyCompactList}\small\item\em Képezi az aktuális vektor ellentettjét. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classVector_ab67652bffa77db98adcbf48da0e5abab}{operator+}} (const \mbox{\hyperlink{classVector}{Vector}} \&other) const
+\begin{DoxyCompactList}\small\item\em Összeadja az aktuális vektort a paraméter vektorral. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classVector_a41a06f3dec0af5b0bbf5a85e5feabb67}{operator-\/}} (const \mbox{\hyperlink{classVector}{Vector}} \&other) const
+\begin{DoxyCompactList}\small\item\em Kivonja a paraméter vektort az aktuális vektorból. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVector_a5760f960312f49116c39bda3c7d9b444}{operator$\ast$}} (const \mbox{\hyperlink{classVector}{Vector}} \&other) const
+\begin{DoxyCompactList}\small\item\em Kiszámítja a skaláris szorzatot a paraméter vektorral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVector_a9460aac68ecefec7f5853a00d4bea7f4}{operator=}} (const \mbox{\hyperlink{classVector}{Vector}} \&other)
+\begin{DoxyCompactList}\small\item\em Az aktuális vektort egyenlővé teszi a paraméter vektorral. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVector_ad5435d0dbad5336fe4df23e6ab081612}{operator==}} (const \mbox{\hyperlink{classVector}{Vector}} \&other) const
+\begin{DoxyCompactList}\small\item\em Ellenőrzi, hogy az aktuális vektor egyenlő-\/e a paraméter vektorral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVector_aad6b7dcfd087005378aa64e506cf03d2}{operator+=}} (const \mbox{\hyperlink{classVector}{Vector}} \&other)
+\begin{DoxyCompactList}\small\item\em Az aktuális vektort összeadja a paraméter vektorral. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVector_af6fdabeb2f89fab205dfe5a87d729343}{vector\+Print}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Kiírja az aktuális vektort az ostream objektumba. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector_a678870d33d02284d452d4ea4850e5544}{operator sf\+::\+Vector2f}} () const
+\begin{DoxyCompactList}\small\item\em Az SFML által használt sf\+::\+Vector2f típusra kasztolható az aktuális \mbox{\hyperlink{classVector}{Vector}} objektum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Statikus publikus attribútumok}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{classVector}{Vector}} \mbox{\hyperlink{classVector_ab643a4abad1bf68ac3b32a7a38e731f9}{null\+Vector}}
+\begin{DoxyCompactList}\small\item\em A nullvektor konstans. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Részletes leírás}
+Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt, nem pedig tárolóként, mint az std\+::vectort. 
+
+Definíció a(z) vector.\+h fájl 20. sorában.
+
+
+
+\doxysubsection{Konstruktorok és destruktorok dokumentációja}
+\mbox{\Hypertarget{classVector_a49a6283b0d62d2ad68948c873aed581f}\label{classVector_a49a6283b0d62d2ad68948c873aed581f}} 
+\index{Vector@{Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{double}]{x = {\ttfamily 0.0},  }\item[{double}]{y = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classVector}{Vector}} osztály konstruktora. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em x} & Az x koordináta (alapértelmezetten 0.\+0). \\
+\hline
+{\em y} & Az y koordináta (alapértelmezetten 0.\+0). \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 3. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{3 : x(x), y(y)\{\};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a1af4fb8882d9091bb294778578e283a5}\label{classVector_a1af4fb8882d9091bb294778578e283a5}} 
+\index{Vector@{Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{Vector()}{Vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Vector\+::\+Vector (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2i \&}]{other }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classVector}{Vector}} osztály konstruktora egy sf\+::\+Vector2i objektumból. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & Az sf\+::\+Vector2i objektum, amelyből inicializáljuk a \mbox{\hyperlink{classVector}{Vector}} objektumot. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 5. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7     x = other.x;}
+\DoxyCodeLine{8     y = other.y;}
+\DoxyCodeLine{9 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Tagfüggvények dokumentációja}
+\mbox{\Hypertarget{classVector_a8e5bd58101599855e4e113cbe5f598ef}\label{classVector_a8e5bd58101599855e4e113cbe5f598ef}} 
+\index{Vector@{Vector}!angleWith@{angleWith}}
+\index{angleWith@{angleWith}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{angleWith()}{angleWith()}}
+{\footnotesize\ttfamily double Vector\+::angle\+With (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Kiszámítja a két vektor közötti szöget. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A másik vektor, amellyel a szöget számítjuk. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A két vektor közötti szög radiánban. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 51. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53     \textcolor{keywordtype}{double} dotProduct = *\textcolor{keyword}{this} * other;}
+\DoxyCodeLine{54     \textcolor{keywordtype}{double} dotLength = \mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}() * other.\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}();}
+\DoxyCodeLine{55     \textcolor{keywordflow}{return} std::acos(dotProduct / dotLength);}
+\DoxyCodeLine{56 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a60195b4feaa74f1578c0f4f984dce081}\label{classVector_a60195b4feaa74f1578c0f4f984dce081}} 
+\index{Vector@{Vector}!getLength@{getLength}}
+\index{getLength@{getLength}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily double Vector\+::get\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter függvény a vektor hosszához. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+A vektor hossza. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 21. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keywordflow}{return} std::sqrt(x * x + y * y);}
+\DoxyCodeLine{24 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a984196abdf694dee3cf48b98e51f47d0}\label{classVector_a984196abdf694dee3cf48b98e51f47d0}} 
+\index{Vector@{Vector}!getX@{getX}}
+\index{getX@{getX}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily double Vector\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter függvény az x koordinátához. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+Az x koordináta. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 11. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{14 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_ab1616160da0a66a21f0c2c7925dae1c2}\label{classVector_ab1616160da0a66a21f0c2c7925dae1c2}} 
+\index{Vector@{Vector}!getY@{getY}}
+\index{getY@{getY}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily double Vector\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter függvény az y koordinátához. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+Az y koordináta. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 16. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keywordflow}{return} y;}
+\DoxyCodeLine{19 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_afe75e20ec0048d92938cc965837f7ffb}\label{classVector_afe75e20ec0048d92938cc965837f7ffb}} 
+\index{Vector@{Vector}!isNull@{isNull}}
+\index{isNull@{isNull}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{isNull()}{isNull()}}
+{\footnotesize\ttfamily bool Vector\+::is\+Null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Ellenőrzi, hogy a vektor nullvektor-\/e. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+True, ha a vektor nullvektor, különben false. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 44. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45 \{}
+\DoxyCodeLine{46     \textcolor{keywordflow}{if} (std::abs(\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}()) < 1e-\/6)}
+\DoxyCodeLine{47         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a94db098c1a77891b06718776e5e493b4}\label{classVector_a94db098c1a77891b06718776e5e493b4}} 
+\index{Vector@{Vector}!normaliastion@{normaliastion}}
+\index{normaliastion@{normaliastion}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{normaliastion()}{normaliastion()}}
+{\footnotesize\ttfamily void Vector\+::normaliastion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Normálja az aktuális vektort egységnyi hosszúságra. 
+
+
+
+Definíció a(z) vector.\+cpp fájl 65. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{66 \{}
+\DoxyCodeLine{67     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}() == 0) \textcolor{comment}{// egyes szabályok számolásánál előfordulhat, hogy nullával kellene osztani}}
+\DoxyCodeLine{68         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Normalization failed, dividing by zero"{}});}
+\DoxyCodeLine{69     x /= \mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}();}
+\DoxyCodeLine{70     y /= \mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}();}
+\DoxyCodeLine{71 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a678870d33d02284d452d4ea4850e5544}\label{classVector_a678870d33d02284d452d4ea4850e5544}} 
+\index{Vector@{Vector}!operator sf::Vector2f@{operator sf::Vector2f}}
+\index{operator sf::Vector2f@{operator sf::Vector2f}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator sf::Vector2f()}{operator sf::Vector2f()}}
+{\footnotesize\ttfamily Vector\+::operator sf\+::\+Vector2f (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Az SFML által használt sf\+::\+Vector2f típusra kasztolható az aktuális \mbox{\hyperlink{classVector}{Vector}} objektum. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+Az aktuális \mbox{\hyperlink{classVector}{Vector}} objektum sf\+::\+Vector2f típusú reprezentációja. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 128. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{129 \{}
+\DoxyCodeLine{130     \textcolor{keywordflow}{return} sf::Vector2f(x, y);}
+\DoxyCodeLine{131 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a5760f960312f49116c39bda3c7d9b444}\label{classVector_a5760f960312f49116c39bda3c7d9b444}} 
+\index{Vector@{Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily double Vector\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Kiszámítja a skaláris szorzatot a paraméter vektorral. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amellyel a skaláris szorzatot számítjuk. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A skaláris szorzat eredménye. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 99. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     \textcolor{keywordflow}{return} x * rhs.x + y * rhs.y;}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_ab67652bffa77db98adcbf48da0e5abab}\label{classVector_ab67652bffa77db98adcbf48da0e5abab}} 
+\index{Vector@{Vector}!operator+@{operator+}}
+\index{operator+@{operator+}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} Vector\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Összeadja az aktuális vektort a paraméter vektorral. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amellyel az aktuális vektort összeadjuk. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+Az összeadás eredményeként kapott vektor. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 78. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79 \{}
+\DoxyCodeLine{80     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector_a49a6283b0d62d2ad68948c873aed581f}{Vector}}(x + rhs.x, y + rhs.y);}
+\DoxyCodeLine{81 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_aad6b7dcfd087005378aa64e506cf03d2}\label{classVector_aad6b7dcfd087005378aa64e506cf03d2}} 
+\index{Vector@{Vector}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily void Vector\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Az aktuális vektort összeadja a paraméter vektorral. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amellyel az aktuális vektort összeadjuk. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 104. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{105 \{}
+\DoxyCodeLine{106     x += rhs.x;}
+\DoxyCodeLine{107     y += rhs.y;}
+\DoxyCodeLine{108 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a8226fda013671ae804712d085cc0a12c}\label{classVector_a8226fda013671ae804712d085cc0a12c}} 
+\index{Vector@{Vector}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} Vector\+::operator-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Képezi az aktuális vektor ellentettjét. 
+
+\begin{DoxyReturn}{Visszatérési érték}
+Az ellentett vektor. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 73. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74 \{}
+\DoxyCodeLine{75     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector_a49a6283b0d62d2ad68948c873aed581f}{Vector}}(-\/x, -\/y);}
+\DoxyCodeLine{76 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a41a06f3dec0af5b0bbf5a85e5feabb67}\label{classVector_a41a06f3dec0af5b0bbf5a85e5feabb67}} 
+\index{Vector@{Vector}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} Vector\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Kivonja a paraméter vektort az aktuális vektorból. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amelyet kivonunk az aktuális vektorból. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+Az kivonás eredményeként kapott vektor. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 83. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84 \{}
+\DoxyCodeLine{85     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector_a49a6283b0d62d2ad68948c873aed581f}{Vector}}(x -\/ rhs.x, y -\/ rhs.y);}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a9460aac68ecefec7f5853a00d4bea7f4}\label{classVector_a9460aac68ecefec7f5853a00d4bea7f4}} 
+\index{Vector@{Vector}!operator=@{operator=}}
+\index{operator=@{operator=}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void Vector\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Az aktuális vektort egyenlővé teszi a paraméter vektorral. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amellyel az aktuális vektort egyenlővé tesszük. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 88. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90     x = rhs.x;}
+\DoxyCodeLine{91     y = rhs.y;}
+\DoxyCodeLine{92 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_ad5435d0dbad5336fe4df23e6ab081612}\label{classVector_ad5435d0dbad5336fe4df23e6ab081612}} 
+\index{Vector@{Vector}!operator==@{operator==}}
+\index{operator==@{operator==}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Vector\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Ellenőrzi, hogy az aktuális vektor egyenlő-\/e a paraméter vektorral. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amellyel az aktuális vektort összehasonlítjuk. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+True, ha a vektorok egyenlőek, különben false. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 94. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{95 \{}
+\DoxyCodeLine{96     \textcolor{keywordflow}{return} x == rhs.x \&\& y == rhs.y;}
+\DoxyCodeLine{97 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a6ecd13d67650ca1f1c891691b940be53}\label{classVector_a6ecd13d67650ca1f1c891691b940be53}} 
+\index{Vector@{Vector}!projectionOnto@{projectionOnto}}
+\index{projectionOnto@{projectionOnto}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{projectionOnto()}{projectionOnto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} Vector\+::projection\+Onto (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector}{Vector}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Kiszámítja a vektor vetületét a paraméter vektorra. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em other} & A vektor, amelyre vetítjük az aktuális vektort. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+A vetület vektora. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 58. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60     \textcolor{keywordtype}{double} dotProduct = *\textcolor{keyword}{this} * onto;}
+\DoxyCodeLine{61     \textcolor{keywordtype}{double} lengthSquared = onto.getLength() * onto.getLength();}
+\DoxyCodeLine{62     \textcolor{keywordflow}{return} onto * (dotProduct / lengthSquared);}
+\DoxyCodeLine{63 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a82c525a056dd2b98986309e35c312db5}\label{classVector_a82c525a056dd2b98986309e35c312db5}} 
+\index{Vector@{Vector}!rotate@{rotate}}
+\index{rotate@{rotate}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector}{Vector}} Vector\+::rotate (\begin{DoxyParamCaption}\item[{double}]{angle }\end{DoxyParamCaption}) const}
+
+
+
+Egy vektort elforgat a megadott radiánnal. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em angle} & A forgatás szöge radiánban. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Visszatérési érték}
+Az elforgatott vektor. 
+\end{DoxyReturn}
+
+
+Definíció a(z) vector.\+cpp fájl 36. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \textcolor{comment}{// Egyszerű forgatás képlet alapján:}}
+\DoxyCodeLine{39     \textcolor{keywordtype}{double} cosTheta = std::cos(thetaInRadians);}
+\DoxyCodeLine{40     \textcolor{keywordtype}{double} sinTheta = std::sin(thetaInRadians);}
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} \mbox{\hyperlink{classVector_a49a6283b0d62d2ad68948c873aed581f}{Vector}}(x * cosTheta -\/ y * sinTheta, x * sinTheta + y * cosTheta);}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_af979b4e93ca3b4f0e0c5f92e4698e776}\label{classVector_af979b4e93ca3b4f0e0c5f92e4698e776}} 
+\index{Vector@{Vector}!setX@{setX}}
+\index{setX@{setX}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Vector\+::setX (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+
+
+Setter függvény az x koordinátához. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em x} & Az új x koordináta. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 26. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27 \{}
+\DoxyCodeLine{28     this-\/>x = x;}
+\DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_a48ae8b759a04ca3a7ea696fbf0375bd6}\label{classVector_a48ae8b759a04ca3a7ea696fbf0375bd6}} 
+\index{Vector@{Vector}!setY@{setY}}
+\index{setY@{setY}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Vector\+::setY (\begin{DoxyParamCaption}\item[{double}]{y }\end{DoxyParamCaption})}
+
+
+
+Setter függvény az y koordinátához. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em y} & Az új y koordináta. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 31. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32 \{}
+\DoxyCodeLine{33     this-\/>y = y;}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classVector_af6fdabeb2f89fab205dfe5a87d729343}\label{classVector_af6fdabeb2f89fab205dfe5a87d729343}} 
+\index{Vector@{Vector}!vectorPrint@{vectorPrint}}
+\index{vectorPrint@{vectorPrint}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{vectorPrint()}{vectorPrint()}}
+{\footnotesize\ttfamily void Vector\+::vector\+Print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+Kiírja az aktuális vektort az ostream objektumba. 
+
+
+\begin{DoxyParams}{Paraméterek}
+{\em os} & Az ostream objektum, amelybe kiírjuk az aktuális vektort. \\
+\hline
+\end{DoxyParams}
+
+
+Definíció a(z) vector.\+cpp fájl 110. sorában.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{111 \{}
+\DoxyCodeLine{112     os << \textcolor{stringliteral}{"{}< x: "{}} << std::setprecision(6) << std::fixed << \mbox{\hyperlink{classVector_a984196abdf694dee3cf48b98e51f47d0}{getX}}()}
+\DoxyCodeLine{113        << \textcolor{stringliteral}{"{} y: "{}} << std::setprecision(6) << std::fixed << \mbox{\hyperlink{classVector_ab1616160da0a66a21f0c2c7925dae1c2}{getY}}()}
+\DoxyCodeLine{114        << \textcolor{stringliteral}{"{} Length: "{}} << std::setprecision(6) << std::fixed << \mbox{\hyperlink{classVector_a60195b4feaa74f1578c0f4f984dce081}{getLength}}();}
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Adattagok dokumentációja}
+\mbox{\Hypertarget{classVector_ab643a4abad1bf68ac3b32a7a38e731f9}\label{classVector_ab643a4abad1bf68ac3b32a7a38e731f9}} 
+\index{Vector@{Vector}!nullVector@{nullVector}}
+\index{nullVector@{nullVector}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{nullVector}{nullVector}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classVector}{Vector}} Vector\+::null\+Vector\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A nullvektor konstans. 
+
+
+
+Definíció a(z) vector.\+h fájl 156. sorában.
+
+
+
+Ez a dokumentáció az osztályról a következő fájlok alapján készült\+:\begin{DoxyCompactItemize}
+\item 
+includes/\mbox{\hyperlink{vector_8h}{vector.\+h}}\item 
+src/\mbox{\hyperlink{vector_8cpp}{vector.\+cpp}}\end{DoxyCompactItemize}

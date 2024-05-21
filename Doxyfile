@@ -33,7 +33,12 @@ HTML_COLORSTYLE_HUE    = 220
 HTML_DYNAMIC_SECTIONS  = YES
 
 # LaTeX Output related configuration options
-GENERATE_LATEX         = NO
+GENERATE_LATEX         = YES
+USE_MATHJAX            = YES
+MATHJAX_RELPATH        = https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5
+MATHJAX_EXTENSIONS     = TeX/AMSmath.js, TeX/AMSsymbols.js
+MATHJAX_CODEFILE       =
+
 
 # Man Output related configuration options
 GENERATE_MAN           = NO
