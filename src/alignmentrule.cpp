@@ -14,5 +14,5 @@ double AlignmentRule::calculateScalingFactor(const BasicBoid &boid, double affec
     if (affectingMembers == 0)
         return 0;
     // A sebsségek összes hossza / (A befolyásoló egyedek száma * empirikus correction factor)
-    return sumOfSpeed / (affectingMembers * CORRECTIONFACTOR);
+    return CORRECTION_FACTOR / (affectingMembers * sumOfSpeed);
 }

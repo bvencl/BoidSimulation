@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['correctionfactor_155',['CORRECTIONFACTOR',['../alignmentrule_8h.html#a19341d0ef3aa8be135b9b86acc527244',1,'alignmentrule.h']]]
+  ['correction_5ffactor_155',['CORRECTION_FACTOR',['../alignmentrule_8h.html#a8f5fdd63f336b5df24aded58e3787cfe',1,'alignmentrule.h']]]
 ];

@@ -10,5 +10,5 @@ var searchData=
   ['cohesionrule_17',['CohesionRule',['../classCohesionRule.html',1,'CohesionRule'],['../classCohesionRule.html#a73f7b24bf9246c0b4c3dde51ea841556',1,'CohesionRule::CohesionRule()']]],
   ['cohesionrule_2ecpp_18',['cohesionrule.cpp',['../cohesionrule_8cpp.html',1,'']]],
   ['cohesionrule_2eh_19',['cohesionrule.h',['../cohesionrule_8h.html',1,'']]],
-  ['correctionfactor_20',['CORRECTIONFACTOR',['../alignmentrule_8h.html#a19341d0ef3aa8be135b9b86acc527244',1,'alignmentrule.h']]]
+  ['correction_5ffactor_20',['CORRECTION_FACTOR',['../alignmentrule_8h.html#a8f5fdd63f336b5df24aded58e3787cfe',1,'alignmentrule.h']]]
 ];

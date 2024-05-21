@@ -43,17 +43,6 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
 
     Ezután a terminálban kell megadni a szimulációban részt vevő egyedek számát.  
 
-## Memóriaszivárgás "problémák"
-
-A program az SFML 2.5.1 verzióját használja. Több memóriaszivárgást tesztelő programmal is teszteltem (Memtrace, Dr. Memory, Valgrind), és memóriaszivárgásokat találtam, amelyek az SFML használatából erednek. Ha az SFML-hez kapcsolódó részeket eltávolítjuk, a program nem mutat memóriaszivárgást. A program sehol sem tartalmaz nyers pointerekkel történő dinamikus memóriakezelést, így biztosan nem valós pozitív ezeknek a vizsgáló eszközöknek a kimenete. Az alábbi forrásokat találtam a probléma megértéséhez, bár még nem sikerült teljesen rájönnöm a memóriaszivárgás okára:
-
-- [SFML Issue #1673](https://github.com/SFML/SFML/issues/1673)
-- [SFML Fórum](https://en.sfml-dev.org/forums/index.php?topic=27777.0)
-
-### Memóriaszivárgáshoz kapcsolódóan
-
-Amennyiben a Memtrace mellett szeretnénk elindítani a programot, az a *window* generálásánál egyből kidob, a problémán jelenleg dolgozom még.
-
 ## A programról
 
 ### Osztályok, jelentésük, használatuk
@@ -86,7 +75,7 @@ Ezeken felül a Rule osztály koherens interfészt szolgáltat a három olyan sz
 
 #### ChasingRule osztály
 
-A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurzor és a paraméterül kapott Boid pozíciójából számolja a gyorsulást, amellyel a Boid a kurzor felé fog gyorsulni az adott időpillanatban. Erre a szabályra fektettem a legnagyobb hangsúlyt, ugyanis szerintem ez a leglátványosabb a szabályok között, ugyanakkor még mindig nem vagyok teljesen elégedett vele, szeretnék még finomítani rajta. A szabályt a következő képletekkel számolom:
+A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurzor és a paraméterül kapott Boid pozíciójából számolja a gyorsulást, amellyel a Boid a kurzor felé fog gyorsulni az adott időpillanatban. Ennek a szabálynak adtam a legnagyobb súlyt, ugyanis szerintem ez a leglátványosabb a szabályok között. A szabályt a következő képletekkel számolom:
 
  1) Alapesetben:
 
@@ -129,7 +118,8 @@ A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurz
 
 #### SeparationRule osztály
 
-A Separation ("Szeparáció") szabály megvalósításáért felelős osztály. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calcualateRuleForIndividual* függvény hívja meg. Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$ számolása a lényeges):
+A Separation ("Szeparáció") szabály megvalósításáért felelős osztály. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
+Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletekben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$ számolása a lényeges):
 
  1. Amennyiben a Boidok nagyon közel vannak egymáshoz:
 
@@ -169,7 +159,9 @@ ahol:
 
 #### CohesionRule osztály
 
-A Cohesion ("Kohézió") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok mindig a raj tömegközéppontja felé is gyorsuljanak, és nehezebben szakadjanak le a rajtól. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calcualateRuleForIndividual* függvény hívja meg. Ennél a szabálynál a lényegi számolás a raj tömegközéppontjának számolásában rejlik, ez a következő módon írható le:
+A Cohesion ("Kohézió") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok mindig a raj tömegközéppontja felé is gyorsuljanak, és nehezebben szakadjanak le a rajtól.
+A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
+Ennél a szabálynál a lényegi számolás a raj tömegközéppontjának számolásában rejlik, ez a következő módon írható le:
 
  1. A tömegközéppont kiszámítása során a Boidok tömegével súlyozottan átlagoljuk a helyvektoraikat, majd leosztunk a nyáj össztömegével:
 
@@ -197,3 +189,32 @@ ahol:
 - @f$ \vec{p_b} @f$ a vizsgált Boid helyvektora(boid.getPosition()),
 - @f$ \vec{d} @f$: Az irányvektor (direction),
 - @f$ S @f$: Szabály erőssége (ruleStrength).
+
+#### AlignmentRule osztály
+
+Az Alignment ("Igazodás") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok próbálják meg felvenni környezetük átlagos sebességét, ezzel valamivel természetesebb, rajmozgásra jobban emlékeztető mozgást végezni. Ezt a szabályt különösen nehéz volt beállítani, ugyanis a többinél is gyorsabban túllövésekhez, illetve nagy kilengésekhez vezethet.
+A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
+Ennél a szabálynál a lényegi számolás a közeli szomszédok sebességeinek kiátlagolásában rejlik. Egyesével eldöntjük, hogy a raj mely tagjai vannak elég közel a vizsgált egyedhez, majd azokat, amelyek elég közel vannak a következő képlet alapján összegezzük:
+
+$$
+\vec{a} = \frac{\sum_{i = 0}^N \vec{v_i} \cdot correctionFactor}{\sum_{i = 0}^N |\vec{v_i}| \cdot N} \cdot S
+$$
+
+ahol:
+
+- @f$ N @f$: A rajból a releváns egyedek száma (affectingMembers),
+- @f$ \vec{v_i} @f$ a raj releváns egyedeinek sebességvektorai,
+- @f$ \vec{a} @f$ a gyorsulás (return value),
+- @f$ S @f$: Szabály erőssége (ruleStrength).
+- @f$ correctionFactor @f$ = 10000, egy empirikusan meghatározott korrekciós állandó (CORRECTION_FACTOR).
+
+## Memóriaszivárgás "problémák"
+
+A program az SFML 2.5.1 verzióját használja. Több memóriaszivárgást tesztelő programmal is teszteltem (Memtrace, Dr. Memory, Valgrind), és memóriaszivárgásokat találtam, amelyek az SFML használatából erednek. Ha az SFML-hez kapcsolódó részeket eltávolítjuk, a program nem mutat memóriaszivárgást. A program sehol sem tartalmaz nyers pointerekkel történő dinamikus memóriakezelést, így biztosan nem valós pozitív ezeknek a vizsgáló eszközöknek a kimenete. Az alábbi forrásokat találtam a probléma megértéséhez, bár még nem sikerült teljesen rájönnöm a memóriaszivárgás okára:
+
+- [SFML Issue #1673](https://github.com/SFML/SFML/issues/1673)
+- [SFML Fórum](https://en.sfml-dev.org/forums/index.php?topic=27777.0)
+
+### Memóriaszivárgáshoz kapcsolódóan
+
+Amennyiben a Memtrace mellett szeretnénk elindítani a programot, az a *window* generálásánál egyből kidob, a problémán jelenleg dolgozom még.
