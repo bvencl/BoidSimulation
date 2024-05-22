@@ -1,0 +1,161 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class AlignmentRule {
+	+AlignmentRule(double rule_strength)
+	+calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid& boid) : Vector {query}
+	-calculateRuleStrengthBetweenBoids(const BasicBoid& boid1, const BasicBoid& boid2) : Vector {query}
+	-calculateScalingFactor(const BasicBoid& boid, double affectingMembers, double sumOfSpeed) : double {query}
+}
+
+
+class BasicBoid {
+	+BasicBoid(double mass, Vector starting_position, Vector starting_speed, Vector starting_acceleration)
+	+BasicBoid(double mass, double starting_position_x, double starting_position_y, double speed_x, double speed_y, double acceleration_x, double acceleration_y)
+	-acceleration : Vector
+	-currentPosition : Vector
+	-speed : Vector
+	+getAcceleration() : Vector& {query}
+	+getPosition() : Vector& {query}
+	+getSpeed() : Vector& {query}
+	+operator==(const BasicBoid& other) : bool {query}
+	+getMass() : double {query}
+	-mass : double
+	+MyTurn(Vector acceleration, double dT) : void
+	+boidPrint(std::ostream& os) : void {query}
+}
+
+
+class ChasingRule {
+	+ChasingRule(double rule_strength)
+	+calculateRuleForIndividual(const BasicBoid& individual, const sf::Vector2i& mousePosition) : Vector
+	+getRuleStrength() : double {query}
+	-ruleStrength : double
+}
+
+
+class CohesionRule {
+	+CohesionRule(double rule_strength)
+	+calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid& boid) : Vector {query}
+	-calculateRuleStrengthBetweenBoids(const BasicBoid& boid1, const BasicBoid& boid2) : Vector {query}
+	-calculateScalingFactor(const BasicBoid& boid, double distance, double sumOfMasses) : double {query}
+}
+
+
+class Flock {
+	+Flock(double flock_chasing_coefficient, double flock_repulsion, double flock_cohesion, double flock_alignment)
+	-alignment : AlignmentRule
+	+operator[](size_t index) : BasicBoid&
+	+operator[](size_t index) : BasicBoid& {query}
+	-chase : ChasingRule
+	-cohesion : CohesionRule
+	-separation : SeparationRule
+	+isMemberOfFlock(const BasicBoid& boid) : bool {query}
+	+flockSize() : size_t {query}
+	-flockMembers : std::vector<BasicBoid>
+	+insert(BasicBoid boid) : void
+	+moveFlock(double time, const sf::Vector2i& target) : void
+	+remove(const BasicBoid& boid) : void
+}
+
+
+abstract class Rule <template<class Derived>> {
+	+Rule(double rule_strength)
+	+calculateRuleForIndividual(Iterator begin, Iterator end, const BasicBoid& individual) : Vector {query}
+	+{abstract} calculateRuleStrengthBetweenBoids(const BasicBoid& boid1, const BasicBoid& boid2) : Vector {query}
+	+{abstract} calculateScalingFactor(const BasicBoid& boid, double factor1, double factor2) : double {query}
+	+getRuleStrength() : double {query}
+	-ruleStrength : double
+}
+
+
+class SeparationRule {
+	+SeparationRule(double rule_strength)
+	+calculateRuleForIndividualImpl(Iterator begin, Iterator end, const BasicBoid& boid) : Vector {query}
+	-calculateRuleStrengthBetweenBoids(const BasicBoid& boid1, const BasicBoid& boid2) : Vector {query}
+	-calculateScalingFactor(const BasicBoid& boid, double factor1, double factor2) : double {query}
+}
+
+
+class Vector {
+	+Vector(double x, double y)
+	+Vector(const sf::Vector2i& other)
+	+Vector2f() {query}
+	+operator+(const Vector& other) : Vector {query}
+	+operator-() : Vector {query}
+	+operator-(const Vector& other) : Vector {query}
+	+projectionOnto(const Vector& other) : Vector {query}
+	+rotate(double angle) : Vector {query}
+	+isNull() : bool {query}
+	+operator==(const Vector& other) : bool {query}
+	+angleWith(const Vector& other) : double {query}
+	+getLength() : double {query}
+	+getX() : double {query}
+	+getY() : double {query}
+	+operator*(const Vector& other) : double {query}
+	-x : double
+	-y : double
+	+{static} nullVector : static const Vector
+	+normaliastion() : void
+	+operator+=(const Vector& other) : void
+	+operator=(const Vector& other) : void
+	+setX(double x) : void
+	+setY(double y) : void
+	+vectorPrint(std::ostream& os) : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+.Rule <|-- .AlignmentRule
+
+
+.Rule <|-- .CohesionRule
+
+
+.Rule <|-- .SeparationRule
+
+
+
+
+
+/' Aggregation relationships '/
+
+.BasicBoid "3" *-- .Vector
+
+
+.Flock *-- .AlignmentRule
+
+
+.Flock *-- .BasicBoid
+
+
+.Flock *-- .ChasingRule
+
+
+.Flock *-- .CohesionRule
+
+
+.Flock *-- .SeparationRule
+
+
+.Vector *-- .Vector
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
