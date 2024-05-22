@@ -100,14 +100,12 @@ Fordítás és futtatás</h2>
 <p>Ezután a terminálban kell megadni a szimulációban részt vevő egyedek számát. <br  />
 </p>
 <h1><a class="anchor" id="autotoc_md4"></a>
-A programról</h1>
+Osztályok, jelentésük, használatuk</h1>
 <h2><a class="anchor" id="autotoc_md5"></a>
-Osztályok, jelentésük, használatuk</h2>
-<h3><a class="anchor" id="autotoc_md6"></a>
-Vector osztály</h3>
-<p>Az általam definiált <a class="el" href="classVector.html" title="Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt,...">Vector</a> osztály egy kétdimenziós vektort valósít meg. Matematikai műveletek elvégzéséhez deiniáltam ezt az osztályt, ugyanis erre nincsen külön STL-beli előre definiált osztály. A programban mindenhol használom ezt az osztályt, ugyanis a szimulációnál a számítások túlnyomó része a vektoralgebra területéhez tartozik.</p>
-<h3><a class="anchor" id="autotoc_md7"></a>
-BasicBoid osztály</h3>
+Vector</h2>
+<p>Az általam definiált <a class="el" href="classVector.html" title="Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt,...">Vector</a> osztály egy kétdimenziós vektort valósít meg. Matematikai műveletek elvégzéséhez deiniáltam ezt az osztályt, ugyanis erre nincsen külön STL-beli előre definiált osztály. A programban mindenhol használom ezt az osztályt, ugyanis a számítások túlnyomó része a vektoralgebra területéhez tartozik.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+BasicBoid</h2>
 <p>A Boid elnevezés Craig Reynolds 1986-os Boids névvel ellátott mesterséges élet projektjéből származik. A Boidok aktuális álllapotát négy változóval modellezem:</p>
 <ul>
 <li><b>speed</b>: A Boidok sebességét tároló <em><a class="el" href="classVector.html" title="Az osztály, amely egy kétdimenziós vektort reprezentál. Vektorműveletekhez használom ezt az osztályt,...">Vector</a></em>, amely alapján a Boid pozícióját számolom.</li>
@@ -116,14 +114,14 @@ BasicBoid osztály</h3>
 <li><b>mass</b>: A Boidok tömegét tároló <em>double</em> érték. Ugyan ezzel a számértékkel inicializálom az egyes Boidokhoz tartozó alakzatokat is, így a nagyobb Boidokhoz nagyobb mértet is tudunk rendelni.</li>
 </ul>
 <p>Ezzel a négy változóval teljesen leírható a Boidok minden időpillanatban vett aktuális állapota. A Boidok mozgásánál a koncepcióm az volt, hogy az egyedek szabadon váktoztathatják gyorsulásukat, ugyanakkor a sebességük csak és kizárólag a gyorsulásukon keresztül változtatható, azaz nem felülírható sebességük az erre kijelült metóduson kívül sehol. A Boidok mozgatását a MyTurn metódussal végzem. Ez egyszerűen a paraméterül kapott gyorsulással felülírja a Boid aktuális gyorsulását, majd kiszámítja a "pillanatnyi sebességét" és ez alapján meghatározza a Boid pillanatnyi pozícióját. Kísérletezés képpen néhány szabálynál (a szabályokról később írok részletesebben) figyelembe vettem, hogy a Boidoknak van "látótere". A látótér közepének a sebességet vettem, azaz minden egyed a sebességével folyamatosan egy irányba néz. Ebből adódóan kellő távon kívül csak olyan más egyedeket képesek észlelni, amelyek benne vannak a látóterükben. (Ilyen például a <a class="el" href="classSeparationRule.html" title="Az osztály, amely a Separation (&quot;Szeparáció&quot;) szabályt valósítja meg.">SeparationRule</a>. A gyakorlatban talán ez azt jelenthetné, hogy azt a társát nem fogja megpróbálni kikerülni, amelyikről nem tud, azaz a másik fog csak lelassítani, amelyik észleli a vele szemben lévő egyedet. Bizonyos távolságban ugyanakkor mindenképpen észlelik a környezetükben lévő társaikat, ezt akár felfoghatjuk úgy is, hogy "meghallják" társaikat.)</p>
-<h3><a class="anchor" id="autotoc_md8"></a>
-Flock osztály</h3>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Flock</h2>
 <p>A <a class="el" href="classFlock.html" title="A nyáj osztály, amely tartalmazza a Boidokat és a nyáj szabályait.">Flock</a> osztály a Boidokból álló rajt hivatott reprezentálni. Az egy rajba rendezett egyedek tudnak egymásra reagálni, más rajokkal egyelőre nem képesek interaktálni, ugyanakkor van lehetőség több raj létrehozására. A Boidokat jelen megvalósításban egy std::vector-ban tárolom, ugyanakkor minden metódus úgy van implementálva, hogy ezt másféle STL-kompatibilis konténerrel is végezhetnénk. A raj szabályainak szabály-erősségét jelenleg annak példányosításakor lehet beállítani, ugyanis a raj tartalmazza a rajta értelmezett szabály-példányokat (ezt a jövőben szeretném még átalakítani). A <a class="el" href="classFlock.html" title="A nyáj osztály, amely tartalmazza a Boidokat és a nyáj szabályait.">Flock</a> legfőbb metódusa a moveFlock, ez felel a raj szabályainak alkalmazásáról, itt számolódik minden Boid pillanatbeli gyorsulás értéke, és ezt adja tovább a Boidok MyTurn függvényének (az engineTime aktuális értékével együtt).</p>
-<h3><a class="anchor" id="autotoc_md9"></a>
-Rule osztály</h3>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Rule</h2>
 <p>A <a class="el" href="classRule.html" title="Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok ős...">Rule</a> osztály a három Boidok között ható szabály-osztály ősosztálya. Az osztály a CRTP (Curiously Recrring Template Pattern) tervezési minta szerint lett tervezve, aminek lényege, hogy az ősosztály paraméterben megkaphatja a belőle származtatott osztályt. Ez a minta teszi lehetővé, hogy az ősosztályban definiáljunk olyan metódsukoat, amelyek a szűrmaztatott osztály metódusait képesek meghívni. Erre a tervezési mintára jelen esetben azért van szükség, mert ha szerenénk a <a class="el" href="classFlock.html" title="A nyáj osztály, amely tartalmazza a Boidokat és a nyáj szabályait.">Flock</a> osztályban más fajta STL kompatibilis tárolóban tárolni a <a class="el" href="classBasicBoid.html" title="Az alapvető egyedeket reprezentáló osztály. Az osztály, ezzel az egyedek Craig Reynolds 1986-os &quot;Boid...">BasicBoid</a> objektumainkat, akkor így nem kell módosítanunk semmit sem a szabályok implementációján, teljesen függetlenek a kapott tároló fajtájától. Ezeken felül a <a class="el" href="classRule.html" title="Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok ős...">Rule</a> osztály koherens interfészt szolgáltat a három olyan szabálnyak, amelyek a Boidok között hatnak (ezek a Separation, Cohesion és Alignment). A Chasing szabály azért nem ebből az osztályból származik, mert ugyan hasonló interfésze van a többi szabályhoz, ugyanakkor csupán az aktuálisan vizsgált egyedre, és a kurzor pozíciójára van szüksége a számytásokhoz, nem igényli az egész raj ismeretét.</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
-ChasingRule osztály</h3>
+<h2><a class="anchor" id="autotoc_md9"></a>
+ChasingRule</h2>
 <p>A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurzor és a paraméterül kapott Boid pozíciójából számolja a gyorsulást, amellyel a Boid a kurzor felé fog gyorsulni az adott időpillanatban. Ennek a szabálynak adtam a legnagyobb súlyt, ugyanis szerintem ez a leglátványosabb a szabályok között. A szabályt a következő képletekkel számolom:</p>
 <p>1) Alapesetben:</p>
 <p>$$ \vec{a} = \left( \vec{d} \cdot d \right) \cdot S $$</p>
@@ -143,8 +141,8 @@ ChasingRule osztály</h3>
 <li>\( S \) a szabály erőssége (ruleStrength)</li>
 <li>\( breakingForce = 30 \), ez egy empirikusan meghatározott konstans.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md11"></a>
-SeparationRule osztály</h3>
+<h2><a class="anchor" id="autotoc_md10"></a>
+SeparationRule</h2>
 <p>A Separation ("Szeparáció") szabály megvalósításáért felelős osztály. A <a class="el" href="classRule.html" title="Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok ős...">Rule</a> osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a <em>calculateRuleForIndividualImpl</em> függvény felelős, ezt a CRTP tervezés miatt a <em>calculateRuleForIndividual</em> függvény hívja meg. Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletekben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$ számolása a lényeges):</p>
 <ol type="1">
 <li><p class="startli">Amennyiben a Boidok nagyon közel vannak egymáshoz:</p>
@@ -169,8 +167,8 @@ SeparationRule osztály</h3>
 <li>\( empiricScalingValue = 500 \)</li>
 <li>\( S \): Szabály erőssége (ruleStrength)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md12"></a>
-CohesionRule osztály</h3>
+<h2><a class="anchor" id="autotoc_md11"></a>
+CohesionRule</h2>
 <p>A Cohesion ("Kohézió") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok mindig a raj tömegközéppontja felé is gyorsuljanak, és nehezebben szakadjanak le a rajtól. A <a class="el" href="classRule.html" title="Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok ős...">Rule</a> osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a <em>calculateRuleForIndividualImpl</em> függvény felelős, ezt a CRTP tervezés miatt a <em>calculateRuleForIndividual</em> függvény hívja meg. Ennél a szabálynál a lényegi számolás a raj tömegközéppontjának számolásában rejlik, ez a következő módon írható le:</p>
 <ol type="1">
 <li><p class="startli">A tömegközéppont kiszámítása során a Boidok tömegével súlyozottan átlagoljuk a helyvektoraikat, majd leosztunk a nyáj össztömegével:</p>
@@ -192,8 +190,8 @@ CohesionRule osztály</h3>
 <li>\( \vec{d} \): Az irányvektor (direction),</li>
 <li>\( S \): Szabály erőssége (ruleStrength).</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md13"></a>
-AlignmentRule osztály</h3>
+<h2><a class="anchor" id="autotoc_md12"></a>
+AlignmentRule</h2>
 <p>Az Alignment ("Igazodás") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok próbálják meg felvenni környezetük átlagos sebességét, ezzel valamivel természetesebb, rajmozgásra jobban emlékeztető mozgást végezni. Ezt a szabályt különösen nehéz volt beállítani, ugyanis a többinél is gyorsabban túllövésekhez, illetve nagy kilengésekhez vezethet. A <a class="el" href="classRule.html" title="Absztrakt sablon osztály, CRTP (Curiously Recurring Template Pattern) alapján, a szabály-osztályok ős...">Rule</a> osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a <em>calculateRuleForIndividualImpl</em> függvény felelős, ezt a CRTP tervezés miatt a <em>calculateRuleForIndividual</em> függvény hívja meg. Ennél a szabálynál a lényegi számolás a közeli szomszédok sebességeinek kiátlagolásában rejlik. Egyesével eldöntjük, hogy a raj mely tagjai vannak elég közel a vizsgált egyedhez, majd azokat, amelyek elég közel vannak a következő képlet alapján összegezzük:</p>
 <p>$$ \vec{a} = \frac{\sum_{i = 0}^N \vec{v_i} \cdot correctionFactor}{\sum_{i = 0}^N |\vec{v_i}| \cdot N} \cdot S $$</p>
 <p>ahol:</p>
@@ -204,14 +202,14 @@ AlignmentRule osztály</h3>
 <li>\( S \): Szabály erőssége (ruleStrength).</li>
 <li>\( correctionFactor \) = 10000, egy empirikusan meghatározott korrekciós állandó (CORRECTION_FACTOR).</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Memóriaszivárgás "problémák"</h1>
 <p>A program az SFML 2.5.1 verzióját használja. Több memóriaszivárgást tesztelő programmal is teszteltem (Memtrace, Dr. Memory, Valgrind), és memóriaszivárgásokat találtam, amelyek az SFML használatából erednek. Ha az SFML-hez kapcsolódó részeket eltávolítjuk, a program nem mutat memóriaszivárgást. A program sehol sem tartalmaz nyers pointerekkel történő dinamikus memóriakezelést, így biztosan nem valós pozitív ezeknek a vizsgáló eszközöknek a kimenete. Az alábbi forrásokat találtam a probléma megértéséhez, bár még nem sikerült teljesen rájönnöm a memóriaszivárgás okára:</p>
 <ul>
 <li><a href="https://github.com/SFML/SFML/issues/1673">SFML Issue #1673</a></li>
 <li><a href="https://en.sfml-dev.org/forums/index.php?topic=27777.0">SFML Fórum</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Memóriaszivárgáshoz kapcsolódóan</h2>
 <p>Amennyiben a Memtrace mellett szeretnénk elindítani a programot, az a <em>window</em> generálásánál egyből kidob, a problémán jelenleg dolgozom még. </p>
 </div></div><!-- PageDoc -->

@@ -43,15 +43,13 @@ A projekt tartalmaz egy Makefile-t, amely Windows és UNIX alapú operációs re
 
     Ezután a terminálban kell megadni a szimulációban részt vevő egyedek számát.  
 
-## A programról
+## Osztályok, jelentésük, használatuk
 
-### Osztályok, jelentésük, használatuk
+### Vector
 
-#### Vector osztály
+Az általam definiált Vector osztály egy kétdimenziós vektort valósít meg. Matematikai műveletek elvégzéséhez deiniáltam ezt az osztályt, ugyanis erre nincsen külön STL-beli előre definiált osztály. A programban mindenhol használom ezt az osztályt, ugyanis a számítások túlnyomó része a vektoralgebra területéhez tartozik.
 
-Az általam definiált Vector osztály egy kétdimenziós vektort valósít meg. Matematikai műveletek elvégzéséhez deiniáltam ezt az osztályt, ugyanis erre nincsen külön STL-beli előre definiált osztály. A programban mindenhol használom ezt az osztályt, ugyanis a szimulációnál a számítások túlnyomó része a vektoralgebra területéhez tartozik.
-
-#### BasicBoid osztály
+### BasicBoid
 
 A Boid elnevezés Craig Reynolds 1986-os Boids névvel ellátott mesterséges élet projektjéből származik. A Boidok aktuális álllapotát négy változóval modellezem:
 
@@ -62,18 +60,18 @@ A Boid elnevezés Craig Reynolds 1986-os Boids névvel ellátott mesterséges é
 
 Ezzel a négy változóval teljesen leírható a Boidok minden időpillanatban vett aktuális állapota. A Boidok mozgásánál a koncepcióm az volt, hogy az egyedek szabadon váktoztathatják gyorsulásukat, ugyanakkor a sebességük csak és kizárólag a gyorsulásukon keresztül változtatható, azaz nem felülírható sebességük az erre kijelült metóduson kívül sehol. A Boidok mozgatását a MyTurn metódussal végzem. Ez egyszerűen a paraméterül kapott gyorsulással felülírja a Boid aktuális gyorsulását, majd kiszámítja a "pillanatnyi sebességét" és ez alapján meghatározza a Boid pillanatnyi pozícióját. Kísérletezés képpen néhány szabálynál (a szabályokról később írok részletesebben) figyelembe vettem, hogy a Boidoknak van "látótere". A látótér közepének a sebességet vettem, azaz minden egyed a sebességével folyamatosan egy irányba néz. Ebből adódóan kellő távon kívül csak olyan más egyedeket képesek észlelni, amelyek benne vannak a látóterükben. (Ilyen például a SeparationRule. A gyakorlatban talán ez azt jelenthetné, hogy azt a társát nem fogja megpróbálni kikerülni, amelyikről nem tud, azaz a másik fog csak lelassítani, amelyik észleli a vele szemben lévő egyedet. Bizonyos távolságban ugyanakkor mindenképpen észlelik a környezetükben lévő társaikat, ezt akár felfoghatjuk úgy is, hogy "meghallják" társaikat.)
 
-#### Flock osztály
+### Flock
 
 A Flock osztály a Boidokból álló rajt hivatott reprezentálni. Az egy rajba rendezett egyedek tudnak egymásra reagálni, más rajokkal egyelőre nem képesek interaktálni, ugyanakkor van lehetőség több raj létrehozására. A Boidokat jelen megvalósításban egy std::vector-ban tárolom, ugyanakkor minden metódus úgy van implementálva, hogy ezt másféle STL-kompatibilis konténerrel is végezhetnénk.
 A raj szabályainak szabály-erősségét jelenleg annak példányosításakor lehet beállítani, ugyanis a raj tartalmazza a rajta értelmezett szabály-példányokat (ezt a jövőben szeretném még átalakítani).
 A Flock legfőbb metódusa a moveFlock, ez felel a raj szabályainak alkalmazásáról, itt számolódik minden Boid pillanatbeli gyorsulás értéke, és ezt adja tovább a Boidok MyTurn függvényének (az engineTime aktuális értékével együtt).
 
-#### Rule osztály
+### Rule
 
 A Rule osztály a három Boidok között ható szabály-osztály ősosztálya. Az osztály a CRTP (Curiously Recrring Template Pattern) tervezési minta szerint lett tervezve, aminek lényege, hogy az ősosztály paraméterben megkaphatja a belőle származtatott osztályt. Ez a minta teszi lehetővé, hogy az ősosztályban definiáljunk olyan metódsukoat, amelyek a szűrmaztatott osztály metódusait képesek meghívni. Erre a tervezési mintára jelen esetben azért van szükség, mert ha szerenénk a Flock osztályban más fajta STL kompatibilis tárolóban tárolni a BasicBoid objektumainkat, akkor így nem kell módosítanunk semmit sem a szabályok implementációján, teljesen függetlenek a kapott tároló fajtájától.
 Ezeken felül a Rule osztály koherens interfészt szolgáltat a három olyan szabálnyak, amelyek a Boidok között hatnak (ezek a Separation, Cohesion és Alignment). A Chasing szabály azért nem ebből az osztályból származik, mert ugyan hasonló interfésze van a többi szabályhoz, ugyanakkor csupán az aktuálisan vizsgált egyedre, és a kurzor pozíciójára van szüksége a számytásokhoz, nem igényli az egész raj ismeretét.
 
-#### ChasingRule osztály
+### ChasingRule
 
 A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurzor és a paraméterül kapott Boid pozíciójából számolja a gyorsulást, amellyel a Boid a kurzor felé fog gyorsulni az adott időpillanatban. Ennek a szabálynak adtam a legnagyobb súlyt, ugyanis szerintem ez a leglátványosabb a szabályok között. A szabályt a következő képletekkel számolom:
 
@@ -116,7 +114,7 @@ A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurz
 - @f$ S @f$ a szabály erőssége (ruleStrength)
 - @f$ breakingForce = 30 @f$, ez egy empirikusan meghatározott konstans.
 
-#### SeparationRule osztály
+### SeparationRule
 
 A Separation ("Szeparáció") szabály megvalósításáért felelős osztály. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
 Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletekben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$ számolása a lényeges):
@@ -157,7 +155,7 @@ ahol:
 - @f$ empiricScalingValue = 500 @f$
 - @f$ S @f$: Szabály erőssége (ruleStrength)
 
-#### CohesionRule osztály
+### CohesionRule
 
 A Cohesion ("Kohézió") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok mindig a raj tömegközéppontja felé is gyorsuljanak, és nehezebben szakadjanak le a rajtól.
 A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
@@ -190,7 +188,7 @@ ahol:
 - @f$ \vec{d} @f$: Az irányvektor (direction),
 - @f$ S @f$: Szabály erőssége (ruleStrength).
 
-#### AlignmentRule osztály
+### AlignmentRule
 
 Az Alignment ("Igazodás") szabály megvalósításáért felelős osztály. Ez a szabály felelős azért, hogy a Boidok próbálják meg felvenni környezetük átlagos sebességét, ezzel valamivel természetesebb, rajmozgásra jobban emlékeztető mozgást végezni. Ezt a szabályt különösen nehéz volt beállítani, ugyanis a többinél is gyorsabban túllövésekhez, illetve nagy kilengésekhez vezethet.
 A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
