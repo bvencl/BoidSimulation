@@ -1,11 +1,24 @@
 \hypertarget{main_8cpp}{}\doxysection{src/main.cpp fájlreferencia}
 \label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+A program main fájlja.  
+
+
 {\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\newline
 \doxysubsection*{Függvények}
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Részletes leírás}
+A program main fájlja. 
+
+\begin{DoxyAuthor}{Szerző}
+Bódi Vencel VBW5\+N9 
+\end{DoxyAuthor}
 
 
 \doxysubsection{Függvények dokumentációja}
@@ -17,62 +30,61 @@ int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int ar
 
 
 
-Definíció a(z) main.\+cpp fájl 3. sorában.
+Definíció a(z) main.\+cpp fájl 9. sorában.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{4 \{}
-\DoxyCodeLine{5 }
-\DoxyCodeLine{6     \textcolor{comment}{// A felhasználó beállíthatja a kívánt ablakméretet kijelzője szerint, amennyiben nem állít be semmit, úgy 1920*1080-\/as képernyőt feltételezek}}
-\DoxyCodeLine{7     \textcolor{keywordtype}{int} width = 1920;}
-\DoxyCodeLine{8     \textcolor{keywordtype}{int} height = 1080;}
-\DoxyCodeLine{9     \textcolor{keywordflow}{if} (argc == 3)}
-\DoxyCodeLine{10     \{}
-\DoxyCodeLine{11         sscanf(argv[1], \textcolor{stringliteral}{"{}\%d"{}}, \&width);}
-\DoxyCodeLine{12         sscanf(argv[2], \textcolor{stringliteral}{"{}\%d"{}}, \&height);}
-\DoxyCodeLine{13     \}}
-\DoxyCodeLine{14 }
-\DoxyCodeLine{15     \mbox{\hyperlink{classFlock}{Flock}} flock(1, 1, 1, 1); \textcolor{comment}{// egy flock példányosítása}}
-\DoxyCodeLine{16 }
-\DoxyCodeLine{17     std::vector<sf::CircleShape> boids; \textcolor{comment}{// a flockhoz tartozó grafikus objektumokat tároló std::vector példányosítása}}
-\DoxyCodeLine{18     sf::Music music;                    \textcolor{comment}{// A zenéért felelős objetum létrehozása}}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20     \mbox{\hyperlink{init_8h_a645594133b14142186aea8306cacafaa}{initFlock}}(flock, width, height); \textcolor{comment}{// A flock inicializálása, feltöltése boidokkal, amelyek kezdetben egy, a képernyő közepén lévő körben helyezkednek el}}
-\DoxyCodeLine{21     \mbox{\hyperlink{init_8h_a294f98c8ad11fc73ef47fbc84836bba3}{initGraphics}}(boids, flock, sf::Color::Red);}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{comment}{// A felhasználó beállíthatja a kívánt ablakméretet kijelzője szerint, amennyiben nem állít be semmit, úgy 1920*1080-\/as képernyőt feltételezek}}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} width = 1920;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} height = 1080;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{if} (argc == 3)}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17         sscanf(argv[1], \textcolor{stringliteral}{"{}\%d"{}}, \&width);}
+\DoxyCodeLine{18         sscanf(argv[2], \textcolor{stringliteral}{"{}\%d"{}}, \&height);}
+\DoxyCodeLine{19     \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \mbox{\hyperlink{classFlock}{Flock}} flock(1, 5, 0, 0); \textcolor{comment}{// egy flock példányosítása}}
 \DoxyCodeLine{22 }
-\DoxyCodeLine{23     \textcolor{comment}{// Itt történik az ablak létrehozása a megadott szélességgel és magassággal.}}
-\DoxyCodeLine{24     sf::RenderWindow window(sf::VideoMode(width, height), \textcolor{stringliteral}{"{}Ugye milyen szepek?"{}});}
+\DoxyCodeLine{23     std::vector<sf::CircleShape> boids; \textcolor{comment}{// a flockhoz tartozó grafikus objektumokat tároló std::vector példányosítása}}
+\DoxyCodeLine{24     sf::Music music;                    \textcolor{comment}{// A zenéért felelős objetum létrehozása}}
 \DoxyCodeLine{25 }
-\DoxyCodeLine{26     sf::Clock engineTime;}
-\DoxyCodeLine{27     \textcolor{keywordtype}{double} dT = 0.0;}
+\DoxyCodeLine{26     \mbox{\hyperlink{init_8h_a645594133b14142186aea8306cacafaa}{initFlock}}(flock, width, height); \textcolor{comment}{// A flock inicializálása, feltöltése boidokkal, amelyek kezdetben egy, a képernyő közepén lévő körben helyezkednek el}}
+\DoxyCodeLine{27     \mbox{\hyperlink{init_8h_a294f98c8ad11fc73ef47fbc84836bba3}{initGraphics}}(boids, flock, sf::Color::Red);}
 \DoxyCodeLine{28 }
-\DoxyCodeLine{29     \textcolor{comment}{// Gameloop, addig tart a program futása, amíg a felhasználó be nem zárja az ablakot.}}
-\DoxyCodeLine{30     \textcolor{comment}{// Eléggé minimális ez a rész, de a projekt fókusza nem a megjelenítés tökéletesítésén volt}}
-\DoxyCodeLine{31     \textcolor{keywordflow}{while} (window.isOpen())}
-\DoxyCodeLine{32     \{}
-\DoxyCodeLine{33         dT = engineTime.restart().asSeconds(); \textcolor{comment}{// Minden ciklus elején nullázzuk az órát, így a számolás a ténylegesen eltelt időt veszi figyelembe, nem pedig egy konstans értékkel számol}}
+\DoxyCodeLine{29     \textcolor{comment}{// Itt történik az ablak létrehozása a megadott szélességgel és magassággal.}}
+\DoxyCodeLine{30     sf::RenderWindow window(sf::VideoMode(width, height), \textcolor{stringliteral}{"{}Ugye milyen szepek?"{}});}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     sf::Clock engineTime;}
+\DoxyCodeLine{33     \textcolor{keywordtype}{double} dT = 0.0;}
 \DoxyCodeLine{34 }
-\DoxyCodeLine{35         sf::Event evnt;}
-\DoxyCodeLine{36         \textcolor{keywordflow}{while} (window.pollEvent(evnt))}
-\DoxyCodeLine{37         \{}
-\DoxyCodeLine{38             \textcolor{keywordflow}{if} (evnt.type == sf::Event::Closed) \textcolor{comment}{// Itt érzékeljük, hogy a felhasználóü becsukta-\/e az ablakot}}
-\DoxyCodeLine{39                 window.close();}
-\DoxyCodeLine{40         \}}
-\DoxyCodeLine{41         sf::Vector2i mousePosition = sf::Mouse::getPosition(window); \textcolor{comment}{// Lekérjuk az egér pozícióját az ablakhoz képest}}
-\DoxyCodeLine{42         window.clear();                                              \textcolor{comment}{// Az ablak tisztítása}}
-\DoxyCodeLine{43 }
-\DoxyCodeLine{44         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < boids.size(); j++) \textcolor{comment}{// Egy ciklusban kirajzoljuk a Boidokat a képernyőres}}
-\DoxyCodeLine{45         \{}
-\DoxyCodeLine{46             boids[j].setPosition((sf::Vector2f)(flock[j].getPosition())); \textcolor{comment}{// a Boid pozíciójat sf::Vector2f-\/re konvertáljuk a saját Vector osztályról.}}
-\DoxyCodeLine{47             window.draw(boids[j]);                                        \textcolor{comment}{// A boidok tényleges kiraéyzolása}}
-\DoxyCodeLine{48         \}}
+\DoxyCodeLine{35     \textcolor{comment}{// Gameloop, addig tart a program futása, amíg a felhasználó be nem zárja az ablakot.}}
+\DoxyCodeLine{36     \textcolor{comment}{// Eléggé minimális ez a rész, de a projekt fókusza nem a megjelenítés tökéletesítésén volt}}
+\DoxyCodeLine{37     \textcolor{keywordflow}{while} (window.isOpen())}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         dT = engineTime.restart().asSeconds(); \textcolor{comment}{// Minden ciklus elején nullázzuk az órát, így a számolás a ténylegesen eltelt időt veszi figyelembe, nem pedig egy konstans értékkel számol}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         sf::Event evnt;}
+\DoxyCodeLine{42         \textcolor{keywordflow}{while} (window.pollEvent(evnt))}
+\DoxyCodeLine{43         \{}
+\DoxyCodeLine{44             \textcolor{keywordflow}{if} (evnt.type == sf::Event::Closed) \textcolor{comment}{// Itt érzékeljük, hogy a felhasználóü becsukta-\/e az ablakot}}
+\DoxyCodeLine{45                 window.close();}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47         sf::Vector2i mousePosition = sf::Mouse::getPosition(window); \textcolor{comment}{// Lekérjuk az egér pozícióját az ablakhoz képest}}
+\DoxyCodeLine{48         window.clear();                                              \textcolor{comment}{// Az ablak tisztítása}}
 \DoxyCodeLine{49 }
-\DoxyCodeLine{50         flock.moveFlock(dT, mousePosition); \textcolor{comment}{// A nyáj mozgatása itt történik, minden ciklus végén, így a kezőállapotot is felveszik a képernyőn a Boidok}}
-\DoxyCodeLine{51         window.display();}
-\DoxyCodeLine{52         std::cout << flock[0] <<std::endl;}
-\DoxyCodeLine{53     \}}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{56 \}}
+\DoxyCodeLine{50         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 0; j < boids.size(); j++) \textcolor{comment}{// Egy ciklusban kirajzoljuk a Boidokat a képernyőres}}
+\DoxyCodeLine{51         \{}
+\DoxyCodeLine{52             boids[j].setPosition((sf::Vector2f)(flock[j].getPosition())); \textcolor{comment}{// a Boid pozíciójat sf::Vector2f-\/re konvertáljuk a saját Vector osztályról.}}
+\DoxyCodeLine{53             window.draw(boids[j]);                                        \textcolor{comment}{// A boidok tényleges kiraéyzolása}}
+\DoxyCodeLine{54         \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         flock.moveFlock(dT, mousePosition); \textcolor{comment}{// A nyáj mozgatása itt történik, minden ciklus végén, így a kezőállapotot is felveszik a képernyőn a Boidok}}
+\DoxyCodeLine{57         window.display();}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{61 \}}
 
 \end{DoxyCode}
