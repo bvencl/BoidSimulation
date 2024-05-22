@@ -1,13 +1,10 @@
-# Doxyfile 1.9.2
 
-# Project related configuration options
 PROJECT_NAME           = "Rajzásszimuláció"
 PROJECT_NUMBER         = "6.9"
 OUTPUT_DIRECTORY       = docs
 CREATE_SUBDIRS         = NO
 ALLOW_UNICODE_NAMES    = NO
 
-# Documentation
 OUTPUT_LANGUAGE        = Hungarian
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
@@ -17,7 +14,6 @@ FULL_PATH_NAMES        = YES
 STRIP_FROM_PATH        = 
 STRIP_FROM_INC_PATH    = 
 
-# Build related configuration options
 EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = NO
 EXTRACT_STATIC         = NO
@@ -25,48 +21,37 @@ EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_LOCAL_METHODS  = YES
 EXTRACT_ANON_NSPACES   = NO
 
-# HTML Output related configuration options
 GENERATE_HTML          = YES
 HTML_OUTPUT            = html
 HTML_FILE_EXTENSION    = .html
 HTML_COLORSTYLE_HUE    = 220
 HTML_DYNAMIC_SECTIONS  = YES
 
-# LaTeX Output related configuration options
 GENERATE_LATEX         = YES
 USE_MATHJAX            = YES
 MATHJAX_RELPATH        = https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5
 MATHJAX_EXTENSIONS     = TeX/AMSmath.js, TeX/AMSsymbols.js
 MATHJAX_CODEFILE       =
 
-
-# Man Output related configuration options
 GENERATE_MAN           = NO
 
-# XML Output related configuration options
 GENERATE_XML           = NO
 
-# Diagrams
 HAVE_DOT               = NO
 
-# Source Browser related configuration options
 SOURCE_BROWSER         = YES
 INLINE_SOURCES         = YES
 STRIP_CODE_COMMENTS    = YES
 
-# Project related configuration options
 SHOW_USED_FILES        = YES
 SHOW_FILES             = YES
 SHOW_NAMESPACES        = YES
 VERBATIM_HEADERS       = YES
 
-# Configuration for mainpage
 USE_MDFILE_AS_MAINPAGE = README.md
 
-# Input
 INPUT                  = includes src README.md
 FILE_PATTERNS          = *.h *.cpp README.md
 RECURSIVE              = YES
 
-# Markdown Support
 EXTENSION_MAPPING      = md=markdown
