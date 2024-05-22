@@ -3,7 +3,7 @@
 /**
  * @file main.cpp
  * @brief A program main fájlja.
- * @author Bódi Vencel
+ * @author Bódi Vencel VBW5N9
  */
 
 int main(int argc, char *argv[])
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         sscanf(argv[2], "%d", &height);
     }
 
-    Flock flock(1, 1, 10, 1); // egy flock példányosítása
+    Flock flock(1, 5, 0, 0); // egy flock példányosítása
 
     std::vector<sf::CircleShape> boids; // a flockhoz tartozó grafikus objektumokat tároló std::vector példányosítása
     sf::Music music;                    // A zenéért felelős objetum létrehozása
