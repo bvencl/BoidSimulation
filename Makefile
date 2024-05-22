@@ -6,7 +6,7 @@ ifeq ($(OS),Windows_NT)
 endif
 
 CXX = g++
-CXXFLAGS = -g -Wall -Wextra -Wpedantic -fdiagnostics-color=always
+CXXFLAGS = -g -Wall -Wextra -Wpedantic -fdiagnostics-color=always -O3
 CXXFLAGS += -DMEMTRACE #itt van a gond alapvetően :/
 LDLIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 INCFLAGS = -I$(INCDIR)
