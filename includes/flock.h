@@ -23,7 +23,7 @@
  */
 class Flock
 {
-    std::vector<BasicBoid> flockMembers; ///< Boidokat tároló std::vector. Ebben az új megvalósításban már nem BasicBoid *-ot, hanem az egész BasicBoid-ot tárolja.
+    std::list<BasicBoid> flockMembers; ///< Boidokat tároló std::vector. Ebben az új megvalósításban már nem BasicBoid *-ot, hanem az egész BasicBoid-ot tárolja.
     ChasingRule chase; ///< A nyáj Chase szabálya.
     SeparationRule separation; ///< A nyáj Separation szabálya.
     CohesionRule cohesion; ///< A nyáj Cohesion szabálya.
