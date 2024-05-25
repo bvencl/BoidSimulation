@@ -3,7 +3,7 @@
 /**
  * @file main.cpp
  * @brief A program main fájlja.
- * @author Bódi Vencel VBW5N9
+ * @author Bódi Vencel
  */
 
 int main(int argc, char *argv[])

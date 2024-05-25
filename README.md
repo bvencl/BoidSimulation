@@ -1,4 +1,4 @@
-# Bódi Vencel VBW5N9
+# Rajzásszimuláció
 
 ## A projekt rövid bemutatása
 

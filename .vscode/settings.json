@@ -69,8 +69,8 @@
         "optional": "cpp",
         "sstream": "cpp"
     },
-    "makefile.makefilePath": "C:\\git\\HAZI\\codes",
-    "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe"
+    // "makefile.makefilePath": "C:\\git\\HAZI\\codes",
+    // "C_Cpp.default.compilerPath": "C:\\msys64\\mingw64\\bin\\gcc.exe"
 }
 
 
