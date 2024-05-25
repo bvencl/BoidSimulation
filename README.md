@@ -77,33 +77,33 @@ A Chasing ("Üldözés") szabály mevalósításáért felelős osztály. A kurz
 
  1) Alapesetben:
 
-    $$
-    \vec{a} = \left( \vec{d} \cdot d \right) \cdot S
-    $$
+$$
+\vec{a} = \left( \vec{d} \cdot d \right) \cdot S
+$$
 
- 2) Ha az irányvektor ($\vec{d}$) és a Boid sebességének ($\vec{v}$) skaláris szorzata negatív, akkor a gyorsulás az irányvektor, és egy empirikusan meghatározott korrekciós tényező ($breakinForce$) szorzatára módosul:
+ 1) Ha az irányvektor ($\vec{d}$) és a Boid sebességének ($\vec{v}$) skaláris szorzata negatív, akkor a gyorsulás az irányvektor, és egy empirikusan meghatározott korrekciós tényező ($breakinForce$) szorzatára módosul:
 
-    $$
-    \vec{d} \cdot \vec{v} < 0 \quad \Rightarrow \quad \vec{a} = \vec{d} \cdot breakingForce \cdot S
-    $$
+$$
+\vec{d} \cdot \vec{v} < 0 \quad \Rightarrow \quad \vec{a} = \vec{d} \cdot breakingForce \cdot S
+$$
 
- 3) Ha a Boid sebességének harmada nagyobb, mint a célponttól való távolság ($d$), és az irányvektor és a sebesség skaláris szorzata pozitív, akkor a gyorsulás egy másik korrekciós tényezővel módosul, amelyet a sebesség és az irányvektor vetülete alapján számolunk ki:
+ 1) Ha a Boid sebességének harmada nagyobb, mint a célponttól való távolság ($d$), és az irányvektor és a sebesség skaláris szorzata pozitív, akkor a gyorsulás egy másik korrekciós tényezővel módosul, amelyet a sebesség és az irányvektor vetülete alapján számolunk ki:
 
-    $$
-    \frac{|\vec{v}|}{3} > d \quad \text{és} \quad \vec{d} \cdot \vec{v} > 0
-    $$
+$$
+\frac{|\vec{v}|}{3} > d \quad \text{és} \quad \vec{d} \cdot \vec{v} > 0
+$$
 
-    $$
-    \Rightarrow
-    $$
+$$
+\Rightarrow
+$$
 
-    $$
-    correctionFactor = - ( breakingForce \cdot |\vec{v}|)
-    $$
+$$
+correctionFactor = - ( breakingForce \cdot |\vec{v}|)
+$$
 
-    $$
-    \vec{a} = \vec{d}.proj(\vec{v})  \cdot  correctionFactor
-    $$
+$$
+\vec{a} = \vec{d}.proj(\vec{v})  \cdot  correctionFactor
+$$
 
     ahol:
 
@@ -121,27 +121,27 @@ Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor ü
 
  1. Amennyiben a Boidok nagyon közel vannak egymáshoz:
 
-    $$
-    distance < M_i + M_o + \frac{desiredMinimalDistance}{3} \quad \Rightarrow  \quad scalingFactor = empiricScalingValue
-    $$
+$$
+distance < M_i + M_o + \frac{desiredMinimalDistance}{3} \quad \Rightarrow  \quad scalingFactor = empiricScalingValue
+$$
 
  2. Amennyiben a kívánt távolságnál közelebb, de a fentebbinél távolabb helyezkednek el:
 
-    $$
-    M_i + M_o+ \frac{desiredMinimalDistance}{3} \leq distance \leq M_i + M_o + desiredMinimalDistance
-    \Rightarrow
-    scalingFactor = \frac{1}{distance - (M_i + M_o)}
-    $$
+$$
+M_i + M_o+ \frac{desiredMinimalDistance}{3} \leq distance \leq M_i + M_o + desiredMinimalDistance
+\Rightarrow
+scalingFactor = \frac{1}{distance - (M_i + M_o)}
+$$
 
  3. Amennyiben a kívánt határon kívül helyezkednek el, és a vizsgált Boid látóterében van a másik Boid:
 
-    $$
-    M_i + M_o+ desiredMinimalDistance \ge distance \quad \text{és} \quad \vec{d}.angleWith(\vec{v}) \leq \frac{\pi}{3} \quad \Rightarrow \quad scalingFactor = \frac{M_i + M_o}{distance^2}
-    $$
+$$
+M_i + M_o+ desiredMinimalDistance \ge distance \quad \text{és} \quad \vec{d}.angleWith(\vec{v}) \leq \frac{\pi}{3} \quad \Rightarrow \quad scalingFactor = \frac{M_i + M_o}{distance^2}
+$$
     Így a szabály által visszaadott gyorsulás komponens:
-    $$
-    \vec{a} = \vec{d} \cdot scalingFactor \cdot S
-    $$
+$$
+\vec{a} = \vec{d} \cdot scalingFactor \cdot S
+$$
 
 ahol:
 
@@ -163,21 +163,21 @@ Ennél a szabálynál a lényegi számolás a raj tömegközéppontjának számo
 
  1. A tömegközéppont kiszámítása során a Boidok tömegével súlyozottan átlagoljuk a helyvektoraikat, majd leosztunk a nyáj össztömegével:
 
-    $$
-    \vec{C} = \frac{1}{M} \sum_{i = 1}^N \vec{p_i} \cdot m_i
-    $$
+$$
+\vec{C} = \frac{1}{M} \sum_{i = 1}^N \vec{p_i} \cdot m_i
+$$
 
  2. Innen az irányvektor:
 
-    $$
-    \vec{d} = \vec{C} - \vec{p_b}
-    $$
+$$
+\vec{d} = \vec{C} - \vec{p_b}
+$$
 
  3. Majd a visszaadott gyorsulásvektor:
 
-    $$
-    \vec{a} = \vec{d} \cdot S
-    $$
+$$
+\vec{a} = \vec{d} \cdot S
+$$
 
 ahol:
 
