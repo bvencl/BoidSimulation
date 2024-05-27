@@ -105,19 +105,19 @@ $$
 \vec{a} = \vec{d}.proj(\vec{v})  \cdot  correctionFactor
 $$
 
-    ahol:
+ahol:
 
-- @f$ d @f$ a célpont és a Boid közötti távolság (distance),
-- @f$ \vec{d} @f$  az irányvektor (direction),
-- @f$ \vec{v} @f$ a sebesség (speed),
-- @f$ \vec{a} @f$ a gyorsulás (acceleration),
-- @f$ S @f$ a szabály erőssége (ruleStrength)
-- @f$ breakingForce = 30 @f$, ez egy empirikusan meghatározott konstans.
+- $d$ a célpont és a Boid közötti távolság (distance),
+- $\vec{d}$ az irányvektor (direction),
+- $\vec{v}$ a sebesség (speed),
+- $\vec{a}$ a gyorsulás (acceleration),
+- $S$ a szabály erőssége (ruleStrength)
+- $breakingForce = 30$ , ez egy empirikusan meghatározott konstans.
 
 ### SeparationRule
 
 A Separation ("Szeparáció") szabály megvalósításáért felelős osztály. A Rule osztályból származtatom, így megkapta annak interfészét is. A szabály által szolgáltatott gyorsulás komponens számolásáért a *calculateRuleForIndividualImpl* függvény felelős, ezt a CRTP tervezés miatt a *calculateRuleForIndividual* függvény hívja meg.
-Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletekben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$ számolása a lényeges):
+Ezt a szabályt tartom a második legfontosabbnak, ugyanis szerintem a kurzor üldözése mellett a másik legfontosabb dolga a Boidoknak, hogy ne ütközzenek össze. A tömegük azért szerepel ebben az egyenletekben, mert ez arányos az őket reprezentáló körökkel, így a képernyőn lévő méretükkel. A szabályt a következő képletekkel számolom (a $scalingFactor$számolása a lényeges):
 
  1. Amennyiben a Boidok nagyon közel vannak egymáshoz:
 
@@ -138,22 +138,22 @@ $$
 $$
 M_i + M_o+ desiredMinimalDistance \ge distance \quad \text{és} \quad \vec{d}.angleWith(\vec{v}) \leq \frac{\pi}{3} \quad \Rightarrow \quad scalingFactor = \frac{M_i + M_o}{distance^2}
 $$
-    Így a szabály által visszaadott gyorsulás komponens:
+Így a szabály által visszaadott gyorsulás komponens:
 $$
 \vec{a} = \vec{d} \cdot scalingFactor \cdot S
 $$
 
 ahol:
 
-- @f$ M_i @f$: A vizsgált Boid tömege (individual.getMass()),
-- @f$ M_o @f$: A másik Boid, amelyikkel éppen vizsgáljuk a vizsgált egyedünket (currentFlockMembergetMass()),
-- @f$ scalingFactor @f$: A skálázó faktor, amellyel az irányvektort szorozni fogjuk,
-- @f$ \vec{d} @f$: Az irányvektor (direction)
-- @f$ \vec{a} @f$ a gyorsulás (acceleration),
-- @f$ distance @f$: A két Boid közötti távolság (distance)
-- @f$ desiredMinimalDistance = 150 @f$ [pixel]
-- @f$ empiricScalingValue = 500 @f$
-- @f$ S @f$: Szabály erőssége (ruleStrength)
+- $M_i$: A vizsgált Boid tömege (individual.getMass()),
+- $M_o$: A másik Boid, amelyikkel éppen vizsgáljuk a vizsgált egyedünket (currentFlockMembergetMass()),
+- $scalingFactor$: A skálázó faktor, amellyel az irányvektort szorozni fogjuk,
+- $\vec{d}$: Az irányvektor (direction)
+- $\vec{a}$ a gyorsulás (acceleration),
+- $distance$: A két Boid közötti távolság (distance)
+- $desiredMinimalDistance = 150$ [pixel]
+- $empiricScalingValue = 500$
+- $S$ : Szabály erőssége (ruleStrength)
 
 ### CohesionRule
 
@@ -181,12 +181,12 @@ $$
 
 ahol:
 
-- @f$ \vec{C} @f$ a tömegközéppontba mutató vektor (commonCenterOfMass),
-- @f$ M @f$: A raj össztömege (sumOfMasses),
-- @f$ \vec{a} @f$ a gyorsulás (return value),
-- @f$ \vec{p_b} @f$ a vizsgált Boid helyvektora(boid.getPosition()),
-- @f$ \vec{d} @f$: Az irányvektor (direction),
-- @f$ S @f$: Szabály erőssége (ruleStrength).
+- $\vec{C}$ a tömegközéppontba mutató vektor (commonCenterOfMass),
+- $M$: A raj össztömege (sumOfMasses),
+- $\vec{a}$ a gyorsulás (return value),
+- $\vec{p_b}$ a vizsgált Boid helyvektora(boid.getPosition()),
+- $\vec{d}$ : Az irányvektor (direction),
+- $S$ : Szabály erőssége (ruleStrength).
 
 ### AlignmentRule
 
@@ -200,11 +200,11 @@ $$
 
 ahol:
 
-- @f$ N @f$: A rajból a releváns egyedek száma (affectingMembers),
-- @f$ \vec{v_i} @f$ a raj releváns egyedeinek sebességvektorai,
-- @f$ \vec{a} @f$ a gyorsulás (return value),
-- @f$ S @f$: Szabály erőssége (ruleStrength).
-- @f$ correctionFactor @f$ = 10000, egy empirikusan meghatározott korrekciós állandó (CORRECTION_FACTOR).
+- $N$ : A rajból a releváns egyedek száma (affectingMembers),
+- $\vec{v_i}$ a raj releváns egyedeinek sebességvektorai,
+- $\vec{a}$ a gyorsulás (return value),
+- $S$ : Szabály erőssége (ruleStrength).
+- $correctionFactor = 10000$ , egy empirikusan meghatározott korrekciós állandó (CORRECTION_FACTOR).
 
 ## Memóriaszivárgás "problémák"
 
