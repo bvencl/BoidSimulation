@@ -138,7 +138,9 @@ $$
 $$
 M_i + M_o+ desiredMinimalDistance \ge distance \quad \text{és} \quad \vec{d}.angleWith(\vec{v}) \leq \frac{\pi}{3} \quad \Rightarrow \quad scalingFactor = \frac{M_i + M_o}{distance^2}
 $$
+
 Így a szabály által visszaadott gyorsulás komponens:
+
 $$
 \vec{a} = \vec{d} \cdot scalingFactor \cdot S
 $$
