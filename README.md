@@ -218,3 +218,7 @@ A program az SFML 2.5.1 verzióját használja. Több memóriaszivárgást teszt
 ### Memóriaszivárgáshoz kapcsolódóan
 
 Amennyiben a Memtrace mellett szeretnénk elindítani a programot, az a *window* generálásánál egyből kidob, a problémán jelenleg dolgozom még.
+
+## UML diagram:
+
+![uml](output.svg)
