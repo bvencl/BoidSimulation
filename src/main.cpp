@@ -10,15 +10,15 @@ int main(int argc, char *argv[])
 {
 
     // A felhasználó beállíthatja a kívánt ablakméretet kijelzője szerint, amennyiben nem állít be semmit, úgy 1920*1080-as képernyőt feltételezek
-    int width = 1920;
-    int height = 1080;
+    int width = 2880;
+    int height = 1800;
     if (argc == 3)
     {
         sscanf(argv[1], "%d", &width);
         sscanf(argv[2], "%d", &height);
     }
 
-    Flock flock(1, 1, 1, 1); // egy flock példányosítása
+    Flock flock(1, 5, 1, 1); // egy flock példányosítása
 
     std::vector<sf::CircleShape> boids; // a flockhoz tartozó grafikus objektumokat tároló std::vector példányosítása
     sf::Music music;                    // A zenéért felelős objetum létrehozása

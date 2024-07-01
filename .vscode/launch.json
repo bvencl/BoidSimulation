@@ -29,26 +29,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         {
             "name": "run and debug C++",
             "type": "cppdbg",
@@ -75,19 +55,6 @@
             ],
             "preLaunchTask": "C++ :: g++.exe fordito"
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -122,13 +89,6 @@
 
 
 
-
-
-
-
-
-
-
         {
             "name": "run and debug C++ with no build",
             "type": "cppdbg",
@@ -156,7 +116,7 @@
             
         },
         {
-            "name": "C++ MAKE NO DEBUG MODE",
+            "name": "C++ MAKE",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\..\\bin\\main.exe",
